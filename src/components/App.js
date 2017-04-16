@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
+import Spinner from './Spinner';
+import '../App.css';
 import Home from './Home';
 import About from './About';
 // import Topics from './Topics';
 import FoodIndex from './food_index';
 import SinglePost from './single_post';
 import Auth from './Auth';
+import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
 
@@ -36,12 +39,20 @@ class App extends Component {
     const { user } = this.state;
 
     return (
+      user === undefined ?
+        <Spinner /> :
       <Router>
         <div>
           <Route exact path="/" component={Home}/>
-          <Route path="/login" component={Auth}/>
-          <Route exact path="/matur" component={FoodIndex}/>
-          <Route path="/matur/:id" component={SinglePost}/>
+          <Route path="/login" render={() => {
+            if (user) {
+              return <Redirect to="/matur" />;
+            } else {
+              return <Auth />
+            }
+          }} />
+          <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
+          <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
           <Route path="/about" component={About}/>
           {/* <Route path="/topics" component={Topics}/> */}
         </div>
