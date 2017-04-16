@@ -1,0 +1,45 @@
+.back_arrow {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.single_hero {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.single_info {
+  background: #fff;
+  @include border;
+  padding: 20px;
+  margin-top: -30px;
+  position: relative;
+}
+
+.single_tags {
+  margin-top: 15px;
+
+  div {
+    border: 1px solid #343845;
+    padding: 4px 12px;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 20px;
+    margin-top: 5px;
+
+    li {
+      list-style-type: none;
+      color: #343845;
+      font-weight: 300;
+      font-size: 12px;
+      text-transform: uppercase;
+
+    }
+  }
+}

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import firebase from 'firebase';
 import Spinner from './Spinner';
-import '../App.css';
+// import '../App.css';
 import Home from './Home';
 import About from './About';
 // import Topics from './Topics';
 import FoodIndex from './food_index';
 import SinglePost from './single_post';
 import Auth from './Auth';
+import MyOrder from './MyOrder';
 import PrivateRoute from './PrivateRoute';
+import Navigation from './Navigation';
 
 class App extends Component {
 
@@ -43,6 +45,7 @@ class App extends Component {
         <Spinner /> :
       <Router>
         <div>
+          <Navigation user={user} />
           <Route exact path="/" component={Home}/>
           <Route path="/login" render={() => {
             if (user) {
@@ -53,6 +56,7 @@ class App extends Component {
           }} />
           <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
           <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
+          <PrivateRoute path="/myorder/:uid" component={MyOrder} user={user} />
           <Route path="/about" component={About}/>
           {/* <Route path="/topics" component={Topics}/> */}
         </div>

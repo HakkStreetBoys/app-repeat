@@ -1,0 +1,43 @@
+.navigation {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  padding: 12px 0px 5px 0px;
+  bottom: 0;
+  z-index: 999;
+
+  ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+
+    a {
+      text-align: center;
+    }
+
+    li {
+      color: $text_color;
+      font-family: $font_regular;
+      text-decoration: none;
+    }
+  }
+
+  .order_btn {
+    width: 84px;
+    height: 84px;
+    border-radius: 100%;
+    background: $main_red;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

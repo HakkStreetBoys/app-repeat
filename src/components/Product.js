@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import arrow from '../public/img/arrow.svg'
 
 const Product = ({ post }) => {
   const { menu_title, menu_price } = post.acf;
@@ -13,7 +14,7 @@ const Product = ({ post }) => {
       <div className="product_info">
         <h2>{menu_title}</h2>
         <Link to={`matur/${post.id}`}>
-          <img className="arrow" src="../style/img/arrow.svg" alt="Nánar" />
+          <img className="arrow" src={process.env.PUBLIC_URL + '/img/arrow.svg'} alt="Nánar" />
         </Link>
       </div>
       <div className="product_btn">

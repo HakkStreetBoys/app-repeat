@@ -1,0 +1,40 @@
+//Colors
+$main_red: #FF5A5F;
+$main_blue: #343845;
+$text_color: #4A4A4A;
+$bg_color: #F8F2F2;
+$error_color: #FFAF00;
+$overlay_color: #10556A;
+
+//Media queries
+$screen-xs: 480px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+//Fonts
+@font-face {
+ font-family: 'RoundLight';
+ src: url('../fonts/din-round/din-round-light.eot') format('embedded-opentype'),
+ url('../fonts/din-round/din-round-light.woff') format('woff'),
+ url('../fonts/din-round/din-round-light.ttf')  format('truetype');
+ font-weight: 300;
+}
+
+@font-face {
+ font-family: 'RoundBold';
+ src: url('../fonts/din-round/din-round-bold.eot') format('embedded-opentype'),
+ url('../fonts/din-round/din-round-bold.woff') format('woff'),
+ url('../fonts/din-round/din-round-bold.ttf')  format('truetype');
+ font-weight: 800;
+}
+
+@font-face {
+ font-family: 'RoundRegular';
+ src: url('../fonts/din-round/din-round-regular.woff') format('woff');
+ font-weight: 500;
+}
+
+$font_light: 'RoundLight';
+$font_regular: 'RoundRegular';
+$font_bold: 'RoundBold';

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 import axios from 'axios';
 import firebase from 'firebase';
 
@@ -59,7 +60,7 @@ class SignInForm extends Component {
                     </label>
                 </div>
 
-                <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+                <Button type="submit" value="Submit" onClick={this.handleSubmit}></Button>
             </form>
         );
     }
