@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import Spinner from './Spinner';
+import firebase from './firebase';
 // import '../App.css';
 import Home from './Home';
 import About from './About';
@@ -20,15 +21,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var config = {
-      apiKey: "AIzaSyBqxVu2HGo992cGCb0UUPbl4cvh_FVFgbo",
-      authDomain: "one-time-password-c0c13.firebaseapp.com",
-      databaseURL: "https://one-time-password-c0c13.firebaseio.com",
-      projectId: "one-time-password-c0c13",
-      storageBucket: "one-time-password-c0c13.appspot.com",
-      messagingSenderId: "224931022962"
-    };
-    firebase.initializeApp(config);
+    // var config = {
+    //   apiKey: "AIzaSyBqxVu2HGo992cGCb0UUPbl4cvh_FVFgbo",
+    //   authDomain: "one-time-password-c0c13.firebaseapp.com",
+    //   databaseURL: "https://one-time-password-c0c13.firebaseio.com",
+    //   projectId: "one-time-password-c0c13",
+    //   storageBucket: "one-time-password-c0c13.appspot.com",
+    //   messagingSenderId: "224931022962"
+    // };
+    // firebase.initializeApp(config);
 
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ user });

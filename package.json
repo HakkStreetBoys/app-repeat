@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "firebase": "^3.7.8",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",
@@ -15,7 +16,8 @@
     "react-spinner": "^0.2.6",
     "reactstrap": "^4.5.0",
     "redux": "^3.6.0",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
