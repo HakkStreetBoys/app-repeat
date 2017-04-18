@@ -18,7 +18,7 @@ const Navigation = ({ user }) => {
             <img src={process.env.PUBLIC_URL + "/img/matur-icon.svg"} alt="" />
             <li>Matur</li>
           </Link>
-          <Link to={`/myorder/${user.uid}`}>
+          <Link to={`/myorder`}>
             <li className="order_btn">
               <img src={process.env.PUBLIC_URL + "/img/order_logo.svg"} />
             </li>

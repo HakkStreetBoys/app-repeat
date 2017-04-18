@@ -57,7 +57,7 @@ class App extends Component {
           }} />
           <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
           <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
-          <PrivateRoute path="/myorder/:uid" component={MyOrder} user={user} />
+          <PrivateRoute path="/myorder" component={MyOrder} user={user} />
           <Route path="/about" component={About}/>
           {/* <Route path="/topics" component={Topics}/> */}
         </div>

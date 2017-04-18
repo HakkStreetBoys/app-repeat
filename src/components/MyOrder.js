@@ -14,13 +14,13 @@ class MyOrder extends Component {
     const { adversityId } = this.props.match.params;
     const userRef = userRefFor(this.props.user);
 
-    userRef.child('orders').once('value').then((snapshot) => {
-      console.log(snapshot.val());
-      this.setState({ myOrders: snapshot.val(), loading: false })
-      console.log(this.state);
+    var component = this;
+    userRef.child('orders/').on('value', (snapshot) => {
+      // snapshot.forEach(function(orderSnapshot) {
+        // console.log(orderSnapshot.val());
+        this.setState({ myOrders: this.state.myOrders.concat(snapshot.val()), loading: false });
+      // })
     });
-
-    // console.log(this.props.match.params);
   }
 
   renderOrder = () => {
@@ -30,8 +30,8 @@ class MyOrder extends Component {
       )
     }
 
-    return _.map(this.state.myOrders, (myOrder, key) => {
-      return <li key={key}>{myOrder}</li>
+    return _.map(this.state.myOrders[0], (myOrder, key) => {
+      return <li key={key}>{myOrder.title}</li>
     });
   }
 
