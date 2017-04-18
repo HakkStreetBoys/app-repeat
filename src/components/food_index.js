@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
+import { Container } from 'reactstrap';
 
 class FoodIndex extends Component {
   state = {
@@ -39,11 +40,9 @@ class FoodIndex extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container product_container">
-          {this.renderFood()}
-        </div>
-      </div>
+      <Container className="product_container">
+        {this.renderFood()}
+      </Container>
     );
   }
 }

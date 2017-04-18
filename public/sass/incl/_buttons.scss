@@ -1,0 +1,25 @@
+.btn {
+  cursor: pointer;
+  width: 100%;
+  margin-top: -15px;
+  border: none;
+  padding: 20px 0 10px 0;
+  font-family: $font_bold;
+  @include border;
+  color: #fff;
+}
+
+.btn-danger {
+  background: $error_color;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background: $main_red;
+  font-size: 20px;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+  background-color: #FFC42F;
+  border: none;
+}

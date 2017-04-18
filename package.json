@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
+    "bootstrap": "^4.0.0-alpha.6",
     "firebase": "^3.7.8",
     "lodash": "^4.17.4",
     "react": "^15.5.4",

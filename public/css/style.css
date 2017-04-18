@@ -428,6 +428,33 @@ template {
   font-weight: 500;
 }
 
+.btn {
+  cursor: pointer;
+  width: 100%;
+  margin-top: -15px;
+  border: none;
+  padding: 20px 0 10px 0;
+  font-family: "RoundBold";
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+}
+
+.btn-danger {
+  background: #FFAF00;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background: #FF5A5F;
+  font-size: 20px;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+  background-color: #FFC42F;
+  border: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -448,12 +475,6 @@ h2 {
 p {
   font-family: "RoundRegular";
   font-size: 18px;
-}
-
-.container {
-  width: 100%;
-  max-width: 90%;
-  margin: 0 auto;
 }
 
 @keyframes bounce {
@@ -631,6 +652,45 @@ p {
   font-weight: 300;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+#my_order .col-12 {
+  padding: 0;
+}
+
+#my_order .pending_order {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+#my_order .pending_order li {
+  font-family: "RoundBold";
+  color: #4A4A4A;
+  display: inline-block;
+  font-size: 24px;
+  max-width: 65%;
+}
+
+#my_order .order_empty {
+  text-align: center;
+}
+
+#my_order .order_empty img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#my_order .order_empty p {
+  width: 100%;
+  max-width: 70%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .navigation {

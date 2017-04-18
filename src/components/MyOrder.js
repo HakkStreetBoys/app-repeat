@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import firebase from 'firebase';
+import { connect } from 'react-redux';
+import firebase from './firebase';
 import userRefFor from './userRef';
 import Spinner from './Spinner';
+import MyOrderEmpty from './MyOrderEmpty';
+import { Button, Container, Row, Col } from 'reactstrap';
+// import DeleteOrder from './DeleteOrder';
 
 class MyOrder extends Component {
-  state = {
-    myOrders: [],
-    loading: true,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      myOrders: [],
+      myOrder: null,
+      loading: true,
+      fRef: null
+    }
+
+    this.handleClick = this.handleClick.bind(this);
   }
+
 
   componentWillMount() {
     const { adversityId } = this.props.match.params;
     const userRef = userRefFor(this.props.user);
-
-    var component = this;
+    this.setState({ fRef: userRef });
     userRef.child('orders/').on('value', (snapshot) => {
       // snapshot.forEach(function(orderSnapshot) {
         // console.log(orderSnapshot.val());
@@ -23,28 +35,54 @@ class MyOrder extends Component {
     });
   }
 
-  renderOrder = () => {
-    if(this.state.loading === true) {
+  handleClick(e) {
+    e.preventDefault();
+  }
+
+  renderOrder() {
+    if (this.state.loading) {
       return (
         <Spinner />
       )
     }
 
+    if (this.state.myOrders[0] === null) {
+      return <MyOrderEmpty />
+    }
+
     return _.map(this.state.myOrders[0], (myOrder, key) => {
-      return <li key={key}>{myOrder.title}</li>
+      return (
+        <Col xs="12" key={key}>
+          <div className="pending_order">
+            <li>{myOrder.title}</li>
+            <li>{myOrder.price} kr.</li>
+          </div>
+
+          <Button color="danger" onClick={() => {
+              // this.setState({ myOrder: myOrder, loading: true });
+              this.state.fRef.child('orders/' + key)
+              .remove()
+              // .then(() => {
+              //   this.setState({ myOrder: null, loading: false });
+              //   {this.handleClick}
+              // })
+            }}>
+          Eyða
+          </Button>
+        </Col>
+      );
     });
   }
 
   render() {
+    console.log(this.state);
     // const { state } = this;
 
     return (
-      <div>
-        <h1>My Order</h1>
-        <ul>
+      <Container id="my_order">
+          <h1>My Order</h1>
           {this.renderOrder()}
-        </ul>
-      </div>
+      </Container>
 
     );
   }

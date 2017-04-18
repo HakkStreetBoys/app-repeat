@@ -1,0 +1,38 @@
+#my_order {
+  .col-12 {
+    padding: 0;
+  }
+  .pending_order {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 20px;
+    position: relative;
+    margin-top: 20px;
+    @include border;
+
+    li {
+      font-family: $font_bold;
+      color: $text_color;
+      display: inline-block;
+      font-size: 24px;
+      max-width: 65%;
+    }
+  }
+
+  .order_empty {
+    text-align: center;
+
+    img {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      width: 100%;
+      max-width: 70%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}
