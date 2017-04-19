@@ -16,11 +16,18 @@ import MyOrder from './MyOrder';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
+import { Navbar, Nav, NavItem, Collapse, NavbarBrand, NavbarToggler } from 'reactstrap';
 
 class App extends Component {
 
-  state = {
-    user: undefined
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      user: undefined,
+      isOpen: false
+    };
   }
 
   componentDidMount() {
@@ -39,34 +46,75 @@ class App extends Component {
     })
   }
 
-  render() {
-    console.log(this.state);
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
 
+  logOut() {
+    firebase.auth().signOut()
+      .then(() => {
+        this.setState({ isOpen: false })
+      })
+        .catch(error => {
+          console.log(error);
+        });
+  }
+
+  presentation = (props) => {
     const { user } = this.state;
-
     return (
-      user === undefined ?
-        <Spinner /> :
       <Router>
         <div>
-          <Navigation user={user} />
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/login" render={() => {
-            if (user) {
-              return <Redirect to="/matur" />;
-            } else {
-              return <SignUpForm />
-            }
-          }} />
-          <PublicRoute path="/login/code" component={SignInForm} user={user} />
-          <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
-          <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
-          <PrivateRoute path="/myorder" component={MyOrder} user={user} />
-          <Route path="/about" component={About}/>
-          {/* <Route path="/topics" component={Topics}/> */}
+          {user && <div>
+            <Navbar color="faded" light toggleable>
+              <NavbarBrand>
+                <h2 className="logo">Repeat</h2>
+              </NavbarBrand>
+              <NavbarToggler right onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav>
+                  <NavItem onClick={this.logOut.bind(this)}>Logout</NavItem>
+                </Nav>
+              </Collapse>
+            </Navbar>
+          </div>}
+          {user && <Navigation user={user} />}
+
+          {
+            user !== undefined
+              ?
+                <div>
+                  <Route exact path="/" component={Home}/>
+                  <Route exact path="/login" render={() => {
+                      if (user) {
+                        return <Redirect to="/matur" />;
+                      } else {
+                        return <SignUpForm />
+                      }
+                    }}
+                  />
+                  <PublicRoute path="/login/code" component={SignInForm} user={user} />
+                  <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
+                  <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
+                  <PrivateRoute path="/myorder" component={MyOrder} user={user} />
+                  <Route path="/about" component={About}/>
+                </div>
+              : <Spinner />
+          }
         </div>
       </Router>
     );
+  }
+
+  render() {
+    console.log(this.state);
+    return (
+      <div>
+        {this.presentation()}
+      </div>
+    )
+    // console.log(this.state);
+
   }
 }
 

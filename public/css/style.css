@@ -464,6 +464,10 @@ template {
   text-decoration: none;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "RoundBold";
   -webkit-font-smoothing: antialiased;
@@ -693,6 +697,10 @@ p {
   max-width: 70%;
   text-align: center;
   margin: 0 auto;
+}
+
+#sign_up {
+  background: #343845;
 }
 
 .navigation {

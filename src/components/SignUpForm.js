@@ -50,28 +50,31 @@ class SignUpForm extends Component {
     const { fireRedirect } = this.state;
 
     return (
-      <Container>
-        <Form onSubmit={this.handleSubmit}>
-          <FormGroup>
-              <Input
-                type="number"
-                placeholder="Símanúmer"
-                value={this.state.phone}
-                onChange={this.handleChange}
-              />
-          </FormGroup>
+      <div id="sign_up">
+        <Container>
+          <Form onSubmit={this.handleSubmit}>
+            <FormGroup>
+                <Input
+                  type="number"
+                  placeholder="Símanúmer"
+                  value={this.state.phone}
+                  onChange={this.handleChange}
+                />
+            </FormGroup>
 
-          {/* <Link to="/code"> */}
-            <Button type="submit" color="info">
-              <li>Senda kóða</li>
-              <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
-            </Button>
-          {/* </Link> */}
-          {fireRedirect && (
-            <Redirect to={'/login/code'} phone={this.state.phone}/>
-          )}
-        </Form>
-      </Container>
+            {/* <Link to="/code"> */}
+              <Button type="submit" color="info">
+                <li>Senda kóða</li>
+                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
+              </Button>
+            {/* </Link> */}
+            {fireRedirect && (
+              <Redirect to={'/login/code'} phone={this.state.phone}/>
+            )}
+          </Form>
+        </Container>
+      </div>
+
     );
   }
 }
