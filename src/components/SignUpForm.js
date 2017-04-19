@@ -25,12 +25,6 @@ class SignUpForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // if (this.state.fireRedirect === false) {
-    //   return <div>loading</div>;
-    // }
-
-    const codePath = "/login/code";
-    event.preventDefault();
     console.log(this.state.phone)
     // arrow function til að sleppa við .bind(this)
     axios.post(`${ROOT_AUTH_URL}/createUser`, {
@@ -70,7 +64,7 @@ class SignUpForm extends Component {
           {/* <Link to="/code"> */}
             <Button type="submit" color="info">
               <li>Senda kóða</li>
-              <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} /></li>
+              <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
             </Button>
           {/* </Link> */}
           {fireRedirect && (

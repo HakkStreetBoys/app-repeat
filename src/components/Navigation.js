@@ -20,7 +20,7 @@ const Navigation = ({ user }) => {
           </Link>
           <Link to={`/myorder`}>
             <li className="order_btn">
-              <img src={process.env.PUBLIC_URL + "/img/order_logo.svg"} />
+              <img src={process.env.PUBLIC_URL + "/img/order_logo.svg"} alt="" />
             </li>
           </Link>
           <Link to={"/drykkir"}>
@@ -32,9 +32,5 @@ const Navigation = ({ user }) => {
     </div>
   );
 };
-
-function mapStateToProps(state) {
-  return { posts: state.posts.all };
-}
 
 export default Navigation;

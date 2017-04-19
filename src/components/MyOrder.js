@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { connect } from 'react-redux';
-import firebase from './firebase';
+// import firebase from './firebase';
 import userRefFor from './userRef';
 import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty';
 import MyOrderInner from './MyOrderInner';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 // import DeleteOrder from './DeleteOrder';
 
 class MyOrder extends Component {
@@ -18,7 +17,7 @@ class MyOrder extends Component {
       myOrder: null,
       loading: true,
       fRef: null,
-      totalPrice: null
+      totalPrice: ''
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -41,7 +40,7 @@ class MyOrder extends Component {
     e.preventDefault();
   }
 
-  renderOrder() {
+  renderOrder = () => {
     if (this.state.loading) {
       return (
         <Spinner />
@@ -53,6 +52,7 @@ class MyOrder extends Component {
     }
     let totalPrice = 0;
     return _.map(this.state.myOrders[0], (myOrder, key) => {
+      // this.setState({ totalPrice: myOrder.price[0] });
       // console.log(myOrder);
       totalPrice += parseInt(myOrder.price);
       console.log(totalPrice);

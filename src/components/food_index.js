@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFood } from '../actions/index';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';

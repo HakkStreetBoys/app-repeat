@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Row, Button } from 'reactstrap';
+import { Col, Button } from 'reactstrap';
 
 const MyOrderEmpty = () => {
   return (
@@ -8,7 +8,7 @@ const MyOrderEmpty = () => {
       <div className="pending_order order_empty">
         <div>
           <h2>Pöntunarlisti tómur</h2>
-          <img src={process.env.PUBLIC_URL + "/img/order_empty.svg"} />
+          <img src={process.env.PUBLIC_URL + "/img/order_empty.svg"} alt="" />
           <p>Þú virðist ekki hafa bætt neinu við á pöntunarlista</p>
         </div>
       </div>

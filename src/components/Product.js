@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase';
 // import arrow from '../public/img/arrow.svg'
 
 const Product = ({ post, userRef }) => {

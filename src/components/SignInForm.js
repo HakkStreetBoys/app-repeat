@@ -11,7 +11,8 @@ class SignInForm extends Component {
         super(props);
         this.state = {
             phone: '',
-            code: ''
+            code: '',
+            error: ''
         }
 
         this.handleCodeChange = this.handleCodeChange.bind(this);
@@ -62,7 +63,7 @@ class SignInForm extends Component {
 
               <Button color="info" type="submit" value="Submit" onClick={this.handleSubmit}>
                 <li>Skrá inn</li>
-                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} /></li>
+                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
               </Button>
             </Form>
           </Container>

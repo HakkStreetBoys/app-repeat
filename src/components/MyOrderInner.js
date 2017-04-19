@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Col } from 'reactstrap';
-import firebase from './firebase';
 
 const MyOrderInner = (props) => {
   return (
