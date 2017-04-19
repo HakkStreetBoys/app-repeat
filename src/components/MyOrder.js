@@ -5,6 +5,7 @@ import firebase from './firebase';
 import userRefFor from './userRef';
 import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty';
+import MyOrderInner from './MyOrderInner';
 import { Button, Container, Row, Col } from 'reactstrap';
 // import DeleteOrder from './DeleteOrder';
 
@@ -16,7 +17,8 @@ class MyOrder extends Component {
       myOrders: [],
       myOrder: null,
       loading: true,
-      fRef: null
+      fRef: null,
+      totalPrice: null
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -24,7 +26,7 @@ class MyOrder extends Component {
 
 
   componentWillMount() {
-    const { adversityId } = this.props.match.params;
+    // const { adversityId } = this.props.match.params;
     const userRef = userRefFor(this.props.user);
     this.setState({ fRef: userRef });
     userRef.child('orders/').on('value', (snapshot) => {
@@ -49,29 +51,22 @@ class MyOrder extends Component {
     if (this.state.myOrders[0] === null) {
       return <MyOrderEmpty />
     }
-
+    let totalPrice = 0;
     return _.map(this.state.myOrders[0], (myOrder, key) => {
+      // console.log(myOrder);
+      totalPrice += parseInt(myOrder.price);
+      console.log(totalPrice);
       return (
-        <Col xs="12" key={key}>
-          <div className="pending_order">
-            <li>{myOrder.title}</li>
-            <li>{myOrder.price} kr.</li>
-          </div>
-
-          <Button color="danger" onClick={() => {
-              // this.setState({ myOrder: myOrder, loading: true });
-              this.state.fRef.child('orders/' + key)
-              .remove()
-              // .then(() => {
-              //   this.setState({ myOrder: null, loading: false });
-              //   {this.handleClick}
-              // })
-            }}>
-          Eyða
-          </Button>
-        </Col>
+        <div>
+          <MyOrderInner key={key} myOrder={myOrder} orderKey={key} fRef={this.state.fRef} />
+          {/* <li>{totalPrice}</li> */}
+        </div>
       );
     });
+
+    // return totalPrice;
+    // this.setState({ totalPrice });
+
   }
 
   render() {
@@ -80,7 +75,6 @@ class MyOrder extends Component {
 
     return (
       <Container id="my_order">
-          <h1>My Order</h1>
           {this.renderOrder()}
       </Container>
 

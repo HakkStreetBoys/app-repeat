@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Button } from 'reactstrap';
 import axios from 'axios';
 import firebase from 'firebase';
+import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import SignUpForm from './SignUpForm';
 
 const ROOT_AUTH_URL = 'https://us-central1-one-time-password-c0c13.cloudfunctions.net';
 
@@ -31,9 +32,10 @@ class SignInForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         let response = axios.post(`${ROOT_AUTH_URL}/verifyOneTimePassword`, {
-            phone: this.state.phone,
+            phone: SignUpForm.phone,
             code: this.state.code
         }).then((response) => {
+          console.log(SignUpForm.phone);
           firebase.auth()
           .signInWithCustomToken(response.data.token)
           .catch(error => {
@@ -47,21 +49,23 @@ class SignInForm extends Component {
     }
 
     render() {
+      console.log(SignUpForm.phone);
         return (
-            <form>
-                <div>
-                    <label>
-                        Phone:
-                        <input type="text" value={this.state.phone} onChange={this.handlePhoneChange}/>
-                    </label>
-                    <label>
-                        Code:
-                        <input type="text" value={this.state.code} onChange={this.handleCodeChange}/>
-                    </label>
-                </div>
+          <Container>
+            <Form>
+              <FormGroup>
+                  <Input placeholder="Símanúmer" type="hidden" value={SignUpForm.phone} onChange={this.handlePhoneChange}/>
+              </FormGroup>
+              <FormGroup>
+                  <Input placeholder="Kóði" type="number" value={this.state.code} onChange={this.handleCodeChange}/>
+              </FormGroup>
 
-                <Button type="submit" value="Submit" onClick={this.handleSubmit}></Button>
-            </form>
+              <Button color="info" type="submit" value="Submit" onClick={this.handleSubmit}>
+                <li>Skrá inn</li>
+                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} /></li>
+              </Button>
+            </Form>
+          </Container>
         );
     }
 }

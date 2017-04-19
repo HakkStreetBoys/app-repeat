@@ -9,9 +9,12 @@ import About from './About';
 // import Topics from './Topics';
 import FoodIndex from './food_index';
 import SinglePost from './single_post';
-import Auth from './Auth';
+// import Auth from './Auth';
+import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
 import MyOrder from './MyOrder';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
 
 class App extends Component {
@@ -48,13 +51,14 @@ class App extends Component {
         <div>
           <Navigation user={user} />
           <Route exact path="/" component={Home}/>
-          <Route path="/login" render={() => {
+          <Route exact path="/login" render={() => {
             if (user) {
               return <Redirect to="/matur" />;
             } else {
-              return <Auth />
+              return <SignUpForm />
             }
           }} />
+          <PublicRoute path="/login/code" component={SignInForm} user={user} />
           <PrivateRoute exact path="/matur" component={FoodIndex} user={user} />
           <PrivateRoute path="/matur/:id" component={SinglePost} user={user} />
           <PrivateRoute path="/myorder" component={MyOrder} user={user} />
