@@ -12,12 +12,14 @@ class MyOrder extends Component {
   constructor(props) {
     super(props);
 
+    this.totalPrice = 0;
+
     this.state = {
       myOrders: [],
       myOrder: null,
       loading: true,
       fRef: null,
-      totalPrice: ''
+      loading: true
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -25,14 +27,10 @@ class MyOrder extends Component {
 
 
   componentWillMount() {
-    // const { adversityId } = this.props.match.params;
     const userRef = userRefFor(this.props.user);
     this.setState({ fRef: userRef });
     userRef.child('orders/').on('value', (snapshot) => {
-      // snapshot.forEach(function(orderSnapshot) {
-        // console.log(orderSnapshot.val());
-        this.setState({ myOrders: this.state.myOrders.concat(snapshot.val()), loading: false });
-      // })
+      this.setState({ myOrders: this.state.myOrders.concat(snapshot.val()), loading: false });
     });
   }
 
@@ -50,34 +48,22 @@ class MyOrder extends Component {
     if (this.state.myOrders[0] === null) {
       return <MyOrderEmpty />
     }
-    let totalPrice = 0;
+
+    const that = this;
     return _.map(this.state.myOrders[0], (myOrder, key) => {
-      // this.setState({ totalPrice: myOrder.price[0] });
-      // console.log(myOrder);
-      totalPrice += parseInt(myOrder.price);
-      console.log(totalPrice);
+      this.totalPrice += parseInt(myOrder.price);
       return (
-        <div>
-          <MyOrderInner key={key} myOrder={myOrder} orderKey={key} fRef={this.state.fRef} />
-          {/* <li>{totalPrice}</li> */}
-        </div>
+        <MyOrderInner key={key} myOrder={myOrder} orderKey={key} fRef={this.state.fRef} totalPrice={this.totalPrice} />
       );
     });
-
-    // return totalPrice;
-    // this.setState({ totalPrice });
-
   }
 
   render() {
-    console.log(this.state);
-    // const { state } = this;
-
     return (
       <Container id="my_order">
           {this.renderOrder()}
+          {this.totalPrice}
       </Container>
-
     );
   }
 

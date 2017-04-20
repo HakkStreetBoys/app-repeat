@@ -808,6 +808,10 @@ p {
   transform: translate(-50%, -50%);
 }
 
+.bg-faded {
+  background-color: #343845;
+}
+
 .main_header {
   width: 100%;
   padding: 15px;

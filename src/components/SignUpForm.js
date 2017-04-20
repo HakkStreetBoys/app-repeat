@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Spinner from './Spinner';
 import { Redirect } from 'react-router-dom';
-import { Container, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Input, Button, Alert } from 'reactstrap';
 
 const ROOT_AUTH_URL = 'https://us-central1-one-time-password-c0c13.cloudfunctions.net';
 
@@ -10,20 +11,39 @@ class SignUpForm extends Component {
     super(props);
     this.state = {
       phone: '',
-      fireRedirect: false
+      loading: true,
+      fireRedirect: false,
+      isRegistering: true
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    this.setState({ loading: false });
+  }
+
   handleChange(event) {
     this.setState({ phone: event.target.value });
     SignUpForm.phone = event.target.value;
     console.log(this.state.phone);
+
+    this.state.phone.length >= 7 ?
+    this.setState({ isRegistering: false }) :
+    this.setState({ isRegistering: true });
   }
 
   handleSubmit(event) {
+
+    this.setState({ loading: true });
+
+    if(this.state.loading === true) {
+      return (
+        <Spinner />
+      );
+    }
+
     event.preventDefault();
     console.log(this.state.phone)
     // arrow function til að sleppa við .bind(this)
@@ -43,10 +63,15 @@ class SignUpForm extends Component {
           <Redirect to={'/code'}/>
         )
       })
+      .catch(error => {
+        this.setState({ loading: false, isRegistering: true, errorMessage: 'Villa kom upp' });
+        console.log(error);
+      })
   }
 
   render() {
 
+    console.log(this.state);
     const { fireRedirect } = this.state;
 
     return (
@@ -54,6 +79,7 @@ class SignUpForm extends Component {
         <h1>Repeat</h1>
         <Container>
           <Form onSubmit={this.handleSubmit}>
+            {this.state.errorMessage && <Alert color="warning">{this.state.errorMessage}</Alert>}
             <FormGroup>
                 <Input
                   type="number"
@@ -64,7 +90,8 @@ class SignUpForm extends Component {
             </FormGroup>
 
             {/* <Link to="/code"> */}
-              <Button type="submit" color="info">
+              <Button disabled={this.state.isRegistering} type="submit" color="info">
+                {/* {this.state.isRegistering ? "Registering..." : "Register"} */}
                 <li>Senda kóða</li>
                 <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
               </Button>
