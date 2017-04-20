@@ -52,21 +52,25 @@ class SignInForm extends Component {
     render() {
       console.log(SignUpForm.phone);
         return (
-          <Container>
-            <Form>
-              <FormGroup>
-                  <Input placeholder="Símanúmer" type="hidden" value={SignUpForm.phone} onChange={this.handlePhoneChange}/>
-              </FormGroup>
-              <FormGroup>
-                  <Input placeholder="Kóði" type="number" value={this.state.code} onChange={this.handleCodeChange}/>
-              </FormGroup>
+          <div className="sign_up">
+            <h1>Repeat</h1>
+            <Container>
+              <Form>
+                <FormGroup>
+                    <Input placeholder="Símanúmer" type="hidden" value={SignUpForm.phone} onChange={this.handlePhoneChange}/>
+                </FormGroup>
+                <FormGroup>
+                    <Input placeholder="Kóði" type="number" value={this.state.code} onChange={this.handleCodeChange}/>
+                </FormGroup>
 
-              <Button color="info" type="submit" value="Submit" onClick={this.handleSubmit}>
-                <li>Skrá inn</li>
-                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
-              </Button>
-            </Form>
-          </Container>
+                <Button color="info" type="submit" value="Submit" onClick={this.handleSubmit}>
+                  <li>Skrá inn</li>
+                  <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
+                </Button>
+              </Form>
+            </Container>
+          </div>
+
         );
     }
 }

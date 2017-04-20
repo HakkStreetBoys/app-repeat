@@ -21,6 +21,20 @@
   margin-top: -15px;
 }
 
+.btn-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: $main_red;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+  background-color: #F76065;
+  border: none;
+}
+
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active {
   background-color: #FFC42F;
   border: none;

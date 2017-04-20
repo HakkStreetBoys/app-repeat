@@ -452,6 +452,20 @@ template {
   margin-top: -15px;
 }
 
+.btn-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: #FF5A5F;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+  background-color: #F76065;
+  border: none;
+}
+
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active {
   background-color: #FFC42F;
   border: none;
@@ -699,8 +713,55 @@ p {
   margin: 0 auto;
 }
 
-#sign_up {
+.sign_up {
   background: #343845;
+  height: 100vh;
+  background-image: url("../img/bg_art.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sign_up h1 {
+  position: absolute;
+  left: 50%;
+  margin-top: 100px;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 48px;
+}
+
+.sign_up .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_up .container form {
+  width: 100%;
+}
+
+.sign_up .container form input {
+  padding: 50px 20px 20px 20px;
+  font-family: "RoundBold";
+  color: #343845;
+  font-size: 18px;
+  position: relative;
+  background: #fff;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign_up .container form input:focus {
+  outline: none !important;
+}
+
+.sign_up .container form input:focus::-webkit-input-placeholder {
+  transition: all .2s ease-in-out;
+  font-size: 16px;
+  opacity: .7;
+  transform: translateY(-40px);
 }
 
 .navigation {

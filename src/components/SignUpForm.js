@@ -50,7 +50,8 @@ class SignUpForm extends Component {
     const { fireRedirect } = this.state;
 
     return (
-      <div id="sign_up">
+      <div className="sign_up">
+        <h1>Repeat</h1>
         <Container>
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>

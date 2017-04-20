@@ -1,3 +1,49 @@
-#sign_up {
+.sign_up {
   background: $main_blue;
+  height: 100vh;
+  background-image: url('../img/bg_art.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    margin-top: 100px;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 48px;
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+      width: 100%;
+
+      input {
+        padding: 50px 20px 20px 20px;
+        font-family: $font_bold;
+        color: $blue_text;
+        font-size: 18px;
+        position: relative;
+        background: #fff;
+        margin-bottom: 1.25rem;
+        @include border;
+      }
+
+      input:focus {
+        outline: none !important;
+      }
+
+      input:focus::-webkit-input-placeholder {
+        transition: all .2s ease-in-out;
+        font-size: 16px;
+        opacity: .7;
+        transform: translateY(-40px);
+      }
+    }
+  }
 }
