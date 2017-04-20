@@ -12,7 +12,7 @@ class FoodIndex extends Component {
     loading: true
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.userRef = userRefFor(this.props.user);
     this.props.fetchFood();
     this.setState({ loading: false });

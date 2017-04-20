@@ -4,15 +4,13 @@ import _ from 'lodash';
 import userRefFor from './userRef';
 import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty';
-import MyOrderInner from './MyOrderInner';
-import { Container } from 'reactstrap';
+// import MyOrderInner from './MyOrderInner';
+import { Container, Col, Button } from 'reactstrap';
 // import DeleteOrder from './DeleteOrder';
 
 class MyOrder extends Component {
   constructor(props) {
     super(props);
-
-    this.totalPrice = 0;
 
     this.state = {
       myOrders: [],
@@ -23,19 +21,29 @@ class MyOrder extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+
+
+
+    // this.totalPrice = this.totalPrice.bind(this);
+
   }
 
 
   componentWillMount() {
-    const userRef = userRefFor(this.props.user);
-    this.setState({ fRef: userRef });
-    userRef.child('orders/').on('value', (snapshot) => {
+    this.totalPrice = 0;
+    this.key = undefined;
+    this.userRef = userRefFor(this.props.user);
+    // this.setState({ fRef: userRef });
+    this.userRef.child('orders/').on('value', (snapshot) => {
       this.setState({ myOrders: this.state.myOrders.concat(snapshot.val()), loading: false });
     });
   }
 
   handleClick(e) {
     e.preventDefault();
+
+    this.userRef.child('orders/' + this.key)
+    .remove()
   }
 
   renderOrder = () => {
@@ -49,11 +57,21 @@ class MyOrder extends Component {
       return <MyOrderEmpty />
     }
 
-    const that = this;
     return _.map(this.state.myOrders[0], (myOrder, key) => {
+      const userRef = this.userRef;
       this.totalPrice += parseInt(myOrder.price);
+      this.key = key;
       return (
-        <MyOrderInner key={key} myOrder={myOrder} orderKey={key} fRef={this.state.fRef} totalPrice={this.totalPrice} />
+        <Col xs="12" key={key}>
+          <div className="pending_order">
+            <li>{myOrder.title}</li>
+            <li>{myOrder.price} kr.</li>
+          </div>
+
+          <Button color="danger" onClick={this.handleClick}>
+          Eyða
+          </Button>
+        </Col>
       );
     });
   }
