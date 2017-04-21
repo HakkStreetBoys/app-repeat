@@ -24,7 +24,7 @@ class MyOrder extends Component {
     this.userRef = userRefFor(this.props.user);
     this.userRef.child('orders/').on('value', snapshot => {
       var obj = snapshot.val();
-      console.log(obj);
+      // console.log(obj);
       this.setState({ orderData: obj, loading: false });
     });
   }
@@ -51,7 +51,7 @@ class MyOrder extends Component {
     return _.map(this.state.orderData, (order, key) => {
       this.totalPrice += parseInt(order.price);
       console.log(order);
-      console.log(key);
+      // console.log(key);
       return (
         <Col xs="12" key={key}>
           <div className="pending_order">
@@ -74,7 +74,8 @@ class MyOrder extends Component {
   }
 
   render() {
-    console.log(this.state);
+    this.totalPrice = 0;
+    // console.log(this.state);
     return (
       <Container id="my_order">
         {this.renderOrders()}
