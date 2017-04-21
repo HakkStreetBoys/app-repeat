@@ -81,9 +81,12 @@ class MyOrder extends Component {
         {this.renderOrders()}
         {this.state.orderData !== null && !this.state.loading
           ? <div>
-              {this.totalPrice}
-              <Button color="info" onClick={this.confirmOrder}>
-                Confirm Order
+              <div className="pending_order pending_total_order">
+                <li>Samtals</li>
+                <li>{this.totalPrice} kr.</li>
+              </div>
+              <Button color="primary" onClick={this.confirmOrder}>
+                Senda pöntun af stað
               </Button>
             </div>
           : <span />}

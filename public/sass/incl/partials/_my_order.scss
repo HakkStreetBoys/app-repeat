@@ -15,8 +15,16 @@
       font-family: $font_bold;
       color: $text_color;
       display: inline-block;
-      font-size: 24px;
+      font-size: 20px;
       max-width: 65%;
+    }
+  }
+
+  .pending_total_order {
+    margin-top: 80px;
+
+    li {
+      font-size: 24px;
     }
   }
 
