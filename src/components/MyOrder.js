@@ -10,6 +10,7 @@ class MyOrder extends Component {
     super(props);
 
     this.state = {
+      loading: true,
       orderData: [],
     };
 
@@ -24,7 +25,7 @@ class MyOrder extends Component {
     this.userRef.child('orders/').on('value', snapshot => {
       var obj = snapshot.val();
       console.log(obj);
-      this.setState({ orderData: obj });
+      this.setState({ orderData: obj, loading: false });
     });
   }
 
@@ -77,7 +78,7 @@ class MyOrder extends Component {
     return (
       <Container id="my_order">
         {this.renderOrders()}
-        {this.state.orderData !== null
+        {this.state.orderData !== null && !this.state.loading
           ? <div>
               {this.totalPrice}
               <Button color="info" onClick={this.confirmOrder}>
