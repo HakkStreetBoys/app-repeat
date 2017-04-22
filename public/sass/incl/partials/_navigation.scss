@@ -14,6 +14,17 @@
 
     a {
       text-align: center;
+      opacity: .5;
+      transition: .2s ease-in-out;
+      text-decoration: none;
+    }
+
+    .order_link {
+      opacity: .8;
+    }
+
+    .active {
+      opacity: 1
     }
 
     li {

@@ -57,9 +57,15 @@
   }
 }
 
+.navbar-light .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
 .navbar-toggler {
   z-index: 9999;
   outline: none;
+  border: none;
 }
 
 .navbar-light .navbar-toggler-icon {

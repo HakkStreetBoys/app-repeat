@@ -862,6 +862,17 @@ p {
 
 .navigation ul a {
   text-align: center;
+  opacity: .5;
+  transition: .2s ease-in-out;
+  text-decoration: none;
+}
+
+.navigation ul .order_link {
+  opacity: .8;
+}
+
+.navigation ul .active {
+  opacity: 1;
 }
 
 .navigation ul li {
@@ -941,9 +952,15 @@ p {
   color: #fff;
 }
 
+.navbar-light .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
 .navbar-toggler {
   z-index: 9999;
   outline: none;
+  border: none;
 }
 
 .navbar-light .navbar-toggler-icon {
