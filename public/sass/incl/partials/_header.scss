@@ -23,3 +23,45 @@
 
   }
 }
+
+.navbar {
+  position: static;
+  color: #fff;
+
+  div {
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s ease-in-out;
+    transform: scale(.85);
+  }
+
+  .popup {
+    transform: scale(1);
+    transition: .2s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $main_blue;
+    z-index: 9998;
+  }
+
+  .nav {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+}
+
+.navbar-toggler {
+  z-index: 9999;
+  outline: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url(../img/burger.svg);
+}

@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import Spinner from './Spinner';
 import firebase from './firebase';
 import Home from './Home';
@@ -35,7 +40,7 @@ class App extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ user });
+      this.setState({user});
     });
   }
 
@@ -60,7 +65,7 @@ class App extends Component {
   }
 
   presentation = props => {
-    const { user } = this.state;
+    const {user} = this.state;
     return (
       <Router>
         <div>
@@ -71,11 +76,15 @@ class App extends Component {
                   <h2 className="logo">Repeat</h2>
                 </NavbarBrand>
                 <NavbarToggler right onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                  <Nav>
-                    <NavItem onClick={this.logOut.bind(this)}>Logout</NavItem>
-                  </Nav>
-                </Collapse>
+                {this.state.isOpen
+                  ? <div className="popup">
+                      <Nav>
+                        <NavItem onClick={this.logOut.bind(this)}>
+                          Logout
+                        </NavItem>
+                      </Nav>
+                    </div>
+                  : <div></div>}
               </Navbar>
             </div>}
           {user && <Navigation user={user} />}
@@ -125,7 +134,11 @@ class App extends Component {
                     component={SinglePost}
                     user={user}
                   />
-                  <PrivateRoute path="/myorder" component={MyOrder} user={user} />
+                  <PrivateRoute
+                    path="/myorder"
+                    component={MyOrder}
+                    user={user}
+                  />
                   <Route path="*" component={NotFound} />
                 </Switch>
               </div>
