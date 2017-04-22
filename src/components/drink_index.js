@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import { fetchDrinks, fetchDrinkPromo } from '../actions/index';
+import {fetchDrinks, fetchDrinkPromo} from '../actions/index';
 // import firebase from 'firebase';
 import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
@@ -61,7 +61,15 @@ class DrinkIndex extends Component {
         this.menu_cat = 'drykkur';
       }
 
-      return <Product post={post} key={post.id} userRef={userRef} category={this.menu_cat} uid={this.props.user.uid} />;
+      return (
+        <Product
+          post={post}
+          key={post.id}
+          userRef={userRef}
+          category={this.menu_cat}
+          uid={this.props.user.uid}
+        />
+      );
     });
   }
 
@@ -81,4 +89,6 @@ function mapStateToProps(state) {
   return {posts: state.posts.all, offer: state.posts.offer};
 }
 
-export default connect(mapStateToProps, { fetchDrinks, fetchDrinkPromo })(DrinkIndex);
+export default connect(mapStateToProps, {fetchDrinks, fetchDrinkPromo})(
+  DrinkIndex,
+);

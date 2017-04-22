@@ -446,7 +446,7 @@ template {
 }
 
 .btn-primary {
-  background: #ffb700;
+  background: #FF5A5F;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
@@ -458,7 +458,7 @@ template {
   padding: 20px;
   font-size: 18px;
   text-transform: uppercase;
-  background: #ffb700;
+  background: #FF5A5F;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active {
@@ -672,7 +672,7 @@ p {
 }
 
 .product_btn {
-  background: #ffb700;
+  background: #FF5A5F;
   padding: 10px 20px;
   margin-top: -15px;
   border-radius: 10px;
@@ -874,7 +874,7 @@ p {
   width: 84px;
   height: 84px;
   border-radius: 100%;
-  background: #ffb700;
+  background: #FF5A5F;
   position: absolute;
   top: 0%;
   left: 50%;
