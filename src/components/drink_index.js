@@ -49,10 +49,6 @@ class DrinkIndex extends Component {
   }
 
   renderDrinks() {
-    if (this.state.loading === true) {
-      return <Spinner />;
-    }
-
     return this.props.posts.map(post => {
       const userRef = this.userRef;
 

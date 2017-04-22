@@ -40,7 +40,9 @@ class App extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({user});
+      setTimeout(() => {
+        this.setState({user});
+      }, 2000)
     });
   }
 
