@@ -7,7 +7,7 @@ import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
 import Spinner from './Spinner';
-import {Container} from 'reactstrap';
+import {Container, Button} from 'reactstrap';
 
 class DrinkIndex extends Component {
   state = {
@@ -40,7 +40,7 @@ class DrinkIndex extends Component {
             <div className="promo_content">
               <h2>{promo_drink_title}</h2>
               <p>{promo_drink_description}</p>
-              <a href="#"><button>{promo_drink_button}</button></a>
+              <Button color="success" size="md">{promo_drink_button}</Button>
             </div>
           </div>
         );

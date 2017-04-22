@@ -430,7 +430,6 @@ template {
 
 .btn {
   cursor: pointer;
-  width: 100%;
   border: none;
   font-family: "RoundBold";
   border-radius: 10px;
@@ -438,11 +437,19 @@ template {
   color: #fff;
 }
 
+.btn-success {
+  text-transform: uppercase;
+  font-size: 16px;
+  background-color: #41C3A6;
+  font-family: "RoundRegular";
+}
+
 .btn-danger {
   background: #FFAF00;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
+  width: 100%;
 }
 
 .btn-primary {
@@ -450,6 +457,7 @@ template {
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
+  width: 100%;
 }
 
 .btn-info {
@@ -459,6 +467,7 @@ template {
   font-size: 18px;
   text-transform: uppercase;
   background: #FF5A5F;
+  width: 100%;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active {
@@ -568,6 +577,7 @@ p {
 .promo_offers {
   position: relative;
   overflow: hidden;
+  border-left: 8px solid #41C3A6;
 }
 
 .promo_offers .promo_bg {
@@ -583,7 +593,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(16, 85, 106, 0.8);
+  background-color: rgba(52, 56, 69, 0.76);
 }
 
 .promo_bg img {
@@ -595,7 +605,7 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-51%, -50%);
   text-align: center;
   width: 100%;
   max-width: 80%;
@@ -614,15 +624,6 @@ p {
   font-size: 20px;
 }
 
-.promo_content button {
-  color: #fff;
-  background: transparent;
-  border: 1px solid #fff;
-  padding: 6px 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
 .product_container {
   display: flex;
   flex-wrap: wrap;
@@ -630,70 +631,53 @@ p {
   margin-bottom: 140px;
 }
 
-.product_container .product {
-  width: 100%;
-  margin-top: 30px;
-}
-
-.product_container .product .product_img {
-  height: 200px;
-  overflow: hidden;
+.product_container .product_item {
   position: relative;
-  z-index: 1;
-  border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
 }
 
-.product_container .product .product_img img {
+.product_container .product_item .product_img {
+  height: 300px;
+}
+
+.product_container .product_item .product_img .product_gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.82), transparent);
+}
+
+.product_container .product_item .product_img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.product_container .product .product_info {
-  background: #fff;
-  padding: 20px;
-  margin-top: -20px;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
-}
-
-.product_container .product .product_info h2 {
-  padding-top: 20px;
-  width: 100%;
-  max-width: 80%;
-  display: inline-block;
-}
-
-.product_container .product .product_info a img {
-  float: right;
-  padding-top: 28px;
-}
-
-.product_btn {
-  background: #FF5A5F;
-  padding: 10px 20px;
-  margin-top: -15px;
-  border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
-}
-
-.product_btn ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0;
-}
-
-.product_btn li {
+.product_container .product_item .product_info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
   color: #fff;
-  font-size: 18px;
-  padding-top: 10px;
+  width: 100%;
+  max-width: 60%;
 }
 
-.product_btn li:nth-child(2) {
+.product_container .product_item .product_info h2, .product_container .product_item .product_info p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.product_container .product_item .product_info p {
   font-size: 24px;
+  font-family: "RoundLight";
+}
+
+.product_container .product_item .product_order {
+  position: absolute;
+  bottom: 35px;
+  right: 20px;
 }
 
 .back_arrow {
@@ -726,12 +710,12 @@ p {
 }
 
 .single_tags div {
-  border: 1px solid #343845;
   padding: 4px 12px;
   display: inline-block;
   margin-right: 8px;
   border-radius: 20px;
   margin-top: 5px;
+  background: #F3F3F3;
 }
 
 .single_tags div li {
@@ -885,7 +869,7 @@ p {
   width: 84px;
   height: 84px;
   border-radius: 100%;
-  background: #FF5A5F;
+  background: #343845;
   position: absolute;
   top: 0%;
   left: 50%;

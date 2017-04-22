@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {fetchFood, fetchFoodPromo} from '../actions/index';
 import userRefFor from './userRef';
 import Product from './Product';
-import {Container} from 'reactstrap';
+import {Container, Button} from 'reactstrap';
 
 class FoodIndex extends Component {
   state = {
@@ -37,7 +37,7 @@ class FoodIndex extends Component {
             <div className="promo_content">
               <h2>{promo_food_title}</h2>
               <p>{promo_food_description}</p>
-              <a href="#"><button>{promo_food_button}</button></a>
+              <Button color="success" size="md">{promo_food_button}</Button>
             </div>
           </div>
         );
@@ -73,9 +73,9 @@ class FoodIndex extends Component {
     return (
       <div>
         {this.renderOffer()}
-        <Container className="product_container">
+        <div className="product_container">
           {this.renderFood()}
-        </Container>
+        </div>
       </div>
     );
   }
