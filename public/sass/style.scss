@@ -74,5 +74,16 @@ p {
   animation: bounce 1s ease-in-out 0.66s infinite;
 }
 
+.not_found {
+  h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .not_found_emoji {
+    font-size: 60px;
+  }
+}
+
 // @import 'incl/partials/product_list';
 @import 'incl/partials/partials';

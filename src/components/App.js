@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Spinner from './Spinner';
 import firebase from './firebase';
 import Home from './Home';
-import About from './About';
 import FoodIndex from './food_index';
+import DrinkIndex from './drink_index';
 import SinglePost from './single_post';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
 import MyOrder from './MyOrder';
+import NotFound from './404';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
@@ -81,36 +82,52 @@ class App extends Component {
 
           {user !== undefined
             ? <div>
-                <Route exact path="/" component={Home} />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => {
-                    if (user) {
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    user={user}
+                    render={() => {
                       return <Redirect to="/matur" />;
-                    } else {
-                      return <SignUpForm />;
-                    }
-                  }}
-                />
-                <PublicRoute
-                  path="/login/code"
-                  component={SignInForm}
-                  user={user}
-                />
-                <PrivateRoute
-                  exact
-                  path="/matur"
-                  component={FoodIndex}
-                  user={user}
-                />
-                <PrivateRoute
-                  path="/matur/:id"
-                  component={SinglePost}
-                  user={user}
-                />
-                <PrivateRoute path="/myorder" component={MyOrder} user={user} />
-                <Route path="/about" component={About} />
+                    }}
+                  />
+
+                  <Route
+                    exact
+                    path="/login"
+                    render={() => {
+                      if (user) {
+                        return <Redirect to="/matur" />;
+                      } else {
+                        return <SignUpForm />;
+                      }
+                    }}
+                  />
+                  <PublicRoute
+                    path="/login/code"
+                    component={SignInForm}
+                    user={user}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/matur"
+                    component={FoodIndex}
+                    user={user}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/drykkir"
+                    component={DrinkIndex}
+                    user={user}
+                  />
+                  <PrivateRoute
+                    path="/matur/:id"
+                    component={SinglePost}
+                    user={user}
+                  />
+                  <PrivateRoute path="/myorder" component={MyOrder} user={user} />
+                  <Route path="*" component={NotFound} />
+                </Switch>
               </div>
             : <Spinner />}
         </div>

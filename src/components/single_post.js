@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchPost } from '../actions/index';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchPost} from '../actions/index';
 
 class SinglePost extends Component {
-
   componentWillMount() {
-    this.oldPost = "";
     this.props.fetchPost(this.props.match.params.id);
   }
 
   render() {
     // console.log(this.props.params);
-    const { post } = this.props;
+    const {post} = this.props;
 
-    if (!post || (post === this.oldPost)) {
-      return <div>Loading...</div>;
+    if (!post) {
+      return <span />;
     }
 
-    this.oldPost = post;
-
-    const { menu_title, menu_price, menu_tags, menu_description } = post.acf;
-    const { medium_large } = post.acf.menu_image.sizes;
+    const {menu_title, menu_price, menu_tags, menu_description} = post.acf;
+    const {medium_large} = post.acf.menu_image.sizes;
 
     let tags;
     if (menu_tags != null) {
-      tags = menu_tags.map(menu_tag =>
+      tags = menu_tags.map(menu_tag => (
         <div key={menu_tag.name}><li>{menu_tag.name}</li></div>
-      );
+      ));
     }
 
     return (
@@ -57,7 +53,7 @@ class SinglePost extends Component {
 }
 
 function mapStateToProps(state) {
-  return { post: state.posts.post };
+  return {post: state.posts.post};
 }
 
-export default connect(mapStateToProps, { fetchPost })(SinglePost);
+export default connect(mapStateToProps, {fetchPost})(SinglePost);

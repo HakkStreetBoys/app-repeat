@@ -48,6 +48,10 @@ class MyOrder extends Component {
       return <MyOrderEmpty />;
     }
 
+    if (this.state.loading) {
+      return <Spinner />;
+    }
+
     return _.map(this.state.orderData, (order, key) => {
       this.totalPrice += parseInt(order.price);
       console.log(order);

@@ -63,7 +63,7 @@ class SignUpForm extends Component {
           <Redirect to={'/code'}/>
         )
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ loading: false, isRegistering: true, errorMessage: 'Villa kom upp' });
         console.log(error);
       })

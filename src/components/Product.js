@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import arrow from '../public/img/arrow.svg'
 
-const Product = ({ post, userRef }) => {
-  const { menu_title, menu_price } = post.acf;
-  const { medium_large } = post.acf.menu_image.sizes;
+const Product = (props) => {
+  const { menu_title, menu_price } = props.post.acf;
+  // const { menu_cat } = post;
+  const { medium_large } = props.post.acf.menu_image.sizes;
+
+
 
   return (
     <div className="product">
@@ -13,18 +16,24 @@ const Product = ({ post, userRef }) => {
       </div>
       <div className="product_info">
         <h2>{menu_title}</h2>
-        <Link to={`matur/${post.id}`}>
+        <Link to={`matur/${props.post.id}`}>
           <img className="arrow" src={process.env.PUBLIC_URL + '/img/arrow.svg'} alt="Nánar" />
         </Link>
       </div>
       <div
         onClick={() =>
-          userRef.child('orders')
+          props.userRef.child('orders')
             .push({
               title: menu_title,
               price: menu_price,
-              category: post.menu_cat[0],
-              productID: post.id
+              category: props.category,
+              productID: props.post.id,
+              status_food: 0,
+              status_drink: 0,
+              status_pay: 0,
+              date: Date(),
+              createdAt: Date.now()
+
             })
             // .then((snap) => {
             //   const key = snap.key
