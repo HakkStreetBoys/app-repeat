@@ -56,11 +56,12 @@ class FoodIndex extends Component {
       // const drink_cat = post.menu_cat.toString();
       // const drink_cat_replace = drink_cat.replace(drink_cat, 'drykkir');
 
-      return <Product post={post} key={post.id} userRef={userRef} category={this.menu_cat} />;
+      return <Product post={post} key={post.id} userRef={userRef} category={this.menu_cat} uid={this.props.user.uid} />;
     });
   }
 
   render() {
+    console.log(this.props.user.uid);
     return (
       <div>
         {this.renderOffer()}

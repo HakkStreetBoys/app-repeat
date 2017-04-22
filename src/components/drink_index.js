@@ -61,7 +61,7 @@ class DrinkIndex extends Component {
         this.menu_cat = 'drykkur';
       }
 
-      return <Product post={post} key={post.id} userRef={userRef} category={this.menu_cat} />;
+      return <Product post={post} key={post.id} userRef={userRef} category={this.menu_cat} uid={this.props.user.uid} />;
     });
   }
 

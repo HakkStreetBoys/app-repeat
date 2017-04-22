@@ -34,7 +34,7 @@ class MyOrder extends Component {
   }
 
   confirmOrder() {
-    this.userRef.child('confirmed_order/').set(this.state.orderData);
+    this.userRef.child('confirmed_order/').push(this.state.orderData);
     this.userRef.child('orders/').remove();
   }
 

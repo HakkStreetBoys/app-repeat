@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import arrow from '../public/img/arrow.svg'
+import firebase from './firebase';
 
 const Product = (props) => {
   const { menu_title, menu_price } = props.post.acf;
@@ -32,7 +33,9 @@ const Product = (props) => {
               status_drink: 0,
               status_pay: 0,
               date: Date(),
-              createdAt: Date.now()
+              createdAt: Date.now(),
+              table_number: 7,
+              userID: props.uid
 
             })
             // .then((snap) => {
