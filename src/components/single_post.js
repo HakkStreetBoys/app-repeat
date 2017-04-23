@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPost} from '../actions/index';
+import axios from 'axios';
+import { Button } from 'reactstrap';
 
 class SinglePost extends Component {
   componentWillMount() {
@@ -8,14 +10,15 @@ class SinglePost extends Component {
   }
 
   render() {
-    // console.log(this.props.params);
+    // console.log(this.state);
+    // console.log(this.props);
     const {post} = this.props;
 
     if (!post) {
       return <span />;
     }
 
-    const {menu_title, menu_price, menu_tags, menu_description} = post.acf;
+    const {menu_title, menu_price, menu_tags, menu_description, menu_related} = post.acf;
     const {medium_large} = post.acf.menu_image.sizes;
 
     let tags;
@@ -24,6 +27,15 @@ class SinglePost extends Component {
         <div key={menu_tag.name}><li>{menu_tag.name}</li></div>
       ));
     }
+    const MENU_URL = 'http://pebbleplates.com/repeat-menu/wp-json/wp/v2/menu';
+    let related;
+    if (menu_related != null) {
+      related = menu_related.map((related) => {
+        // console.log(related);
+        axios.get(`${MENU_URL}/${related.ID}`)
+          .then(res => console.log(res.data))
+      })
+    }
 
     return (
       <div>
@@ -31,17 +43,13 @@ class SinglePost extends Component {
         <div className="single_hero">
           <img src={medium_large} alt="" />
         </div>
-        <div className="container">
-          <div className="single_info">
+        <div className="single_info">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h2>{menu_title}</h2>
-            <p>{menu_description}</p>
+            <Button color="success" size="md">Panta</Button>
           </div>
-          <div className="product_btn">
-            <ul>
-              <li>Bæta við pöntun</li>
-              <li>{menu_price} kr.</li>
-            </ul>
-          </div>
+          <p className="single_price">{menu_price} kr.</p>
+          <p>{menu_description}</p>
           <div className="single_tags">
             {tags}
           </div>

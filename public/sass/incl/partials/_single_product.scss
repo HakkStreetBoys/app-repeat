@@ -16,10 +16,15 @@
 
 .single_info {
   background: #fff;
-  @include border;
+  // @include border;
   padding: 20px;
-  margin-top: -30px;
+  // margin-top: -30px;
   position: relative;
+
+  .single_price {
+    font-size: 24px;
+    font-family: $font_light;
+  }
 }
 
 .single_tags {

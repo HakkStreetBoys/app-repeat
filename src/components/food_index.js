@@ -76,6 +76,7 @@ class FoodIndex extends Component {
         <div className="product_container">
           {this.renderFood()}
         </div>
+        <span className="animate_me"></span>
       </div>
     );
   }
