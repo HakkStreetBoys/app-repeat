@@ -9,7 +9,6 @@ import {Container, Button} from 'reactstrap';
 class FoodIndex extends Component {
   state = {
     loading: true,
-    // reRender: 0,
   };
 
   componentDidMount() {
@@ -70,7 +69,6 @@ class FoodIndex extends Component {
   }
 
   render() {
-    console.log(this.state);
     console.log(this.props.user.uid);
     return (
       <div>
@@ -78,7 +76,6 @@ class FoodIndex extends Component {
         <div className="product_container">
           {this.renderFood()}
         </div>
-        <span className="animate_me"></span>
       </div>
     );
   }
