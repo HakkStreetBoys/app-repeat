@@ -73,9 +73,9 @@ class DrinkIndex extends Component {
     return (
       <div>
         {this.renderOffer()}
-        <Container className="product_container">
+        <div className="product_container">
           {this.renderDrinks()}
-        </Container>
+        </div>
       </div>
     );
   }
