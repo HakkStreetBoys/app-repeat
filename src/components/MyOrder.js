@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import userRefFor from './userRef';
-import Spinner from './Spinner';
+// import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty';
 import {Container, Col, Button} from 'reactstrap';
 
@@ -12,6 +12,7 @@ class MyOrder extends Component {
     this.state = {
       loading: true,
       orderData: [],
+      orderConfirmed: false,
     };
 
     this.totalPrice = 0;
@@ -36,6 +37,8 @@ class MyOrder extends Component {
   confirmOrder() {
     this.userRef.child('confirmed_order/').push(this.state.orderData);
     this.userRef.child('orders/').remove();
+
+    this.setState({ orderConfirmed: true });
   }
 
   handleClick(e) {
@@ -44,12 +47,23 @@ class MyOrder extends Component {
   }
 
   renderOrders() {
-    if (this.state.orderData === null) {
+    if (this.state.orderData === null && this.state.orderConfirmed === false) {
       return <MyOrderEmpty />;
     }
 
-    if (this.state.loading) {
-      return <Spinner />;
+    if (this.state.orderConfirmed === true) {
+      return (
+        <div>
+          <div>ORDER CONFIRMED</div>
+          <div
+            onClick={() => {
+              this.setState({ orderConfirmed: false })
+            }}>
+            Loka
+          </div>
+        </div>
+
+      );
     }
 
     return _.map(this.state.orderData, (order, key) => {

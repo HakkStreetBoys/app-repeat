@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {fetchFood, fetchFoodPromo} from '../actions/index';
 import userRefFor from './userRef';
 import Product from './Product';
-import {Container, Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class FoodIndex extends Component {
   state = {
@@ -16,6 +16,10 @@ class FoodIndex extends Component {
     this.props.fetchFood();
     this.props.fetchFoodPromo();
     this.setState({loading: false});
+  }
+
+  componentWillUnmount() {
+    this.userRef.child('orders/').off();
   }
 
   renderOffer() {
@@ -69,7 +73,7 @@ class FoodIndex extends Component {
   }
 
   render() {
-    console.log(this.props.user.uid);
+    console.log(this.props);
     return (
       <div>
         {this.renderOffer()}

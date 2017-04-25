@@ -446,6 +446,7 @@ template {
 
 .btn-danger {
   background: #FFAF00;
+  background: #FF5A5F;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
@@ -453,7 +454,7 @@ template {
 }
 
 .btn-primary {
-  background: #FF5A5F;
+  background: #41C3A6;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
@@ -806,6 +807,10 @@ p {
 
 #my_order .order_empty {
   text-align: center;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #my_order .order_empty img {

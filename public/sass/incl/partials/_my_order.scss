@@ -31,6 +31,10 @@
 
   .order_empty {
     text-align: center;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
 
     img {
       margin-top: 20px;
@@ -43,5 +47,7 @@
       text-align: center;
       margin: 0 auto;
     }
+
+
   }
 }

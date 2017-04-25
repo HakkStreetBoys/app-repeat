@@ -34,8 +34,8 @@ class Product extends Component {
             <div className="product_gradient" />
             {/* {console.log(notify)} */}
             <div className={this.state.status}>
-              <img src={process.env.PUBLIC_URL + '/img/notify_order.svg'} />
-              <img src={process.env.PUBLIC_URL + '/img/notify_arrow.svg'} />
+              <img src={process.env.PUBLIC_URL + '/img/notify_order.svg'} alt="" />
+              <img src={process.env.PUBLIC_URL + '/img/notify_arrow.svg'} alt="" />
             </div>
             <img src={medium_large} alt="" />
           </div>

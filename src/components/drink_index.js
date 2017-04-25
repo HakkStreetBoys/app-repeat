@@ -6,8 +6,7 @@ import {fetchDrinks, fetchDrinkPromo} from '../actions/index';
 import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
-import Spinner from './Spinner';
-import {Container, Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class DrinkIndex extends Component {
   state = {
@@ -19,6 +18,10 @@ class DrinkIndex extends Component {
     this.props.fetchDrinks();
     this.props.fetchDrinkPromo();
     this.setState({loading: false});
+  }
+
+  componentWillUnmount() {
+    this.userRef.child('orders/').off();
   }
 
   renderOffer() {

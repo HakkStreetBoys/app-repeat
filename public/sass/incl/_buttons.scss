@@ -15,6 +15,7 @@
 
 .btn-danger {
   background: $error_color;
+  background: $main_red;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
@@ -22,7 +23,8 @@
 }
 
 .btn-primary {
-  background: $main_red;
+  // background: $main_red;
+  background: #41C3A6;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;

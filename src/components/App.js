@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import Spinner from './Spinner';
 import firebase from './firebase';
-import Home from './Home';
 import FoodIndex from './food_index';
 import DrinkIndex from './drink_index';
 import SinglePost from './single_post';
@@ -22,7 +21,6 @@ import {
   Navbar,
   Nav,
   NavItem,
-  Collapse,
   NavbarBrand,
   NavbarToggler,
 } from 'reactstrap';
@@ -151,7 +149,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         {this.presentation()}
