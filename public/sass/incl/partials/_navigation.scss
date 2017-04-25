@@ -20,11 +20,25 @@
     }
 
     .order_link {
-      opacity: .8;
+      opacity: 1;
     }
 
     .active {
-      opacity: 1
+      opacity: 1;
+
+      .order_btn {
+        background: #fff;
+        box-shadow: 0 0 6px 0 rgba(0,0,0,.18);
+        .order_icon_dark {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .order_btn_light {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
     }
 
     li {
@@ -49,6 +63,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    .order_icon_dark {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }

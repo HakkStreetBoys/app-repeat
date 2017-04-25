@@ -435,30 +435,22 @@ template {
   border-radius: 10px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
   color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 10 15px;
 }
 
 .btn-success {
-  text-transform: uppercase;
   font-size: 16px;
   background-color: #00AB6B;
-  font-family: "RoundRegular";
 }
 
 .btn-danger {
-  background: #FFAF00;
   background: #FF5A5F;
-  font-size: 20px;
-  padding: 20px 0 10px 0;
-  margin-top: -15px;
-  width: 100%;
 }
 
 .btn-primary {
   background: #00AB6B;
-  font-size: 20px;
-  padding: 20px 0 10px 0;
-  margin-top: -15px;
-  width: 100%;
 }
 
 .btn-info {
@@ -778,7 +770,8 @@ p {
 }
 
 #my_order {
-  margin-bottom: 140px;
+  padding-top: 10px;
+  margin-bottom: 280px;
 }
 
 #my_order .col-12 {
@@ -786,30 +779,45 @@ p {
 }
 
 #my_order .pending_order {
-  display: flex;
-  justify-content: space-between;
-  background: #fff;
-  padding: 20px;
-  position: relative;
   margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
 }
 
-#my_order .pending_order li {
-  font-family: "RoundBold";
-  color: #4A4A4A;
-  display: inline-block;
-  font-size: 20px;
-  max-width: 65%;
+#my_order .pending_order h2 {
+  margin-bottom: 0;
+}
+
+#my_order .pending_order p {
+  font-size: 24px;
+  font-family: "RoundLight";
+  margin-bottom: 0.5rem;
+}
+
+#my_order .pending_order .btn {
+  margin-right: 10px;
+  font-size: 14px;
+  padding: 8px 12px;
 }
 
 #my_order .pending_total_order {
-  margin-top: 80px;
+  position: fixed;
+  bottom: 70px;
+  background: #343845;
+  color: #fff;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  text-align: center;
 }
 
-#my_order .pending_total_order li {
-  font-size: 24px;
+#my_order .pending_total_order h2 {
+  margin-bottom: 20px;
+  font-family: "RoundLight";
+  text-transform: uppercase;
+}
+
+#my_order .pending_total_order h2 span {
+  font-family: "RoundBold";
+  text-transform: lowercase;
 }
 
 #my_order .order_empty {
@@ -830,6 +838,7 @@ p {
   max-width: 70%;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .sign_up {
@@ -907,11 +916,26 @@ p {
 }
 
 .navigation ul .order_link {
-  opacity: .8;
+  opacity: 1;
 }
 
 .navigation ul .active {
   opacity: 1;
+}
+
+.navigation ul .active .order_btn {
+  background: #fff;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.navigation ul .active .order_btn .order_icon_dark {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navigation ul .active .order_btn .order_btn_light {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .navigation ul li {
@@ -936,6 +960,11 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.navigation .order_btn .order_icon_dark {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .bg-faded {

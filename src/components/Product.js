@@ -58,7 +58,7 @@ class Product extends Component {
               this.handleClick();
               setTimeout(() => {
                 this.notify = false;
-              }, 2000);
+              }, 1500);
               this.setState({reRender: ++this.state.reRender});
               this.props.userRef.child('orders').push({
                 title: menu_title,

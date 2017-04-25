@@ -9,12 +9,12 @@ const MyOrderEmpty = () => {
         <div>
           <h2>Pöntunarlisti tómur</h2>
           <img src={process.env.PUBLIC_URL + "/img/order_empty.svg"} alt="" />
-          <p>Þú virðist ekki hafa bætt neinu við á pöntunarlista</p>
+          <p>Hvernig væri að panta sér einn ískaldan?</p>
         </div>
+        <Link to="/matur">
+          <Button color="primary">Aftur í matseðil</Button>
+        </Link>
       </div>
-      <Link to="/matur">
-        <Button color="primary">Aftur í matseðil</Button>
-      </Link>
     </Col>
   );
 };

@@ -16,7 +16,8 @@ const Navigation = ({ user }) => {
           </NavLink>
           <NavLink to={`/myorder`} className="order_link">
             <li className="order_btn">
-              <img src={process.env.PUBLIC_URL + "/img/order_logo.svg"} alt="" />
+              <img className="order_icon_light" src={process.env.PUBLIC_URL + "/img/order_logo.svg"} alt="" />
+              <img className="order_icon_dark" src={process.env.PUBLIC_URL + "/img/order_logo_black.svg"} alt="" />
             </li>
           </NavLink>
           <NavLink to={"/drykkir"}>

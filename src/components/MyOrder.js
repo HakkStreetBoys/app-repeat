@@ -68,24 +68,24 @@ class MyOrder extends Component {
 
     return _.map(this.state.orderData, (order, key) => {
       this.totalPrice += parseInt(order.price);
-      console.log(order);
-      // console.log(key);
+      // console.log(order);
+
       return (
         <Col xs="12" key={key}>
           <div className="pending_order">
-            <li>{order.title}</li>
-            <li>{order.price} kr.</li>
+            <h2>{order.title}</h2>
+            <p>{order.price} kr.</p>
+            <Button
+              color="danger"
+              onClick={() =>
+                this.userRef
+                  .child('orders/' + key)
+                  .remove(() => this.setState({ orderData: this.state.orderData }))}
+            >
+              Eyða
+            </Button>
+            <Button color="success">Bæta við</Button>
           </div>
-
-          <Button
-            color="danger"
-            onClick={() =>
-              this.userRef
-                .child('orders/' + key)
-                .remove(() => this.setState({ orderData: this.state.orderData }))}
-          >
-            Eyða
-          </Button>
         </Col>
       );
     });
@@ -95,21 +95,18 @@ class MyOrder extends Component {
     this.totalPrice = 0;
     // console.log(this.state);
     return (
-      <Container id="my_order">
-        {this.renderOrders()}
+      <div id="my_order">
+        <Container>
+          {this.renderOrders()}
+        </Container>
         {this.state.orderData !== null && !this.state.loading
-          ? <div>
-              <div className="pending_order pending_total_order">
-                <li>Samtals</li>
-                <li>{this.totalPrice} kr.</li>
-              </div>
-              <Button color="primary" onClick={this.confirmOrder}>
-                Senda pöntun af stað
-              </Button>
-            </div>
-          : <span />}
-
-      </Container>
+          && <div className="pending_total_order">
+                <h2>Samtals <span>{this.totalPrice} kr.</span></h2>
+                <Button color="primary" onClick={this.confirmOrder}>
+                  Staðfesta pöntun
+                </Button>
+              </div>}
+      </div>
     );
   }
 }

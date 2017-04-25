@@ -1,31 +1,48 @@
 #my_order {
-  margin-bottom: 140px;
+  padding-top: 10px;
+  margin-bottom: 280px;
   .col-12 {
     padding: 0;
   }
-  .pending_order {
-    display: flex;
-    justify-content: space-between;
-    background: #fff;
-    padding: 20px;
-    position: relative;
-    margin-top: 20px;
-    @include border;
 
-    li {
-      font-family: $font_bold;
-      color: $text_color;
-      display: inline-block;
-      font-size: 20px;
-      max-width: 65%;
+  .pending_order {
+    margin-top: 20px;
+    h2 {
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 24px;
+      font-family: $font_light;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn {
+      margin-right: 10px;
+      font-size: 14px;
+      padding: 8px 12px;
     }
   }
 
   .pending_total_order {
-    margin-top: 80px;
+    position: fixed;
+    bottom: 70px;
+    background: $main_blue;
+    color: #fff;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    text-align: center;
 
-    li {
-      font-size: 24px;
+    h2 {
+      margin-bottom: 20px;
+      font-family: $font_light;
+      text-transform: uppercase;
+
+      span {
+        font-family: $font_bold;
+        text-transform: lowercase;
+      }
     }
   }
 
@@ -46,6 +63,7 @@
       max-width: 70%;
       text-align: center;
       margin: 0 auto;
+      margin-bottom: 40px;
     }
 
 
