@@ -36,44 +36,6 @@ export function fetchFood() {
   };
 }
 
-// export function fetchPost(id) {
-//
-//   return (dispatch, getState) => {
-//
-//     dispatch({
-//       type: POST_DATA_UPDATED,
-//       payload: {
-//         isLoading: true
-//       }
-//     })
-//     dispatch({
-//       type: POST_DATA_UPDATED,
-//       payload: {
-//         isLoadingRelated: true
-//       }
-//     })
-//
-//     axios.get(`${ROOT_URL}/${id}`).then(post => {
-//       return dispatch({
-//         type: FETCH_POST,
-//         payload: post
-//       })
-//     }).catch((error)=>{
-//       return dispatch({
-//         type: FETCH_POST_FAILED,
-//         payload: post
-//       })
-//     })
-//
-//     axios.get(`${ROOT_URL}/${related.ID}`).then(related => {
-//       return dispatch({
-//         type: FETCH_POST_RELATED,
-//         payload: related
-//       })
-//     })
-//   }
-// }
-
 export function fetchPost(id) {
   return async (dispatch, getState) => {
 

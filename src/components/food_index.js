@@ -5,6 +5,7 @@ import {fetchFood, fetchFoodPromo} from '../actions/index';
 import userRefFor from './userRef';
 import Product from './Product';
 import { Button } from 'reactstrap';
+import Logo from './Logo';
 
 class FoodIndex extends Component {
   state = {
@@ -76,6 +77,7 @@ class FoodIndex extends Component {
     console.log(this.props);
     return (
       <div>
+        <Logo />
         {this.renderOffer()}
         <div className="product_container">
           {this.renderFood()}

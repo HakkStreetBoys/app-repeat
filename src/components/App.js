@@ -72,9 +72,9 @@ class App extends Component {
           {user &&
             <div>
               <Navbar color="faded" light toggleable>
-                <NavbarBrand>
-                  <h2 className="logo">Repeat</h2>
-                </NavbarBrand>
+                {/* <NavbarBrand>
+                  <h2 className="logo"><img src={process.env.PUBLIC_URL + "/img/logo.svg"} /></h2>
+                </NavbarBrand> */}
                 <NavbarToggler right onClick={this.toggle} />
                 {this.state.isOpen
                   ? <div className="popup">

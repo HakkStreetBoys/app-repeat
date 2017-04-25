@@ -9,7 +9,7 @@
 .btn-success {
   text-transform: uppercase;
   font-size: 16px;
-  background-color: #41C3A6;
+  background-color: $main_color;
   font-family: $font_regular;
 }
 
@@ -24,7 +24,7 @@
 
 .btn-primary {
   // background: $main_red;
-  background: #41C3A6;
+  background: $main_color;
   font-size: 20px;
   padding: 20px 0 10px 0;
   margin-top: -15px;
