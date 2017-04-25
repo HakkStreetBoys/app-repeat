@@ -21,7 +21,6 @@ import {
   Navbar,
   Nav,
   NavItem,
-  NavbarBrand,
   NavbarToggler,
 } from 'reactstrap';
 

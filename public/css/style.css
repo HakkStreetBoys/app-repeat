@@ -769,6 +769,23 @@ p {
   text-transform: uppercase;
 }
 
+.related_items {
+  padding-top: 40px;
+}
+
+.related_items h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+
+.related_items .slick-initialized .slick-slide {
+  overflow: hidden;
+  margin-right: 10px;
+  height: 100%;
+  max-height: 140px;
+}
+
 #my_order {
   padding-top: 10px;
   margin-bottom: 280px;
@@ -905,7 +922,7 @@ p {
   margin: 0;
   display: flex;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 50px;
 }
 
 .navigation ul a {

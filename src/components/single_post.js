@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchPost} from '../actions/index';
 // import axios from 'axios';
 import {Button} from 'reactstrap';
+import Slider from 'react-slick';
 
 class SinglePost extends Component {
   componentDidMount() {
@@ -11,6 +12,16 @@ class SinglePost extends Component {
   }
 
   render() {
+    const settings = {
+      dots: false,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      // lazyLoad: true,
+      arrows: false,
+      touchMove: false,
+      initialSlide: 1
+    }
     const {post, isLoading, related} = this.props;
     console.log('in render', related);
     if (isLoading) {
@@ -22,7 +33,6 @@ class SinglePost extends Component {
       menu_price,
       menu_tags,
       menu_description,
-      menu_related,
     } = post.acf;
     const {medium_large} = post.acf.menu_image.sizes;
 
@@ -35,15 +45,16 @@ class SinglePost extends Component {
 
     let relatedItems;
     if (related != null) {
+
       relatedItems = related.map(relate => (
         <div key={relate.data.id}>
-          {relate.data.acf.menu_title}
+          <img src={relate.data.acf.menu_image.sizes.medium} alt="" />
         </div>
       ));
     }
 
     return (
-      <div>
+      <div className="single_item">
         {/* <Link to="/"><img src="../style/img/arrow-back.svg" alt="Back" className="back_arrow" /></Link> */}
         <div className="single_hero">
           <img src={medium_large} alt="" />
@@ -66,7 +77,12 @@ class SinglePost extends Component {
           </div>
         </div>
         <div className="related_items">
-          {related && relatedItems}
+          {related &&
+            <div><h3>Eitthvað annað?</h3>
+            <Slider {...settings}>
+              {relatedItems}
+            </Slider></div>
+          }
         </div>
       </div>
     );
