@@ -21,7 +21,7 @@ class Product extends Component {
     setTimeout(() => {
       this.notify = false;
       this.setState({status: 'notification hidden'});
-    }, 2000);
+    }, 1200);
   }
 
   render() {

@@ -6,6 +6,46 @@
   }
 
   .pending_order {
+
+    .row {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .col-3 {
+
+    }
+
+    .quantity {
+      width: 60px;
+      height: 60px;
+      background: #fff;
+      border-radius: 100%;
+      position: relative;
+
+      div {
+        width: 1px;
+        height: 200px;
+        background: #979797;
+        position: absolute;
+        left: 50%;
+        z-index: -1;
+      }
+
+      &:before {
+        position: relative;
+        width: 1px;
+        height: 200px;
+        background: #979797;
+      }
+
+      span {
+        @include centerer;
+        font-family: $font_light;
+        font-size: 20px;
+      }
+    }
+
     margin-top: 20px;
     h2 {
       margin-bottom: 0;

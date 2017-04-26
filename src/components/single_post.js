@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {fetchPost} from '../actions/index';
 // import axios from 'axios';
 import {Button} from 'reactstrap';
@@ -56,7 +57,13 @@ class SinglePost extends Component {
 
     return (
       <div className="single_item">
-        {/* <Link to="/"><img src="../style/img/arrow-back.svg" alt="Back" className="back_arrow" /></Link> */}
+        <Link to="/">
+          <img
+            src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
+            alt=""
+            className="back_arrow"
+          />
+        </Link>
         <div className="single_hero">
           <img src={medium_large} alt="" />
         </div>
@@ -85,8 +92,9 @@ class SinglePost extends Component {
                   createdAt: Date.now(),
                   table_number: 7,
                   userID: this.props.user.uid,
-                })
-              }}>
+                });
+              }}
+            >
               Panta
             </Button>
           </div>

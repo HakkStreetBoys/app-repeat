@@ -723,8 +723,12 @@ p {
 
 .back_arrow {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
+}
+
+.single_item {
+  margin-bottom: 130px;
 }
 
 .single_hero {
@@ -803,6 +807,44 @@ p {
   margin-top: 20px;
 }
 
+#my_order .pending_order .row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#my_order .pending_order .quantity {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 100%;
+  position: relative;
+}
+
+#my_order .pending_order .quantity div {
+  width: 1px;
+  height: 200px;
+  background: #979797;
+  position: absolute;
+  left: 50%;
+  z-index: -1;
+}
+
+#my_order .pending_order .quantity:before {
+  position: relative;
+  width: 1px;
+  height: 200px;
+  background: #979797;
+}
+
+#my_order .pending_order .quantity span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "RoundLight";
+  font-size: 20px;
+}
+
 #my_order .pending_order h2 {
   margin-bottom: 0;
 }
@@ -870,11 +912,11 @@ p {
 .sign_up .login_logo {
   position: absolute;
   left: 50%;
-  margin-top: 100px;
+  margin-top: 60px;
   transform: translateX(-50%);
   color: #fff;
   font-size: 48px;
-  width: 120px;
+  width: 100px;
 }
 
 .sign_up .container {

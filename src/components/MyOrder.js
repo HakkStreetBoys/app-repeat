@@ -3,7 +3,7 @@ import _ from 'lodash';
 import userRefFor from './userRef';
 // import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty';
-import {Container, Col, Button} from 'reactstrap';
+import {Container, Col, Button, Row} from 'reactstrap';
 
 class MyOrder extends Component {
   constructor(props) {
@@ -67,26 +67,43 @@ class MyOrder extends Component {
     }
 
     return _.map(this.state.orderData, (order, key) => {
+      // console.log(order.length);
+      // if (order && order.length < 1) {
+      //   console.log('less than 1');
+      // } else {
+      //   console.log('more than 1');
+      // }
       this.totalPrice += parseInt(order.price);
       // console.log(order);
 
       return (
-        <Col xs="12" key={key}>
-          <div className="pending_order">
-            <h2>{order.title}</h2>
-            <p>{order.price} kr.</p>
-            <Button
-              color="danger"
-              onClick={() =>
-                this.userRef
-                  .child('orders/' + key)
-                  .remove(() => this.setState({ orderData: this.state.orderData }))}
-            >
-              Eyða
-            </Button>
-            <Button color="success">Bæta við</Button>
-          </div>
-        </Col>
+        <Row key={key}>
+          <Col className="pending_order" xs="12">
+            <Row>
+              <Col xs="3">
+                <div className="quantity">
+                  {/* <div></div> */}
+                  <span>{order.quantity}x</span>
+                </div>
+              </Col>
+              <Col xs="9">
+                <h2>{order.title}</h2>
+                <p>{order.price} kr.</p>
+                <Button
+                  color="danger"
+                  onClick={() =>
+                    this.userRef
+                      .child('orders/' + key)
+                      .remove(() => this.setState({ orderData: this.state.orderData }))}
+                >
+                  Eyða
+                </Button>
+                <Button color="success">Bæta við</Button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
       );
     });
   }
