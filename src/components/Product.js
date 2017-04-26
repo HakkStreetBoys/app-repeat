@@ -34,8 +34,14 @@ class Product extends Component {
             <div className="product_gradient" />
             {/* {console.log(notify)} */}
             <div className={this.state.status}>
-              <img src={process.env.PUBLIC_URL + '/img/notify_order.svg'} alt="" />
-              <img src={process.env.PUBLIC_URL + '/img/notify_arrow.svg'} alt="" />
+              <img
+                src={process.env.PUBLIC_URL + '/img/notify_order.svg'}
+                alt=""
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/img/notify_arrow.svg'}
+                alt=""
+              />
             </div>
             <img src={medium_large} alt="" />
           </div>
@@ -66,13 +72,14 @@ class Product extends Component {
                 const obj = snapshot.val();
                 console.log(obj);
                 for (var variable in obj) {
-                  if (obj && (obj[variable].productID === this.props.post.id)) {
+                  if (obj && obj[variable].productID === this.props.post.id) {
                     console.log('exists');
                     doesExist = true;
                     this.props.userRef.child('orders/' + variable).update({
-                      price: parseInt(obj[variable].price) + parseInt(menu_price),
-                      quantity: parseInt(obj[variable].quantity) + 1
-                    })
+                      price: parseInt(obj[variable].price) +
+                        parseInt(menu_price),
+                      quantity: parseInt(obj[variable].quantity) + 1,
+                    });
                   } else {
                     console.log('not exist');
                   }
@@ -91,11 +98,10 @@ class Product extends Component {
                     createdAt: Date.now(),
                     table_number: 7,
                     userID: this.props.uid,
-                    quantity: 1
+                    quantity: 1,
                   });
                 }
               });
-
             }}
           >
             Panta
