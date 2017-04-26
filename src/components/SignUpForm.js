@@ -76,7 +76,7 @@ class SignUpForm extends Component {
 
     return (
       <div className="sign_up">
-        <h1>Repeat</h1>
+        <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
         <Container>
           <Form onSubmit={this.handleSubmit}>
             {this.state.errorMessage && <Alert color="warning">{this.state.errorMessage}</Alert>}

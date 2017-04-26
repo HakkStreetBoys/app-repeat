@@ -4,9 +4,11 @@ import {fetchPost} from '../actions/index';
 // import axios from 'axios';
 import {Button} from 'reactstrap';
 import Slider from 'react-slick';
+import userRefFor from './userRef';
 
 class SinglePost extends Component {
   componentDidMount() {
+    this.userRef = userRefFor(this.props.user);
     this.props.fetchPost(this.props.match.params.id);
     console.log(this.props);
   }
@@ -20,20 +22,15 @@ class SinglePost extends Component {
       // lazyLoad: true,
       arrows: false,
       touchMove: false,
-      initialSlide: 1
-    }
+      initialSlide: 1,
+    };
     const {post, isLoading, related} = this.props;
     console.log('in render', related);
     if (isLoading) {
       return <div>isLoading</div>;
     }
 
-    const {
-      menu_title,
-      menu_price,
-      menu_tags,
-      menu_description,
-    } = post.acf;
+    const {menu_title, menu_price, menu_tags, menu_description} = post.acf;
     const {medium_large} = post.acf.menu_image.sizes;
 
     let tags;
@@ -45,12 +42,16 @@ class SinglePost extends Component {
 
     let relatedItems;
     if (related != null) {
-
       relatedItems = related.map(relate => (
         <div key={relate.data.id}>
           <img src={relate.data.acf.menu_image.sizes.medium} alt="" />
         </div>
       ));
+    }
+
+    this.menu_cat = post.menu_cat[0];
+    if (this.menu_cat !== 9) {
+      this.menu_cat = 'matur';
     }
 
     return (
@@ -68,7 +69,26 @@ class SinglePost extends Component {
             }}
           >
             <h2>{menu_title}</h2>
-            <Button color="success" size="md">Panta</Button>
+            <Button
+              color="success"
+              size="md"
+              onClick={() => {
+                this.userRef.child('orders').push({
+                  title: menu_title,
+                  price: menu_price,
+                  category: this.menu_cat,
+                  productID: this.props.post.id,
+                  status_food: 0,
+                  status_drink: 0,
+                  status_pay: 0,
+                  date: Date(),
+                  createdAt: Date.now(),
+                  table_number: 7,
+                  userID: this.props.user.uid,
+                })
+              }}>
+              Panta
+            </Button>
           </div>
           <p className="single_price">{menu_price} kr.</p>
           <p>{menu_description}</p>
@@ -78,11 +98,12 @@ class SinglePost extends Component {
         </div>
         <div className="related_items">
           {related &&
-            <div><h3>Eitthvað annað?</h3>
-            <Slider {...settings}>
-              {relatedItems}
-            </Slider></div>
-          }
+            <div>
+              <h3>Eitthvað annað?</h3>
+              <Slider {...settings}>
+                {relatedItems}
+              </Slider>
+            </div>}
         </div>
       </div>
     );

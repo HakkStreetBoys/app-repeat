@@ -743,6 +743,10 @@ p {
   position: relative;
 }
 
+.single_info h2 {
+  margin-bottom: 0;
+}
+
 .single_info .single_price {
   font-size: 24px;
   font-family: "RoundLight";
@@ -861,18 +865,16 @@ p {
 .sign_up {
   background: #343845;
   height: 100vh;
-  background-image: url("../img/bg_art.svg");
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.sign_up h1 {
+.sign_up .login_logo {
   position: absolute;
   left: 50%;
   margin-top: 100px;
   transform: translateX(-50%);
   color: #fff;
   font-size: 48px;
+  width: 120px;
 }
 
 .sign_up .container {
@@ -884,6 +886,7 @@ p {
 
 .sign_up .container form {
   width: 100%;
+  max-width: 90%;
 }
 
 .sign_up .container form input {

@@ -53,7 +53,7 @@ class SignInForm extends Component {
       console.log(SignUpForm.phone);
         return (
           <div className="sign_up">
-            <h1>Repeat</h1>
+            <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
             <Container>
               <Form>
                 <FormGroup>

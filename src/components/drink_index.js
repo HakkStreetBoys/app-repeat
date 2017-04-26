@@ -7,6 +7,7 @@ import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
 import { Button } from 'reactstrap';
+import Logo from './Logo';
 
 class DrinkIndex extends Component {
   state = {
@@ -75,6 +76,7 @@ class DrinkIndex extends Component {
   render() {
     return (
       <div>
+        <Logo />
         {this.renderOffer()}
         <div className="product_container">
           {this.renderDrinks()}

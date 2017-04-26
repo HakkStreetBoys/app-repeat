@@ -21,6 +21,10 @@
   // margin-top: -30px;
   position: relative;
 
+  h2 {
+    margin-bottom: 0;
+  }
+
   .single_price {
     font-size: 24px;
     font-family: $font_light;

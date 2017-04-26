@@ -60,19 +60,42 @@ class Product extends Component {
                 this.notify = false;
               }, 1500);
               this.setState({reRender: ++this.state.reRender});
-              this.props.userRef.child('orders').push({
-                title: menu_title,
-                price: menu_price,
-                category: this.props.category,
-                productID: this.props.post.id,
-                status_food: 0,
-                status_drink: 0,
-                status_pay: 0,
-                date: Date(),
-                createdAt: Date.now(),
-                table_number: 7,
-                userID: this.props.uid,
+              let doesExist = false;
+              console.log('before event');
+              this.props.userRef.child('orders/').once('value', snapshot => {
+                const obj = snapshot.val();
+                console.log(obj);
+                for (var variable in obj) {
+                  if (obj && (obj[variable].productID === this.props.post.id)) {
+                    console.log('exists');
+                    doesExist = true;
+                    this.props.userRef.child('orders/' + variable).update({
+                      price: parseInt(obj[variable].price) + parseInt(menu_price),
+                      quantity: parseInt(obj[variable].quantity) + 1
+                    })
+                  } else {
+                    console.log('not exist');
+                  }
+                }
+                console.log(this.props.userRef.child('orders/'));
+                if (!doesExist) {
+                  this.props.userRef.child('orders').push({
+                    title: menu_title,
+                    price: menu_price,
+                    category: this.props.category,
+                    productID: this.props.post.id,
+                    status_food: 0,
+                    status_drink: 0,
+                    status_pay: 0,
+                    date: Date(),
+                    createdAt: Date.now(),
+                    table_number: 7,
+                    userID: this.props.uid,
+                    quantity: 1
+                  });
+                }
               });
+
             }}
           >
             Panta

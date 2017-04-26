@@ -1,17 +1,18 @@
 .sign_up {
   background: $main_blue;
   height: 100vh;
-  background-image: url('../img/bg_art.svg');
-  background-position: center;
-  background-repeat: no-repeat;
+  // background-image: url('../img/bg_art.svg');
+  // background-position: center;
+  // background-repeat: no-repeat;
 
-  h1 {
+  .login_logo {
     position: absolute;
     left: 50%;
     margin-top: 100px;
     transform: translateX(-50%);
     color: #fff;
     font-size: 48px;
+    width: 120px;
   }
 
   .container {
@@ -22,6 +23,7 @@
 
     form {
       width: 100%;
+      max-width: 90%;
 
       input {
         padding: 50px 20px 20px 20px;
