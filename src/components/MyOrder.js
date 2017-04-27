@@ -21,6 +21,7 @@ class MyOrder extends Component {
   }
 
   componentWillMount() {
+    document.getElementById('body').className='my_order';
     this.key = undefined;
     this.userRef = userRefFor(this.props.user);
     this.userRef.child('orders/').on('value', snapshot => {
@@ -31,6 +32,7 @@ class MyOrder extends Component {
   }
 
   componentWillUnmount() {
+    document.getElementById('body').className='';
     this.userRef.child('orders/').off();
   }
 
@@ -96,8 +98,6 @@ class MyOrder extends Component {
                       .child('orders/' + key)
                       .once('value', snapshot => {
                         const obj = snapshot.val();
-                        console.log(obj.price);
-                        console.log(order.price);
                         if (obj.quantity !== 1) {
                           this.userRef.child('orders/' + key).update({
                             price: parseInt(order.price) -
@@ -152,10 +152,16 @@ class MyOrder extends Component {
         {this.state.orderData !== null &&
           !this.state.loading &&
           <div className="pending_total_order">
-            <h2>Samtals <span>{this.totalPrice} kr.</span></h2>
-            <Button color="primary" onClick={this.confirmOrder}>
-              Staðfesta pöntun
-            </Button>
+            <Row>
+              <Col xs="7">
+                <li>Samtals <span>{this.totalPrice} kr.</span></li>
+              </Col>
+              <Col
+                xs="5"
+                onClick={this.confirmOrder}>
+                  <li>Senda</li>
+              </Col>
+            </Row>
           </div>}
       </div>
     );

@@ -1,3 +1,10 @@
+.my_order {
+  .navigation {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 #my_order {
   padding-top: 10px;
   margin-bottom: 280px;
@@ -66,21 +73,43 @@
 
   .pending_total_order {
     position: fixed;
-    bottom: 70px;
-    background: $main_blue;
+    // bottom: 70px;
+    bottom: 0;
+    // background: $main_blue;
     color: #fff;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 60px;
+    // padding-top: 20px;
+    // padding-bottom: 60px;
     text-align: center;
 
-    h2 {
-      margin-bottom: 20px;
-      font-family: $font_light;
+    .row {
+      padding: 0;
+      margin: 0;
+    }
+
+    .col-7, .col-5 {
+      padding: 0;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .col-7 {
+      background: $main_blue;
+    }
+
+    .col-5 {
+      background: $main_color;
+    }
+
+    li {
+      // margin-bottom: 20px;
+      font-family: $font_bold;
       text-transform: uppercase;
 
       span {
-        font-family: $font_bold;
+        font-family: $font_light;
         text-transform: lowercase;
       }
     }

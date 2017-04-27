@@ -739,6 +739,20 @@ p {
   right: 20px;
 }
 
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.single_page .navbar {
+  display: none;
+}
+
 .back_arrow {
   position: absolute;
   top: 20px;
@@ -812,6 +826,11 @@ p {
   max-height: 140px;
 }
 
+.my_order .navigation {
+  opacity: 0;
+  visibility: hidden;
+}
+
 #my_order {
   padding-top: 10px;
   margin-bottom: 280px;
@@ -881,23 +900,40 @@ p {
 
 #my_order .pending_total_order {
   position: fixed;
-  bottom: 70px;
-  background: #343845;
+  bottom: 0;
   color: #fff;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 60px;
   text-align: center;
 }
 
-#my_order .pending_total_order h2 {
-  margin-bottom: 20px;
-  font-family: "RoundLight";
+#my_order .pending_total_order .row {
+  padding: 0;
+  margin: 0;
+}
+
+#my_order .pending_total_order .col-7, #my_order .pending_total_order .col-5 {
+  padding: 0;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 18px;
   text-transform: uppercase;
 }
 
-#my_order .pending_total_order h2 span {
+#my_order .pending_total_order .col-7 {
+  background: #343845;
+}
+
+#my_order .pending_total_order .col-5 {
+  background: #00AB6B;
+}
+
+#my_order .pending_total_order li {
   font-family: "RoundBold";
+  text-transform: uppercase;
+}
+
+#my_order .pending_total_order li span {
+  font-family: "RoundLight";
   text-transform: lowercase;
 }
 

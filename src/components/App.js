@@ -23,6 +23,7 @@ import {
   NavItem,
   NavbarToggler,
 } from 'reactstrap';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class App extends Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class App extends Component {
 
           {user !== undefined
             ? <div>
-                <Switch>
+                {/* <Switch> */}
                   <Route
                     exact
                     path="/"
@@ -128,18 +129,27 @@ class App extends Component {
                     component={DrinkIndex}
                     user={user}
                   />
-                  <PrivateRoute
-                    path="/matur/:id"
-                    component={SinglePost}
-                    user={user}
-                  />
+                  <ReactCSSTransitionGroup
+                    transitionName="fade"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}
+                    >
+                    <PrivateRoute
+                      location={location}
+                      key={location.key}
+                      path="/matur/:id"
+                      component={SinglePost}
+                      user={user}
+                    />
+                  </ReactCSSTransitionGroup>
+
                   <PrivateRoute
                     path="/myorder"
                     component={MyOrder}
                     user={user}
                   />
-                  <Route path="*" component={NotFound} />
-                </Switch>
+                  {/* <Route path="*" component={NotFound} /> */}
+                {/* </Switch> */}
               </div>
             : <Spinner />}
         </div>

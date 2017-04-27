@@ -12,7 +12,7 @@ const Navigation = ({ user }) => {
         <ul>
           <NavLink to={"/matur"}>
             <img src={process.env.PUBLIC_URL + "/img/matur-icon.svg"} alt="" />
-            <li>Matur</li>
+            <li>Matseðill</li>
           </NavLink>
           <NavLink to={`/myorder`} className="order_link">
             <li className="order_btn">

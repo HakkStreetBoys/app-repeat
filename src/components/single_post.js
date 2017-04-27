@@ -8,13 +8,30 @@ import Slider from 'react-slick';
 import userRefFor from './userRef';
 
 class SinglePost extends Component {
+
+  state = {
+    loading: true
+  }
+
   componentDidMount() {
+    document.getElementById('body').className='single_page';
     this.userRef = userRefFor(this.props.user);
     this.props.fetchPost(this.props.match.params.id);
     console.log(this.props);
+    this.setState({ loading: false })
+  }
+
+  componentWillUnmount() {
+    document.getElementById('body').className='';
+    this.setState({ isLoading: true })
   }
 
   render() {
+
+    if (this.state.loading) {
+      return <span>isloading</span>
+    }
+
     const settings = {
       dots: false,
       speed: 500,
@@ -108,9 +125,9 @@ class SinglePost extends Component {
           {related &&
             <div>
               <h3>Eitthvað annað?</h3>
-              <Slider {...settings}>
+              {/* <Slider {...settings}>
                 {relatedItems}
-              </Slider>
+              </Slider> */}
             </div>}
         </div>
       </div>
