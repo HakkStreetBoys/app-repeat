@@ -64,7 +64,7 @@ class SignUpForm extends Component {
         )
       })
       .catch((error) => {
-        this.setState({ loading: false, isRegistering: true, errorMessage: 'Villa kom upp' });
+        this.setState({ loading: false, isRegistering: true, errorMessage: 'Villa kom upp. Prófaðu aftur' });
         console.log(error);
       })
   }
@@ -76,8 +76,8 @@ class SignUpForm extends Component {
 
     return (
       <div className="sign_up">
-        <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
         <Container>
+          <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
           <Form onSubmit={this.handleSubmit}>
             {this.state.errorMessage && <Alert color="warning">{this.state.errorMessage}</Alert>}
             <FormGroup>

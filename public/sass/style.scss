@@ -60,11 +60,12 @@ p {
   justify-content: center;
   background: #343845;
   z-index: 9999;
+  transition: 2s ease-out;
 
   img {
     &:nth-child(1) {
       animation: .85s linear infinite rotate;
-      animation-delay: .45s;
+      // animation-delay: .45s;
     }
 
     &:nth-child(2) {
@@ -121,6 +122,24 @@ p {
   .not_found_emoji {
     font-size: 60px;
   }
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
 }
 
 // @import 'incl/partials/product_list';

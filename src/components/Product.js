@@ -99,6 +99,7 @@ class Product extends Component {
                     table_number: 7,
                     userID: this.props.uid,
                     quantity: 1,
+                    original_price: menu_price
                   });
                 }
               });

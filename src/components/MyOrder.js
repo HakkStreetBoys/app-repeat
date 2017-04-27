@@ -26,7 +26,7 @@ class MyOrder extends Component {
     this.userRef.child('orders/').on('value', snapshot => {
       var obj = snapshot.val();
       // console.log(obj);
-      this.setState({ orderData: obj, loading: false });
+      this.setState({orderData: obj, loading: false});
     });
   }
 
@@ -38,7 +38,7 @@ class MyOrder extends Component {
     this.userRef.child('confirmed_order/').push(this.state.orderData);
     this.userRef.child('orders/').remove();
 
-    this.setState({ orderConfirmed: true });
+    this.setState({orderConfirmed: true});
   }
 
   handleClick(e) {
@@ -57,12 +57,12 @@ class MyOrder extends Component {
           <div>ORDER CONFIRMED</div>
           <div
             onClick={() => {
-              this.setState({ orderConfirmed: false })
-            }}>
+              this.setState({orderConfirmed: false});
+            }}
+          >
             Loka
           </div>
         </div>
-
       );
     }
 
@@ -91,19 +91,52 @@ class MyOrder extends Component {
                 <p>{order.price} kr.</p>
                 <Button
                   color="danger"
-                  onClick={() =>
+                  onClick={() => {
                     this.userRef
                       .child('orders/' + key)
-                      .remove(() => this.setState({ orderData: this.state.orderData }))}
+                      .once('value', snapshot => {
+                        const obj = snapshot.val();
+                        console.log(obj.price);
+                        console.log(order.price);
+                        if (obj.quantity !== 1) {
+                          this.userRef.child('orders/' + key).update({
+                            price: parseInt(order.price) -
+                              parseInt(obj.original_price),
+                            quantity: parseInt(obj.quantity) - 1,
+                          });
+                        } else {
+                          this.userRef
+                            .child('orders/' + key)
+                            .remove(() =>
+                              this.setState({orderData: this.state.orderData}),
+                            );
+                        }
+                      });
+                  }}
                 >
                   Eyða
                 </Button>
-                <Button color="success">Bæta við</Button>
+                <Button
+                  color="success"
+                  onClick={() => {
+                    this.userRef
+                      .child('orders/' + key)
+                      .once('value', snapshot => {
+                        const obj = snapshot.val();
+                        this.userRef.child('orders/' + key).update({
+                          price: parseInt(order.price) +
+                            parseInt(obj.original_price),
+                          quantity: parseInt(obj.quantity) + 1,
+                        });
+                      });
+                  }}
+                >
+                  Bæta við
+                </Button>
               </Col>
             </Row>
           </Col>
         </Row>
-
       );
     });
   }
@@ -116,13 +149,14 @@ class MyOrder extends Component {
         <Container>
           {this.renderOrders()}
         </Container>
-        {this.state.orderData !== null && !this.state.loading
-          && <div className="pending_total_order">
-                <h2>Samtals <span>{this.totalPrice} kr.</span></h2>
-                <Button color="primary" onClick={this.confirmOrder}>
-                  Staðfesta pöntun
-                </Button>
-              </div>}
+        {this.state.orderData !== null &&
+          !this.state.loading &&
+          <div className="pending_total_order">
+            <h2>Samtals <span>{this.totalPrice} kr.</span></h2>
+            <Button color="primary" onClick={this.confirmOrder}>
+              Staðfesta pöntun
+            </Button>
+          </div>}
       </div>
     );
   }

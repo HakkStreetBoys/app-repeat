@@ -5,6 +5,7 @@ import {fetchFood, fetchFoodPromo} from '../actions/index';
 import userRefFor from './userRef';
 import Product from './Product';
 import { Button } from 'reactstrap';
+import Spinner from './Spinner';
 import Logo from './Logo';
 
 class FoodIndex extends Component {
@@ -16,7 +17,9 @@ class FoodIndex extends Component {
     this.userRef = userRefFor(this.props.user);
     this.props.fetchFood();
     this.props.fetchFoodPromo();
-    this.setState({loading: false});
+    setTimeout(() => {
+      this.setState({loading: false});
+    }, 500)
   }
 
   componentWillUnmount() {
@@ -74,6 +77,11 @@ class FoodIndex extends Component {
   }
 
   render() {
+
+    if (this.state.loading) {
+      return <Spinner />;
+    }
+
     console.log(this.props);
     return (
       <div>

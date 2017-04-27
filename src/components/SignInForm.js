@@ -53,8 +53,8 @@ class SignInForm extends Component {
       console.log(SignUpForm.phone);
         return (
           <div className="sign_up">
-            <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
             <Container>
+              <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
               <Form>
                 <FormGroup>
                     <Input placeholder="Símanúmer" type="hidden" value={SignUpForm.phone} onChange={this.handlePhoneChange}/>

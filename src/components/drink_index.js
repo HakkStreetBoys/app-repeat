@@ -6,6 +6,7 @@ import {fetchDrinks, fetchDrinkPromo} from '../actions/index';
 import userRefFor from './userRef';
 // import { Link } from 'react-router-dom';
 import Product from './Product';
+import Spinner from './Spinner';
 import { Button } from 'reactstrap';
 import Logo from './Logo';
 
@@ -18,7 +19,9 @@ class DrinkIndex extends Component {
     this.userRef = userRefFor(this.props.user);
     this.props.fetchDrinks();
     this.props.fetchDrinkPromo();
-    this.setState({loading: false});
+    setTimeout(() => {
+      this.setState({loading: false});
+    }, 500)
   }
 
   componentWillUnmount() {
@@ -74,6 +77,11 @@ class DrinkIndex extends Component {
   }
 
   render() {
+
+    if (this.state.loading) {
+      return <Spinner />;
+    }
+
     return (
       <div>
         <Logo />
