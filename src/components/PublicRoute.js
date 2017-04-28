@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import matchPropTypes from "./MatchPropTypes";
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import matchPropTypes from './MatchPropTypes'
 
 /**
  * If we have a logged-in user, redirect to the home page. Otherwise, display the component.
@@ -10,11 +10,11 @@ const PublicRoute = ({ component: Component, user, ...rest }) => (
     {...rest}
     render={props =>
       user
-        ? <Redirect to={{ pathname: "/" }} />
+        ? <Redirect to={{ pathname: '/' }} />
         : <Component user={user} {...props} />}
   />
-);
+)
 
-PublicRoute.propTypes = matchPropTypes;
+PublicRoute.propTypes = matchPropTypes
 
-export default PublicRoute;
+export default PublicRoute

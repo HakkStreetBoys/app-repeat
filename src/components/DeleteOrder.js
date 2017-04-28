@@ -1,11 +1,11 @@
-import React from 'react';
-import {Button} from 'reactstrap';
-import firebase from 'firebase';
+import React from 'react'
+import {Button} from 'reactstrap'
+import firebase from 'firebase'
 
 const DeleteOrder = props => {
   return (
     <Button
-      color="danger"
+      color='danger'
       onClick={() =>
         firebase
           .database()
@@ -20,7 +20,7 @@ const DeleteOrder = props => {
     >
       Delete
     </Button>
-  );
-};
+  )
+}
 
-export default DeleteOrder;
+export default DeleteOrder

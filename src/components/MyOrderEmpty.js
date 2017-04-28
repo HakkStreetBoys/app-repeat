@@ -1,22 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Col, Button } from 'reactstrap';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Col, Button } from 'reactstrap'
 
 const MyOrderEmpty = () => {
   return (
-    <Col xs="12">
-      <div className="pending_order order_empty">
+    <Col xs='12'>
+      <div className='pending_order order_empty'>
         <div>
           <h2>Pöntunarlisti tómur</h2>
-          <img src={process.env.PUBLIC_URL + "/img/order_empty.svg"} alt="" />
+          <img src={process.env.PUBLIC_URL + '/img/order_empty.svg'} alt='' />
           <p>Hvernig væri að panta sér einn ískaldan?</p>
         </div>
-        <Link to="/matur">
-          <Button color="primary">Aftur í matseðil</Button>
+        <Link to='/matur'>
+          <Button color='primary'>Aftur í matseðil</Button>
         </Link>
       </div>
     </Col>
-  );
-};
+  )
+}
 
-export default MyOrderEmpty;
+export default MyOrderEmpty

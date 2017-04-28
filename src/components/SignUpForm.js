@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Spinner from './Spinner';
-import { Redirect } from 'react-router-dom';
-import { Container, Form, FormGroup, Input, Button, Alert } from 'reactstrap';
+import React, {Component} from 'react'
+import axios from 'axios'
+import Spinner from './Spinner'
+import {Redirect} from 'react-router-dom'
+import {Container, Form, FormGroup, Input, Button, Alert} from 'reactstrap'
 
-const ROOT_AUTH_URL = 'https://us-central1-one-time-password-c0c13.cloudfunctions.net';
+const ROOT_AUTH_URL =
+  'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
 
 class SignUpForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       phone: '',
       loading: true,
@@ -16,95 +17,108 @@ class SignUpForm extends Component {
       isRegistering: true
     }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
-    this.setState({ loading: false });
+  componentWillMount () {
+    this.setState({loading: false})
   }
 
-  handleChange(event) {
-    this.setState({ phone: event.target.value });
-    SignUpForm.phone = event.target.value;
-    console.log(this.state.phone);
+  handleChange (event) {
+    this.setState({phone: event.target.value})
+    SignUpForm.phone = event.target.value
+    console.log(this.state.phone)
 
-    this.state.phone.length >= 7 ?
-    this.setState({ isRegistering: false }) :
-    this.setState({ isRegistering: true });
+    this.state.phone.length >= 7
+      ? this.setState({isRegistering: false})
+      : this.setState({isRegistering: true})
   }
 
-  handleSubmit(event) {
+  handleSubmit (event) {
+    this.setState({loading: true})
 
-    this.setState({ loading: true });
-
-    if(this.state.loading === true) {
-      return (
-        <Spinner />
-      );
+    if (this.state.loading === true) {
+      return <Spinner />
     }
 
-    event.preventDefault();
+    event.preventDefault()
     console.log(this.state.phone)
     // arrow function til að sleppa við .bind(this)
-    axios.post(`${ROOT_AUTH_URL}/createUser`, {
-      phone: this.state.phone
-    })
+    axios
+      .post(`${ROOT_AUTH_URL}/createUser`, {
+        phone: this.state.phone
+      })
       .then(() => {
         axios.post(`${ROOT_AUTH_URL}/requestOneTimePassword`, {
           phone: this.state.phone
-        });
+        })
       })
       .then(() => {
-        this.setState({ fireRedirect: true });
+        this.setState({fireRedirect: true})
         // const { from } = this.props.location.state || '/';
-        const { fireRedirect } = this.state;
-        fireRedirect && (
-          <Redirect to={'/code'}/>
-        )
+        const {fireRedirect} = this.state
+        fireRedirect && <Redirect to={'/code'} />
       })
-      .catch((error) => {
-        this.setState({ loading: false, isRegistering: true, errorMessage: 'Villa kom upp. Prófaðu aftur' });
-        console.log(error);
+      .catch(error => {
+        this.setState({
+          loading: false,
+          isRegistering: true,
+          errorMessage: 'Villa kom upp. Prófaðu aftur'
+        })
+        console.log(error)
       })
   }
 
-  render() {
-
-    console.log(this.state);
-    const { fireRedirect } = this.state;
+  render () {
+    console.log(this.state)
+    const {fireRedirect} = this.state
 
     return (
-      <div className="sign_up">
+      <div className='sign_up'>
         <Container>
-          <img className="login_logo" src={process.env.PUBLIC_URL + "/img/logo.svg"} alt="" />
+          <img
+            className='login_logo'
+            src={process.env.PUBLIC_URL + '/img/logo.svg'}
+            alt=''
+          />
           <Form onSubmit={this.handleSubmit}>
-            {this.state.errorMessage && <Alert color="warning">{this.state.errorMessage}</Alert>}
+            {this.state.errorMessage &&
+              <Alert color='warning'>{this.state.errorMessage}</Alert>}
             <FormGroup>
-                <Input
-                  type="number"
-                  placeholder="Símanúmer"
-                  value={this.state.phone}
-                  onChange={this.handleChange}
-                />
+              <Input
+                type='number'
+                placeholder='Símanúmer'
+                pattern="[0-9]*"
+                inputmode="numeric"
+                value={this.state.phone}
+                onChange={this.handleChange}
+              />
             </FormGroup>
 
             {/* <Link to="/code"> */}
-              <Button disabled={this.state.isRegistering} type="submit" color="info">
-                {/* {this.state.isRegistering ? "Registering..." : "Register"} */}
-                <li>Senda kóða</li>
-                <li><img src={process.env.PUBLIC_URL + "/img/form_arrow.svg"} alt="" /></li>
-              </Button>
+            <Button
+              disabled={this.state.isRegistering}
+              type='submit'
+              color='info'
+            >
+              {/* {this.state.isRegistering ? "Registering..." : "Register"} */}
+              <li>Senda kóða</li>
+              <li>
+                <img
+                  src={process.env.PUBLIC_URL + '/img/form_arrow.svg'}
+                  alt=''
+                />
+              </li>
+            </Button>
             {/* </Link> */}
-            {fireRedirect && (
-              <Redirect to={'/login/code'} phone={this.state.phone}/>
-            )}
+            {fireRedirect &&
+              <Redirect to={'/login/code'} phone={this.state.phone} />}
           </Form>
         </Container>
       </div>
-
-    );
+    )
   }
 }
 
-export default SignUpForm;
+export default SignUpForm

@@ -1,56 +1,56 @@
-import React, {Component} from 'react';
-import _ from 'lodash';
-import userRefFor from './userRef';
+import React, {Component} from 'react'
+import _ from 'lodash'
+import userRefFor from './userRef'
 // import Spinner from './Spinner';
-import MyOrderEmpty from './MyOrderEmpty';
-import {Container, Col, Button, Row} from 'reactstrap';
+import MyOrderEmpty from './MyOrderEmpty'
+import {Container, Col, Button, Row} from 'reactstrap'
 
 class MyOrder extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       loading: true,
       orderData: [],
-      orderConfirmed: false,
-    };
+      orderConfirmed: false
+    }
 
-    this.totalPrice = 0;
-    this.handleClick = this.handleClick.bind(this);
-    this.confirmOrder = this.confirmOrder.bind(this);
+    this.totalPrice = 0
+    this.handleClick = this.handleClick.bind(this)
+    this.confirmOrder = this.confirmOrder.bind(this)
   }
 
-  componentWillMount() {
-    document.getElementById('body').className='my_order';
-    this.key = undefined;
-    this.userRef = userRefFor(this.props.user);
+  componentWillMount () {
+    document.getElementById('body').className = 'my_order'
+    this.key = undefined
+    this.userRef = userRefFor(this.props.user)
     this.userRef.child('orders/').on('value', snapshot => {
-      var obj = snapshot.val();
+      var obj = snapshot.val()
       // console.log(obj);
-      this.setState({orderData: obj, loading: false});
-    });
+      this.setState({orderData: obj, loading: false})
+    })
   }
 
-  componentWillUnmount() {
-    document.getElementById('body').className='';
-    this.userRef.child('orders/').off();
+  componentWillUnmount () {
+    document.getElementById('body').className = ''
+    this.userRef.child('orders/').off()
   }
 
-  confirmOrder() {
-    this.userRef.child('confirmed_order/').push(this.state.orderData);
-    this.userRef.child('orders/').remove();
+  confirmOrder () {
+    this.userRef.child('confirmed_order/').push(this.state.orderData)
+    this.userRef.child('orders/').remove()
 
-    this.setState({orderConfirmed: true});
+    this.setState({orderConfirmed: true})
   }
 
-  handleClick(e) {
-    e.preventDefault();
-    this.userRef.child('orders/' + this.key).remove();
+  handleClick (e) {
+    e.preventDefault()
+    this.userRef.child('orders/' + this.key).remove()
   }
 
-  renderOrders() {
+  renderOrders () {
     if (this.state.orderData === null && this.state.orderConfirmed === false) {
-      return <MyOrderEmpty />;
+      return <MyOrderEmpty />
     }
 
     if (this.state.orderConfirmed === true) {
@@ -59,13 +59,13 @@ class MyOrder extends Component {
           <div>ORDER CONFIRMED</div>
           <div
             onClick={() => {
-              this.setState({orderConfirmed: false});
+              this.setState({orderConfirmed: false})
             }}
           >
             Loka
           </div>
         </div>
-      );
+      )
     }
 
     return _.map(this.state.orderData, (order, key) => {
@@ -75,60 +75,60 @@ class MyOrder extends Component {
       // } else {
       //   console.log('more than 1');
       // }
-      this.totalPrice += parseInt(order.price);
+      this.totalPrice += parseInt(order.price)
       // console.log(order);
 
       return (
         <Row key={key}>
-          <Col className="pending_order" xs="12">
+          <Col className='pending_order' xs='12'>
             <Row>
-              <Col xs="3">
-                <div className="quantity">
+              <Col xs='3'>
+                <div className='quantity'>
                   {/* <div></div> */}
                   <span>{order.quantity}x</span>
                 </div>
               </Col>
-              <Col xs="9">
+              <Col xs='9'>
                 <h2>{order.title}</h2>
                 <p>{order.price} kr.</p>
                 <Button
-                  color="danger"
+                  color='danger'
                   onClick={() => {
                     this.userRef
                       .child('orders/' + key)
                       .once('value', snapshot => {
-                        const obj = snapshot.val();
+                        const obj = snapshot.val()
                         if (obj.quantity !== 1) {
                           this.userRef.child('orders/' + key).update({
                             price: parseInt(order.price) -
                               parseInt(obj.original_price),
-                            quantity: parseInt(obj.quantity) - 1,
-                          });
+                            quantity: parseInt(obj.quantity) - 1
+                          })
                         } else {
                           this.userRef
                             .child('orders/' + key)
                             .remove(() =>
-                              this.setState({orderData: this.state.orderData}),
-                            );
+                              this.setState({orderData: this.state.orderData})
+                            )
                         }
-                      });
+                      })
                   }}
                 >
                   Eyða
                 </Button>
                 <Button
-                  color="success"
+                  color='success'
                   onClick={() => {
                     this.userRef
                       .child('orders/' + key)
                       .once('value', snapshot => {
-                        const obj = snapshot.val();
+                        const obj = snapshot.val()
                         this.userRef.child('orders/' + key).update({
                           price: parseInt(order.price) +
                             parseInt(obj.original_price),
-                          quantity: parseInt(obj.quantity) + 1,
-                        });
-                      });
+                          quantity: parseInt(obj.quantity) + 1
+                        })
+                      })
                   }}
                 >
                   Bæta við
@@ -137,35 +137,35 @@ class MyOrder extends Component {
             </Row>
           </Col>
         </Row>
-      );
-    });
+      )
+    })
   }
 
-  render() {
-    this.totalPrice = 0;
+  render () {
+    this.totalPrice = 0
     // console.log(this.state);
     return (
-      <div id="my_order">
+      <div id='my_order'>
         <Container>
           {this.renderOrders()}
         </Container>
         {this.state.orderData !== null &&
           !this.state.loading &&
-          <div className="pending_total_order">
+          <div className='pending_total_order'>
             <Row>
-              <Col xs="7">
+              <Col xs='7'>
                 <li>Samtals <span>{this.totalPrice} kr.</span></li>
               </Col>
               <Col
-                xs="5"
+                xs='5'
                 onClick={this.confirmOrder}>
-                  <li>Senda</li>
+                <li>Senda</li>
               </Col>
             </Row>
           </div>}
       </div>
-    );
+    )
   }
 }
 
-export default MyOrder;
+export default MyOrder

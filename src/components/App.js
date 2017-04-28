@@ -1,10 +1,7 @@
+/* Global React ReactDOM */
+
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import Spinner from './Spinner';
 import firebase from './firebase';
 import FoodIndex from './food_index';
@@ -17,13 +14,8 @@ import NotFound from './404';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavbarToggler,
-} from 'reactstrap';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import {Navbar, Nav, NavItem, NavbarToggler} from 'reactstrap';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +32,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       setTimeout(() => {
         this.setState({user});
-      }, 2000)
+      }, 2000);
     });
   }
 
@@ -64,7 +56,7 @@ class App extends Component {
       });
   }
 
-  presentation = props => {
+  presentation = () => {
     const {user} = this.state;
     return (
       <Router>
@@ -72,9 +64,6 @@ class App extends Component {
           {user &&
             <div>
               <Navbar color="faded" light toggleable>
-                {/* <NavbarBrand>
-                  <h2 className="logo"><img src={process.env.PUBLIC_URL + "/img/logo.svg"} /></h2>
-                </NavbarBrand> */}
                 <NavbarToggler right onClick={this.toggle} />
                 {this.state.isOpen
                   ? <div className="popup">
@@ -84,7 +73,7 @@ class App extends Component {
                         </NavItem>
                       </Nav>
                     </div>
-                  : <div></div>}
+                  : <div />}
               </Navbar>
             </div>}
           {user && <Navigation user={user} />}
@@ -92,63 +81,59 @@ class App extends Component {
           {user !== undefined
             ? <div>
                 {/* <Switch> */}
-                  <Route
-                    exact
-                    path="/"
-                    user={user}
-                    render={() => {
+                <Route
+                  exact
+                  path="/"
+                  user={user}
+                  render={() => {
+                    return <Redirect to="/matur" />;
+                  }}
+                />
+
+                <Route
+                  exact
+                  path="/login"
+                  render={() => {
+                    if (user) {
                       return <Redirect to="/matur" />;
-                    }}
+                    } else {
+                      return <SignUpForm />;
+                    }
+                  }}
+                />
+                <PublicRoute
+                  path="/login/code"
+                  component={SignInForm}
+                  user={user}
+                />
+                <PrivateRoute
+                  exact
+                  path="/matur"
+                  component={FoodIndex}
+                  user={user}
+                />
+                <PrivateRoute
+                  exact
+                  path="/drykkir"
+                  component={DrinkIndex}
+                  user={user}
+                />
+                <ReactCSSTransitionGroup
+                  transitionName="fade"
+                  transitionEnterTimeout={300}
+                  transitionLeaveTimeout={300}
+                >
+                  <PrivateRoute
+                    location={location}
+                    key={location.key}
+                    path="/matur/:id"
+                    component={SinglePost}
+                    user={user}
                   />
+                </ReactCSSTransitionGroup>
 
-                  <Route
-                    exact
-                    path="/login"
-                    render={() => {
-                      if (user) {
-                        return <Redirect to="/matur" />;
-                      } else {
-                        return <SignUpForm />;
-                      }
-                    }}
-                  />
-                  <PublicRoute
-                    path="/login/code"
-                    component={SignInForm}
-                    user={user}
-                  />
-                  <PrivateRoute
-                    exact
-                    path="/matur"
-                    component={FoodIndex}
-                    user={user}
-                  />
-                  <PrivateRoute
-                    exact
-                    path="/drykkir"
-                    component={DrinkIndex}
-                    user={user}
-                  />
-                  <ReactCSSTransitionGroup
-                    transitionName="fade"
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}
-                    >
-                    <PrivateRoute
-                      location={location}
-                      key={location.key}
-                      path="/matur/:id"
-                      component={SinglePost}
-                      user={user}
-                    />
-                  </ReactCSSTransitionGroup>
-
-                  <PrivateRoute
-                    path="/myorder"
-                    component={MyOrder}
-                    user={user}
-                  />
-                  {/* <Route path="*" component={NotFound} /> */}
+                <PrivateRoute path="/myorder" component={MyOrder} user={user} />
+                {/* <Route path="*" component={NotFound} /> */}
                 {/* </Switch> */}
               </div>
             : <Spinner />}
