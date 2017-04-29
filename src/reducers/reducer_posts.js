@@ -1,8 +1,6 @@
 // import { FETCH_POSTS } from '../actions/index';
 import { FETCH_DRINKS } from '../actions'
 import { FETCH_FOOD } from '../actions'
-import { FETCH_POST } from '../actions'
-import { FETCH_POST_RELATED } from '../actions'
 import { FETCH_FOOD_OFFER_PROMO } from '../actions'
 import { FETCH_DRINK_OFFER_PROMO } from '../actions'
 import { POST_DATA_UPDATED } from '../actions'

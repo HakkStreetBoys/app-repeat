@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {fetchPost} from '../actions/index';
 // import axios from 'axios';
 import {Button} from 'reactstrap';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import userRefFor from './userRef';
 
 class SinglePost extends Component {
@@ -32,16 +32,15 @@ class SinglePost extends Component {
       return <span>isloading</span>
     }
 
-    const settings = {
-      dots: false,
-      speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      // lazyLoad: true,
-      arrows: false,
-      touchMove: false,
-      initialSlide: 1,
-    };
+    // const settings = {
+    //   dots: false,
+    //   speed: 500,
+    //   slidesToShow: 2,
+    //   slidesToScroll: 1,
+    //   arrows: false,
+    //   touchMove: false,
+    //   initialSlide: 1,
+    // };
     const {post, isLoading, related} = this.props;
     console.log('in render', related);
     if (isLoading) {
@@ -125,9 +124,7 @@ class SinglePost extends Component {
           {related &&
             <div>
               <h3>Eitthvað annað?</h3>
-              {/* <Slider {...settings}>
                 {relatedItems}
-              </Slider> */}
             </div>}
         </div>
       </div>

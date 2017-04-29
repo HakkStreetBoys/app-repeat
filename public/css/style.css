@@ -556,24 +556,6 @@ p {
   font-size: 60px;
 }
 
-.example-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-}
-
-.example-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0;
-}
-
 @font-face {
   font-family: 'RoundLight';
   src: url("../fonts/din-round/din-round-light.eot") format("embedded-opentype"), url("../fonts/din-round/din-round-light.woff") format("woff"), url("../fonts/din-round/din-round-light.ttf") format("truetype");

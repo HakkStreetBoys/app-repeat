@@ -78,6 +78,8 @@ class FoodIndex extends Component {
 
   render() {
 
+    console.log(this.state);
+
     if (this.state.loading) {
       return <Spinner />;
     }

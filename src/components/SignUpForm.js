@@ -38,10 +38,6 @@ class SignUpForm extends Component {
   handleSubmit (event) {
     this.setState({loading: true})
 
-    if (this.state.loading === true) {
-      return <Spinner />
-    }
-
     event.preventDefault()
     console.log(this.state.phone)
     // arrow function til að sleppa við .bind(this)
@@ -59,18 +55,24 @@ class SignUpForm extends Component {
         // const { from } = this.props.location.state || '/';
         const {fireRedirect} = this.state
         fireRedirect && <Redirect to={'/code'} />
+        this.setState({ loading: false })
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
           loading: false,
           isRegistering: true,
-          errorMessage: 'Villa kom upp. Prófaðu aftur'
+          errorMessage: error.response.data.error.message
         })
         console.log(error)
       })
   }
 
   render () {
+
+    if (this.state.loading) {
+      return <Spinner />
+    }
+
     console.log(this.state)
     const {fireRedirect} = this.state
 
@@ -90,7 +92,7 @@ class SignUpForm extends Component {
                 type='number'
                 placeholder='Símanúmer'
                 pattern="[0-9]*"
-                inputmode="numeric"
+                inputMode="numeric"
                 value={this.state.phone}
                 onChange={this.handleChange}
               />
