@@ -724,8 +724,25 @@ p {
 
 .product_container .product_item .product_order {
   position: absolute;
-  bottom: 35px;
+  bottom: 0;
   right: 20px;
+}
+
+.product_container .product_item .product_order .btn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px 10px 0 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+}
+
+.product_container .product_item .product_order .btn span:first-of-type {
+  padding-bottom: 6px;
+  font-size: 18px;
 }
 
 .fade-enter {

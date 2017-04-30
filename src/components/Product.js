@@ -105,7 +105,8 @@ class Product extends Component {
               });
             }}
           >
-            Panta
+            <span>Panta</span>
+            <span><img src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'} /></span>
           </Button>
         </div>
 
