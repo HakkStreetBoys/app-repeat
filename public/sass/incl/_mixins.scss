@@ -9,3 +9,18 @@
   border-radius: 10px;
   box-shadow: 0 0 4px 0 rgba(0,0,0,0.19);
 }
+
+@mixin font-light {
+  font-family: 'canada-type-gibson';
+  font-weight: 300;
+}
+
+@mixin font-regular {
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+}
+
+@mixin font-semibold {
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+}

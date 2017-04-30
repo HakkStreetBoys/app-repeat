@@ -4,6 +4,7 @@ import userRefFor from './userRef'
 // import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty'
 import {Container, Col, Button, Row} from 'reactstrap'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MyOrder extends Component {
   constructor (props) {
@@ -143,27 +144,29 @@ class MyOrder extends Component {
 
   render () {
     this.totalPrice = 0
-    // console.log(this.state);
     return (
-      <div id='my_order'>
-        <Container>
-          {this.renderOrders()}
-        </Container>
-        {this.state.orderData !== null &&
-          !this.state.loading &&
-          <div className='pending_total_order'>
-            <Row>
-              <Col xs='7'>
-                <li>Samtals <span>{this.totalPrice} kr.</span></li>
-              </Col>
-              <Col
-                xs='5'
-                onClick={this.confirmOrder}>
-                <li>Senda</li>
-              </Col>
-            </Row>
-          </div>}
-      </div>
+      <ReactCSSTransitionGroup
+        transitionName="example"
+        transitionAppear={true}
+        transitionAppearTimeout={200}
+        transitionEnter={true}
+        transitionLeave={false}
+        >
+        <div id='my_order'>
+          <Container>
+            {this.renderOrders()}
+          </Container>
+          <div className="pending_total_order">
+            {/* <Button color="success"> */}
+            {this.state.orderData !== null && !this.state.loading &&
+              <div className="pending_total_order_inner">
+              <p>Samtals <span className="total_price">{this.totalPrice} kr.</span></p>
+              <Button color="success" size="md">Senda <span>Pöntun</span></Button>
+            </div>}
+          </div>
+        </div>
+      </ReactCSSTransitionGroup>
+
     )
   }
 }

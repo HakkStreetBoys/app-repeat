@@ -15,7 +15,7 @@ html, body {
 }
 
 body {
-  font-family: $font_bold;
+  font-family: 'canada-type-gibson';
   -webkit-font-smoothing: antialiased;
   background-color: $bg_color;
 }
@@ -29,11 +29,14 @@ body {
 
 h2 {
   font-size: 24px;
+  color: $text_color;
+  @include font-semibold;
 }
 
 p {
-  font-family: $font_regular;
+  @include font-regular;
   font-size: 18px;
+  color: $text_color;
 }
 
 // .container {
@@ -94,3 +97,16 @@ p {
   }
 }
 @import 'incl/partials/partials';
+
+
+.example-appear {
+  opacity: .07;
+  transform: scale(.3);
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .25s ease-in;
+  transform: scale(1);
+}

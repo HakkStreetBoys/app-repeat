@@ -47,7 +47,7 @@
 
   .single_price {
     font-size: 24px;
-    font-family: $font_light;
+    @include font-light;
   }
 }
 
