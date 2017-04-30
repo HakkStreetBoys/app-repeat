@@ -68,7 +68,6 @@ class SignUpForm extends Component {
   }
 
   render () {
-
     if (this.state.loading) {
       return <Spinner />
     }
@@ -91,8 +90,8 @@ class SignUpForm extends Component {
               <Input
                 type='number'
                 placeholder='Símanúmer'
-                pattern="[0-9]*"
-                inputMode="numeric"
+                pattern='[0-9]*'
+                inputMode='numeric'
                 value={this.state.phone}
                 onChange={this.handleChange}
               />

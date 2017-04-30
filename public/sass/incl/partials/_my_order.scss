@@ -1,8 +1,75 @@
 .my_order {
+
+  .myorder_exit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
   .navigation {
     filter: blur(3px);
     // opacity: 0;
     // visibility: hidden;
+  }
+
+  .nav-tabs {
+    position: relative;
+    z-index: 1;
+    border-bottom: 0;
+
+    .nav-link {
+      color: #fff;
+      opacity: .65;
+      background-color: none;
+      border: 0;
+      border-color: none;
+      font-size: 24px;
+      padding: 0.5em;
+      @include font-regular;
+    }
+
+    .nav-link .active {
+      opacity: 1;
+      border: 0;
+      border-color: none;
+      background: none;
+    }
+  }
+
+  .tab-content > .tab-pane {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+
+    .container {
+      transform: translateX(100%);
+    }
+
+    .pending_total_order_inner {
+      transform: translate(-50%, 100%);
+    }
+  }
+
+  .tab-content > .active {
+    opacity: 1;
+    visibility: visible;
+    // transform: translateX(0);
+
+    .container {
+      transform: translateX(0);
+    }
+
+    .pending_total_order_inner {
+      transform: translate(-50%, 0%);
+    }
+  }
+
+  .nav-tabs .nav-link.active {
+    background: none;
+    opacity: 1;
+    color: #fff !important;
+    @include font-semibold;
   }
 
   .navbar {
@@ -24,8 +91,11 @@
   .container {
     z-index: 999;
     height: 100%;
-    max-height: 75%;
+    max-height: 65%;
     overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    transition: .25s cubic-bezier(0.52, -0.37, 0.13, 1.22);
 
     .btn-danger {
       color: $main_red;
@@ -141,8 +211,10 @@
     .pending_total_order_inner {
       position: absolute;
       left: 50%;
-      transform: translate(-50%);
+      // transform: translateX(-50%);
       bottom: -10px;
+      transition: .25s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+      transition-delay: .2s;
 
       p {
         @include font-light;

@@ -3,7 +3,7 @@ import axios from 'axios'
 import firebase from 'firebase'
 import { Container, Form, FormGroup, Input, Button, Alert } from 'reactstrap'
 import SignUpForm from './SignUpForm'
-import Spinner from './Spinner';
+import Spinner from './Spinner'
 
 const ROOT_AUTH_URL = 'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
 
@@ -22,7 +22,7 @@ class SignInForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.setState({ loading: false })
   }
 
@@ -62,9 +62,9 @@ class SignInForm extends Component {
 
   render () {
     console.log(SignUpForm.phone)
-    console.log(this.state);
+    console.log(this.state)
 
-    if(this.state.loading) {
+    if (this.state.loading) {
       return <Spinner />
     }
 

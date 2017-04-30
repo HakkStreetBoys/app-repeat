@@ -816,8 +816,75 @@ p {
   max-height: 140px;
 }
 
+.my_order .myorder_exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
 .my_order .navigation {
   filter: blur(3px);
+}
+
+.my_order .nav-tabs {
+  position: relative;
+  z-index: 1;
+  border-bottom: 0;
+}
+
+.my_order .nav-tabs .nav-link {
+  color: #fff;
+  opacity: .65;
+  background-color: none;
+  border: 0;
+  border-color: none;
+  font-size: 24px;
+  padding: 0.5em;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+}
+
+.my_order .nav-tabs .nav-link .active {
+  opacity: 1;
+  border: 0;
+  border-color: none;
+  background: none;
+}
+
+.my_order .tab-content > .tab-pane {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.my_order .tab-content > .tab-pane .container {
+  transform: translateX(100%);
+}
+
+.my_order .tab-content > .tab-pane .pending_total_order_inner {
+  transform: translate(-50%, 100%);
+}
+
+.my_order .tab-content > .active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.my_order .tab-content > .active .container {
+  transform: translateX(0);
+}
+
+.my_order .tab-content > .active .pending_total_order_inner {
+  transform: translate(-50%, 0%);
+}
+
+.my_order .nav-tabs .nav-link.active {
+  background: none;
+  opacity: 1;
+  color: #fff !important;
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
 }
 
 .my_order .navbar {
@@ -839,8 +906,11 @@ p {
 #my_order .container {
   z-index: 999;
   height: 100%;
-  max-height: 75%;
+  max-height: 65%;
   overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  transition: 0.25s cubic-bezier(0.52, -0.37, 0.13, 1.22);
 }
 
 #my_order .container .btn-danger {
@@ -944,8 +1014,9 @@ p {
 #my_order .pending_total_order .pending_total_order_inner {
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
   bottom: -10px;
+  transition: 0.25s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+  transition-delay: .2s;
 }
 
 #my_order .pending_total_order .pending_total_order_inner p {
