@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0,1);
     firebase.auth().onAuthStateChanged(user => {
       setTimeout(() => {
         this.setState({user});

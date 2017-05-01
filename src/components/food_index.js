@@ -4,17 +4,28 @@ import {connect} from 'react-redux';
 import {fetchFood, fetchFoodPromo} from '../actions/index';
 import userRefFor from './userRef';
 import Product from './Product';
-import { Button } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalHeader, FormGroup, Input } from 'reactstrap';
 import Spinner from './Spinner';
 import Logo from './Logo';
 
 class FoodIndex extends Component {
   state = {
     loading: true,
+    modal: false,
+    tableNumber: '1'
   };
 
   componentDidMount() {
     this.userRef = userRefFor(this.props.user);
+    this.userRef.on('value', snapshot => {
+      const obj = snapshot.val()
+      console.log(obj)
+
+      if (!obj.tableNumber) {
+        this.setState({ modal: !this.state.modal })
+      }
+
+    })
     this.props.fetchFood();
     this.props.fetchFoodPromo();
     setTimeout(() => {
@@ -71,9 +82,23 @@ class FoodIndex extends Component {
           userRef={userRef}
           category={this.menu_cat}
           uid={this.props.user.uid}
+          tableNumber={this.state.tableNumber}
         />
       );
     });
+  }
+
+  handleChange(e) {
+    this.setState({ tableNumber: e.target.value })
+  }
+
+  toggle() {
+
+    this.setState({ modal: !this.state.modal })
+
+    this.userRef.update({
+      tableNumber: this.state.tableNumber
+    })
   }
 
   render() {
@@ -88,6 +113,30 @@ class FoodIndex extends Component {
     return (
       <div>
         <Logo />
+         <Modal isOpen={this.state.modal}>
+           <ModalHeader toggle={this.toggle}>Veldu borðnúmer</ModalHeader>
+           <ModalBody>
+             <FormGroup>
+               <Input
+                 type='select'
+                 value={this.state.tableNumber}
+                 onChange={this.handleChange.bind(this)}
+               >
+                 <option>1</option>
+                 <option>2</option>
+                 <option>3</option>
+                 <option>4</option>
+                 <option>5</option>
+                 <option>6</option>
+                 <option>7</option>
+                 <option>8</option>
+                 <option>9</option>
+               </Input>
+
+             </FormGroup>
+             <Button color="primary" onClick={this.toggle.bind(this)}>Staðfesta</Button>
+          </ModalBody>
+         </Modal>
         {this.renderOffer()}
         <div className="product_container">
           {this.renderFood()}
