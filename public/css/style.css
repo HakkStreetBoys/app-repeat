@@ -1164,7 +1164,7 @@ p {
 }
 
 .payment .container .payment_option_bg:nth-child(2) {
-  opacity: .75;
+  opacity: .2;
 }
 
 .payment .container .payment_option_bg img, .payment .container .payment_option_bg span {

@@ -96,7 +96,6 @@ class Product extends Component {
                     status_pay: 0,
                     date: Date(),
                     createdAt: Date.now(),
-                    table_number: this.props.tableNumber,
                     userID: this.props.uid,
                     quantity: 1,
                     original_price: menu_price

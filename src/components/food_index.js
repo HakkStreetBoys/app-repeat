@@ -97,7 +97,8 @@ class FoodIndex extends Component {
     this.setState({ modal: !this.state.modal })
 
     this.userRef.update({
-      tableNumber: this.state.tableNumber
+      tableNumber: this.state.tableNumber,
+      totalPrice: 0
     })
   }
 
