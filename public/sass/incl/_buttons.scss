@@ -9,10 +9,25 @@
   padding: 10 15px;
 }
 
+.main-btn {
+  padding: 10px 30px 20px 30px;
+  @include font-regular;
+  font-size: 20px;
+
+  span {
+    display: block;
+  }
+}
+
 .btn-success {
   font-size: 16px;
   background-color: $main_color;
   // font-family: $font_regular;
+}
+.btn-success.disabled, .btn-success:disabled {
+  background-color: $main_color;
+  border-color: $main_color;
+  opacity: .5;
 }
 
 .btn-danger {

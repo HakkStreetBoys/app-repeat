@@ -39,6 +39,18 @@ p {
   color: $text_color;
 }
 
+.my_order, .pay {
+  .navbar {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  .navigation {
+    filter: blur(3px);
+  }
+}
+
 // .container {
 //   width: 100%;
 //   max-width: 90%;

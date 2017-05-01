@@ -267,9 +267,12 @@ class MyOrder extends Component {
                       {' '}
                       <span className="total_price">{this.confirmedPrice} kr.</span>
                     </p>
-                    <Button color="success" size="md">
-                      Borga
-                    </Button>
+                    <Link to="/payment">
+                      <Button color="success" size="md">
+                        Borga
+                      </Button>
+                    </Link>
+
                   </div>}
               </div>
             </TabPane>

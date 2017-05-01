@@ -441,9 +441,26 @@ template {
   padding: 10 15px;
 }
 
+.main-btn {
+  padding: 10px 30px 20px 30px;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.main-btn span {
+  display: block;
+}
+
 .btn-success {
   font-size: 16px;
   background-color: #00AB6B;
+}
+
+.btn-success.disabled, .btn-success:disabled {
+  background-color: #00AB6B;
+  border-color: #00AB6B;
+  opacity: .5;
 }
 
 .btn-danger {
@@ -510,6 +527,16 @@ p {
   font-weight: 400;
   font-size: 18px;
   color: #4A4A4A;
+}
+
+.my_order .navbar, .pay .navbar {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.my_order .navigation, .pay .navigation {
+  filter: blur(3px);
 }
 
 @keyframes bounce {
@@ -840,10 +867,6 @@ p {
   z-index: 999;
 }
 
-.my_order .navigation {
-  filter: blur(3px);
-}
-
 .my_order .nav-tabs {
   position: relative;
   z-index: 1;
@@ -902,12 +925,6 @@ p {
   color: #fff !important;
   font-family: 'canada-type-gibson';
   font-weight: 600;
-}
-
-.my_order .navbar {
-  opacity: 0;
-  visibility: hidden;
-  display: none;
 }
 
 #my_order {
@@ -1110,6 +1127,127 @@ p {
   text-align: center;
   margin: 0 auto;
   margin-bottom: 40px;
+}
+
+.payment {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.payment .container {
+  z-index: 1;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.payment .container h2 {
+  color: #fff;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+}
+
+.payment .container .payment_option {
+  margin-top: 40px;
+}
+
+.payment .container .payment_option_bg {
+  width: 180px;
+  height: 64px;
+  background: #fff;
+  position: relative;
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.payment .container .payment_option_bg:nth-child(2) {
+  opacity: .75;
+}
+
+.payment .container .payment_option_bg img, .payment .container .payment_option_bg span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+}
+
+.payment .container .kass_bg img:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.payment .container .kass_selected {
+  background: #00AB6B;
+  transition: .2s ease-in-out;
+}
+
+.payment .container .kass_selected img:nth-child(2) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.payment .container .kass_selected img:nth-child(1) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.payment .payment_shape {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  left: -41%;
+  bottom: -2px;
+  width: 180%;
+  background-color: #343845;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  border-top: 0;
+  overflow: hidden;
+  bottom: 25px;
+}
+
+.payment .payment_shape_inner {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+}
+
+.payment_submit .container {
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.payment_submit .container input {
+  padding: 30px 15px 15px 15px;
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+  color: #343845;
+  font-size: 18px;
+  position: relative;
+  background: #fff;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.payment_submit .container input:focus {
+  outline: none !important;
+}
+
+.payment_submit .container input:focus::-webkit-input-placeholder {
+  transition: all .2s ease-in-out;
+  font-size: 16px;
+  opacity: .7;
+  transform: translateY(-25px);
 }
 
 .sign_up {

@@ -10,6 +10,8 @@ import SinglePost from './single_post';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
 import MyOrder from './MyOrder';
+import PaymentOption from './PaymentOption';
+import PaymentSubmit from './PaymentSubmit';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
@@ -125,6 +127,8 @@ class App extends Component {
                   />
 
                 <PrivateRoute path="/myorder" component={MyOrder} user={user} />
+                <PrivateRoute exact path="/payment" component={PaymentOption} user={user} />
+                <PrivateRoute path="/payment/submit" component={PaymentSubmit} user={user} />
               </div>
             : <Spinner />}
         </div>

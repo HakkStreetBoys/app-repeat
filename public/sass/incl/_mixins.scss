@@ -24,3 +24,27 @@
   font-family: 'canada-type-gibson';
   font-weight: 600;
 }
+
+@mixin shape-radius {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  left: -41%;
+  bottom: -2px;
+  width: 180%;
+  background-color: #343845;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  border-top: 0;
+  overflow: hidden;
+  bottom: 25px;
+}
+
+@mixin shape-radius-inner {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+}
