@@ -98,7 +98,8 @@ class Product extends Component {
                     createdAt: Date.now(),
                     userID: this.props.uid,
                     quantity: 1,
-                    original_price: menu_price
+                    original_price: menu_price,
+                    table_number: this.props.tableNumber
                   });
                 }
               });

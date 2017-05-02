@@ -13,10 +13,14 @@ import Logo from './Logo';
 class DrinkIndex extends Component {
   state = {
     loading: true,
+    tableNumber: null
   };
 
   componentDidMount() {
     this.userRef = userRefFor(this.props.user);
+    this.userRef.on('value', snapshot => {
+      this.setState({ tableNumber: snapshot.val().tableNumber })
+    })
     this.props.fetchDrinks();
     this.props.fetchDrinkPromo();
     setTimeout(() => {
@@ -26,6 +30,7 @@ class DrinkIndex extends Component {
 
   componentWillUnmount() {
     this.userRef.child('orders/').off();
+    this.userRef.off();
   }
 
   renderOffer() {
@@ -71,6 +76,7 @@ class DrinkIndex extends Component {
           userRef={userRef}
           category={this.menu_cat}
           uid={this.props.user.uid}
+          tableNumber={this.state.tableNumber}
         />
       );
     });
