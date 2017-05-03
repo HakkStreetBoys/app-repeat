@@ -245,6 +245,7 @@ class MyOrder extends Component {
                       <span className="total_price">{this.totalPrice} kr.</span>
                     </p>
                     <Button
+                      className="main-btn"
                       onClick={this.confirmOrder}
                       color="success"
                       size="md"
@@ -272,7 +273,7 @@ class MyOrder extends Component {
                         this.userRef.update({
                           totalPrice: this.confirmedPrice
                         })
-                      }} color="success" size="md">
+                      }} color="success" className="main-btn" size="md">
                         Borga
                       </Button>
                     </Link>

@@ -12,7 +12,8 @@ class PaymentSubmit extends Component {
     this.state = {
       phone: this.props.user.uid,
       totalPrice: 0,
-      status: null
+      status: null,
+      loading: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +31,8 @@ class PaymentSubmit extends Component {
   }
 
   componentWillUnmount() {
-    // document.getElementById('body').className = '';
+    document.getElementById('body').className = '';
+    this.userRef.off()
   }
 
   handleChange(e) {
@@ -38,6 +40,7 @@ class PaymentSubmit extends Component {
   }
 
   handleSubmit(e) {
+    this.setState({ loading: true })
     e.preventDefault();
     axios.post(`http://localhost:3001`, {
       phone: this.state.phone,
@@ -45,7 +48,7 @@ class PaymentSubmit extends Component {
     })
     .then((res) => {
       console.log(res)
-      this.setState({ status: res.data })
+      this.setState({ status: res.data, loading: false })
     })
     console.log('state is ' + this.state.phone);
   }
@@ -54,8 +57,9 @@ class PaymentSubmit extends Component {
     console.log(this.state);
     return (
       <div className="payment payment_submit">
-        <Container>
-          <FormGroup>
+        {this.state.status === null &&
+          <Container>
+            <FormGroup>
             <Input
               type="number"
               pattern="[0-9]*"
@@ -64,7 +68,30 @@ class PaymentSubmit extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-        </Container>
+        </Container>}
+
+        {this.state.loading &&
+          <div className="payment_loading">
+          <p>Reikningurinn var sendur á númerið. Kíktu í Kass-appið til að borga.</p>
+        </div>}
+
+        {this.state.status &&
+        <div className="payment_status">
+          {this.state.status === 'Greiðsla staðfest' ?
+          <div className="payment_status_success">
+            <div>
+              {this.state.status}
+            </div>
+            <p>Greiðsla staðfest! Takk fyrir að koma. Hlökkum til að fá þig aftur.</p>
+          </div> :
+          <div className="payment_status_error">
+            <div>
+              {this.state.status}
+            </div>
+            <p>Greiðslu hafnað. Villuskilaboð koma hér</p>
+          </div>}
+
+        </div>}
 
         <div className="payment_shape">
           <div className="payment_shape_inner">

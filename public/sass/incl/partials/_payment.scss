@@ -104,4 +104,42 @@
       transform: translateY(-25px);
     }
   }
+
+  .payment_status {
+    color: #fff;
+    z-index: 1;
+    position: relative;
+    text-align: center;
+
+    .payment_status_success, .payment_status_error {
+      padding: 60px 0;
+
+      div {
+        font-size: 24px;
+        @include font-semibold;
+        margin-bottom: 40px;
+      }
+
+      p {
+        font-size: 24px;
+        @include font-regular;
+      }
+    }
+
+    .payment_status_success {
+      div {
+        background: $main_color;
+      }
+    }
+
+    .payment_status_error {
+      div {
+        background: $main_red;
+      }
+    }
+
+    p {
+      color: #fff;
+    }
+  }
 }

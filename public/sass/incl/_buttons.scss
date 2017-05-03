@@ -30,6 +30,18 @@
   opacity: .5;
 }
 
+.btn-success:active {
+  background-color: $main_color;
+  border-color: none;
+  border: 0;
+}
+
+.btn-success:hover {
+  background-color: $main_color;
+  border-color: none;
+  border: 0;
+}
+
 .btn-danger {
   background: $main_red;
   // font-size: 20px;

@@ -235,3 +235,20 @@
     }
   }
 }
+
+
+@media screen and (min-width: $screen-sm) {
+  .product_container {
+    .product_item {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-lg) {
+  .product_container {
+    .product_item {
+      width: 33.3333%;
+    }
+  }
+}

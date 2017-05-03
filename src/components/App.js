@@ -1,7 +1,7 @@
 /* Global React ReactDOM */
 
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Spinner from './Spinner';
 import firebase from './firebase';
 import FoodIndex from './food_index';
@@ -80,7 +80,7 @@ class App extends Component {
 
           {user !== undefined
             ? <div>
-                {/* <Switch> */}
+                <Switch>
                 <Route
                   exact
                   path="/"
@@ -129,6 +129,7 @@ class App extends Component {
                 <PrivateRoute path="/myorder" component={MyOrder} user={user} />
                 <PrivateRoute exact path="/payment" component={PaymentOption} user={user} />
                 <PrivateRoute path="/payment/submit" component={PaymentSubmit} user={user} />
+                </Switch>
               </div>
             : <Spinner />}
         </div>
