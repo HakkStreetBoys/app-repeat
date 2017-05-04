@@ -13,7 +13,7 @@ class Navigation extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillReceiveProps() {
     this.userRef = userRefFor(this.props.user)
     this.userRef
       .child('orders/').on('value', snapshot => {
@@ -34,7 +34,7 @@ class Navigation extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.items);
     return (
       <div className='navigation'>
         <nav>

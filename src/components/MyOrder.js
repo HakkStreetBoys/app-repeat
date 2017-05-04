@@ -79,14 +79,20 @@ class MyOrder extends Component {
 
     if (this.state.orderConfirmed === true) {
       return (
-        <div>
-          <div>ORDER CONFIRMED</div>
+        <div className="order_confirmed">
+          <p>Pöntun móttekin!</p>
+          <img src={process.env.PUBLIC_URL + '/img/order_confirmed.svg'} alt='' />
+          <p>Þú getur haft það rólegt og pantað meira. Svo þegar þú ert tilbúinn að borga getur þú gert það undir "Reikningur"</p>
+          <div>
+          </div>
           <div
             onClick={() => {
               this.setState({orderConfirmed: false});
             }}
           >
-            Loka
+            <Button color="success" size="md">
+              Loka
+            </Button>
           </div>
         </div>
       );

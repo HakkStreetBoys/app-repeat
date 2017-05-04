@@ -1153,6 +1153,30 @@ p {
   margin-bottom: 40px;
 }
 
+#my_order .order_confirmed {
+  color: #fff;
+  text-align: center;
+  margin-top: 80px;
+}
+
+#my_order .order_confirmed p {
+  color: #fff;
+  margin: 0;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+#my_order .order_confirmed p:first-of-type {
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+}
+
+#my_order .order_confirmed img {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .payment {
   position: fixed;
   width: 100%;

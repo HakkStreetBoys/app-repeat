@@ -279,4 +279,27 @@
 
 
   }
+
+  .order_confirmed {
+    color: #fff;
+    text-align: center;
+    margin-top: 80px;
+
+    p {
+      color: #fff;
+      margin: 0;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+
+      &:first-of-type {
+        @include font-semibold;
+      }
+    }
+
+    img {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
 }
