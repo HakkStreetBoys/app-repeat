@@ -1198,7 +1198,7 @@ p {
 .slide-leave.slide-leave-active {
   transform: translateX(100%);
   opacity: 0;
-  transition: 0.25s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+  transition: 0.4s cubic-bezier(0.52, -0.37, 0.13, 1.22);
 }
 
 .payment {
