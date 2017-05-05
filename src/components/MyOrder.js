@@ -242,7 +242,7 @@ class MyOrder extends Component {
                 <ReactCSSTransitionGroup
                   component="div"
                   transitionName="slide"
-                  transitionLeaveTimeout={3000}
+                  transitionLeaveTimeout={200}
                   transitionEnter={false}
                   transitionLeave={true}
                   >

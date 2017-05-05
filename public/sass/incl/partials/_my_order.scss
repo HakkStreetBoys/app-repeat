@@ -80,6 +80,7 @@
     z-index: 999;
     height: 100%;
     max-height: 65%;
+    overflow: hidden;
     overflow-y: auto;
     position: absolute;
     width: 100%;
@@ -325,5 +326,5 @@
 .slide-leave.slide-leave-active {
   transform: translateX(100%);
   opacity: 0;
-  transition: .5s ease-in;
+  transition: .25s cubic-bezier(0.52, -0.37, 0.13, 1.22)
 }
