@@ -306,6 +306,7 @@
 }
 
 
+
 /* start enter state */
 .slide-enter {
   transform: translateX(-100%);
@@ -328,3 +329,36 @@
   opacity: 0;
   transition: .4s cubic-bezier(0.52, -0.37, 0.13, 1.22)
 }
+
+
+
+.empty-delay {
+  .col-12 {
+    opacity: 1;
+    display: block;
+  }
+}
+
+.delay-appear {
+  opacity: 0;
+  display: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  width: 200%;
+  /* width: 120px; */
+  height: 107%;
+  /* height: 120px; */
+  background: #254440;
+  z-index: 9999;
+  /* transform: scale(.5); */
+  border-radius: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+
+// TODO: col-12 delay-appear delay-appear-active

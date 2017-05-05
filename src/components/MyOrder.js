@@ -74,7 +74,19 @@ class MyOrder extends Component {
 
   renderOrders() {
     if (this.state.orderData === null && this.state.orderConfirmed === false) {
-      return <MyOrderEmpty />;
+      return (
+        <ReactCSSTransitionGroup
+          component="div"
+          className="empty_delay"
+          transitionName="delay"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnter={false}
+          transitionLeave={false}
+          >
+          <MyOrderEmpty />
+        </ReactCSSTransitionGroup>
+      )
     }
 
     if (this.state.orderConfirmed === true) {
