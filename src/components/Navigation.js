@@ -13,8 +13,10 @@ class Navigation extends Component {
     }
   }
 
-  componentWillReceiveProps() {
+  componentWillMount() {
+    console.log('will receive props')
     this.userRef = userRefFor(this.props.user)
+    this.userRef.child('orders').off()
     this.userRef
       .child('orders/').on('value', snapshot => {
         const obj = snapshot.val()
@@ -30,7 +32,7 @@ class Navigation extends Component {
   }
 
   componentWillUnmount() {
-    this.userRef.child('orders').off()
+    // this.userRef.child('orders').off()
   }
 
   render() {

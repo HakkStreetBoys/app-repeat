@@ -57,7 +57,7 @@ class MyOrder extends Component {
 
   componentWillUnmount() {
     document.getElementById('body').className = '';
-    this.userRef.child('orders/').off();
+    // this.userRef.child('orders/').off();
   }
 
   confirmOrder() {
@@ -239,7 +239,16 @@ class MyOrder extends Component {
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
               <Container>
-                {this.renderOrders()}
+                <ReactCSSTransitionGroup
+                  component="div"
+                  transitionName="slide"
+                  transitionLeaveTimeout={3000}
+                  transitionEnter={false}
+                  transitionLeave={true}
+                  >
+                    {this.renderOrders()}
+
+                </ReactCSSTransitionGroup>
               </Container>
               <div className="pending_total_order">
                 {this.state.orderData !== null &&

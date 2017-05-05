@@ -29,8 +29,8 @@ class DrinkIndex extends Component {
   }
 
   componentWillUnmount() {
-    this.userRef.child('orders/').off();
-    this.userRef.off();
+    // this.userRef.child('orders/').off();
+    // this.userRef.off();
   }
 
   renderOffer() {
