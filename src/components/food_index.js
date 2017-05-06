@@ -12,11 +12,14 @@ class FoodIndex extends Component {
   state = {
     loading: true,
     modal: false,
-    tableNumber: '1'
+    tableNumber: null
   };
 
   componentDidMount() {
     this.userRef = userRefFor(this.props.user);
+    this.userRef.on('value', snapshot => {
+      this.setState({ tableNumber: snapshot.val().tableNumber })
+    })
     this.userRef.on('value', snapshot => {
       const obj = snapshot.val()
       console.log(obj)

@@ -11,12 +11,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 class SinglePost extends Component {
 
   state = {
-    loading: true
+    loading: true,
+    tableNumber: null
   }
 
   componentDidMount() {
     document.getElementById('body').className='single_page';
     this.userRef = userRefFor(this.props.user);
+    this.userRef.on('value', snapshot => {
+      this.setState({ tableNumber: snapshot.val().tableNumber })
+    })
     this.props.fetchPost(this.props.match.params.id);
     console.log(this.props);
     this.setState({ loading: false })
@@ -68,8 +72,12 @@ class SinglePost extends Component {
     }
 
     this.menu_cat = post.menu_cat[0];
-    if (this.menu_cat !== 9) {
-      this.menu_cat = 'matur';
+    if (this.menu_cat === 9) {
+      this.menu_cat = 'drykkur'
+    } else if (this.menu_cat === 8) {
+      this.menu_cat = 'matur'
+    } else {
+      this.menu_cat = 'eitthvadannadenmaturogdrykkur'
     }
 
     return (
@@ -98,18 +106,40 @@ class SinglePost extends Component {
                 color="success"
                 size="md"
                 onClick={() => {
-                  this.userRef.child('orders').push({
-                    title: menu_title,
-                    price: menu_price,
-                    category: this.menu_cat,
-                    productID: this.props.post.id,
-                    status_food: 0,
-                    status_drink: 0,
-                    status_pay: 0,
-                    date: Date(),
-                    createdAt: Date.now(),
-                    table_number: 7,
-                    userID: this.props.user.uid,
+                  let doesExist = false;
+                  this.userRef.child('orders/').once('value', snapshot => {
+                    const obj = snapshot.val();
+                    console.log(obj);
+                    for (var variable in obj) {
+                      if (obj && obj[variable].productID === this.props.post.id) {
+                        console.log('exists');
+                        doesExist = true;
+                        this.userRef.child('orders/' + variable).update({
+                          price: parseInt(obj[variable].price) +
+                            parseInt(menu_price),
+                          quantity: parseInt(obj[variable].quantity) + 1,
+                        });
+                      } else {
+                        console.log('not exist');
+                      }
+                    }
+                    console.log(this.userRef.child('orders/'));
+                    if (!doesExist) {
+                      this.userRef.child('orders').push({
+                        title: menu_title,
+                        price: menu_price,
+                        category: this.menu_cat,
+                        productID: this.props.post.id,
+                        status_item: 0,
+                        status_pay: 0,
+                        date: Date(),
+                        createdAt: Date.now(),
+                        userID: this.props.user.uid,
+                        quantity: 1,
+                        original_price: menu_price,
+                        table_number: this.state.tableNumber
+                      });
+                    }
                   });
                 }}
               >
@@ -143,3 +173,20 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {fetchPost})(SinglePost);
+
+
+
+
+
+// title: menu_title,
+// price: menu_price,
+// category: this.menu_cat,
+// productID: this.props.post.id,
+// status_item: 0,
+// status_pay: 0,
+// date: Date(),
+// createdAt: Date.now(),
+// userID: this.props.user.uid,
+// quantity: 1,
+// original_price: menu_price,
+// table_number: this.state.tableNumber

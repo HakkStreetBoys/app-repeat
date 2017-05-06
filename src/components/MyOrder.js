@@ -91,7 +91,15 @@ class MyOrder extends Component {
 
     if (this.state.orderConfirmed === true) {
       return (
-        <div className="order_confirmed">
+        <ReactCSSTransitionGroup
+          component="div"
+          className="order_confirmed"
+          transitionName="delay"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnter={false}
+          transitionLeave={false}
+          >
           <p>Pöntun móttekin!</p>
           <img src={process.env.PUBLIC_URL + '/img/order_confirmed.svg'} alt='' />
           <p>Þú getur haft það rólegt og pantað meira. Svo þegar þú ert tilbúinn að borga getur þú gert það undir "Reikningur"</p>
@@ -106,7 +114,7 @@ class MyOrder extends Component {
               Loka
             </Button>
           </div>
-        </div>
+        </ReactCSSTransitionGroup>
       );
     }
 
