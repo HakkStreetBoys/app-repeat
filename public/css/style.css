@@ -1384,27 +1384,61 @@ p {
   color: #fff;
 }
 
+.signup_page div {
+  height: 100%;
+}
+
 .sign_up {
   background: #343845;
-  height: 100vh;
+  height: 100%;
+  background-image: url("../img/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sign_up .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(52, 56, 69, 0.92);
 }
 
 .sign_up .login_logo {
   width: 120px;
   margin-top: 20px;
+  position: relative;
 }
 
 .sign_up .container {
-  height: 75%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  height: auto;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign_up .container .btn {
+  transform: translateY(6px);
+  padding-bottom: 30px;
 }
 
 .sign_up .container form {
   width: 100%;
   max-width: 90%;
+  margin: 0 auto;
+}
+
+.sign_up .container form .form-group {
+  margin-bottom: 3.5rem;
 }
 
 .sign_up .container form input {
@@ -1429,6 +1463,12 @@ p {
   font-size: 16px;
   opacity: .7;
   transform: translateY(-40px);
+}
+
+@media screen and (min-width: 768px) {
+  .sign_up .container form {
+    max-width: 50%;
+  }
 }
 
 .navigation {
@@ -1608,4 +1648,25 @@ p {
   transform: translateY(0);
   transition: opacity .25s ease-in;
   transform: scale(1);
+}
+
+.modal {
+  top: auto;
+  bottom: 0;
+}
+
+.modal .close {
+  display: none;
+}
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal.fade .modal-dialog {
+  transform: translate(0, 110%);
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0);
 }

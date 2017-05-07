@@ -122,3 +122,24 @@ p {
   transition: opacity .25s ease-in;
   transform: scale(1);
 }
+
+.modal {
+  top: auto;
+  bottom: 0;
+
+  .close {
+    display: none;
+  }
+}
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal.fade .modal-dialog {
+  transform: translate(0, 110%)
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0);
+}

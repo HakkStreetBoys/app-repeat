@@ -1,26 +1,69 @@
+.signup_page {
+  div {
+    height: 100%;
+  }
+}
+
 .sign_up {
   background: $main_blue;
-  height: 100vh;
+  height: 100%;
   // background-image: url('../img/bg_art.svg');
   // background-position: center;
   // background-repeat: no-repeat;
+  background-image: url('../img/login-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($main_blue, .92);
+  }
 
   .login_logo {
     width: 120px;
     margin-top: 20px;
+    position: relative;
   }
 
   .container {
-    height: 75%;
+    // height: 75%;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: center;
+    // flex-direction: column;
+
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    height: auto;
+    justify-content: center;
+    width: 100%;
+
+    .btn {
+      transform: translateY(6px);
+      padding-bottom: 30px;
+    }
 
 
     form {
       width: 100%;
       max-width: 90%;
+      margin: 0 auto;
+
+      .form-group {
+        margin-bottom: 3.5rem;
+      }
 
       input {
         padding: 50px 20px 20px 20px;
@@ -42,6 +85,17 @@
         font-size: 16px;
         opacity: .7;
         transform: translateY(-40px);
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: $screen-sm) {
+  .sign_up {
+    .container {
+      form {
+        max-width: 50%;
       }
     }
   }
