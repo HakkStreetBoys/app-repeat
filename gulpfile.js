@@ -1,5 +1,7 @@
 var gulp = require('gulp')
 var sass = require('gulp-sass')
+var cleanCSS = require('gulp-clean-css')
+var rename = require('gulp-rename')
 
 var input = './public/sass/**/*.scss'
 var output = './public/css'
@@ -9,7 +11,7 @@ var sassOptions = {
   outputStyle: 'expanded'
 }
 
-gulp.task('default', ['sass', 'watch'])
+gulp.task('default', ['sass', 'watch', 'minify-css'])
 
 gulp.task('sass', function () {
   return gulp
@@ -29,3 +31,15 @@ gulp.task('watch', function () {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
     })
 })
+
+gulp.task('minify-css', function() {
+    return gulp.src('public/css/*.css')
+        .pipe(cleanCSS({debug: true}, function(details) {
+            console.log(details.name + ': ' + details.stats.originalSize);
+            console.log(details.name + ': ' + details.stats.minifiedSize);
+        }))
+        .pipe(rename({
+          suffix: '.min'
+        }))
+        .pipe(gulp.dest(output));
+});
