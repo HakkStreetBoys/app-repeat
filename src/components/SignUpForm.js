@@ -38,13 +38,6 @@ class SignUpForm extends Component {
 		this.state.phone.length > 6
 			? this.setState({ isRegistering: false })
 			: this.setState({ isRegistering: true })
-
-			// if (this.state.phone.substring(0,3) === '354') {
-			// 	console.log('blah');
-			// 	// this.state.phone.slice(3)
-			// 	// console.log(this.state.phone.slice(3))
-			// 	this.setState({ phone: this.state.phone.slice(3) })
-			// }
 	}
 
 	handleSubmit(event) {

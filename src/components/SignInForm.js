@@ -24,13 +24,13 @@ class SignInForm extends Component {
 	}
 
 	componentWillMount() {
-    document.getElementById('body').className = 'signup_page'
+		document.getElementById('body').className = 'signup_page'
 		this.setState({ loading: false })
 	}
 
-  componentWillUnmount() {
-    document.getElementById('body').className = ''
-  }
+	componentWillUnmount() {
+		document.getElementById('body').className = ''
+	}
 
 	handleCodeChange(event) {
 		this.setState({ code: event.target.value })
@@ -77,12 +77,12 @@ class SignInForm extends Component {
 
 		return (
 			<div className="sign_up">
-        <div className="overlay" />
-        <img
-          className="login_logo"
-          src={process.env.PUBLIC_URL + '/img/logo.svg'}
-          alt=""
-        />
+				<div className="overlay" />
+				<img
+					className="login_logo"
+					src={process.env.PUBLIC_URL + '/img/logo.svg'}
+					alt=""
+				/>
 				<Container>
 					<Form>
 						{this.state.errorMessage !== '' &&
@@ -107,7 +107,7 @@ class SignInForm extends Component {
 
 						<Button
 							color="success"
-              className="main-btn"
+							className="main-btn"
 							type="submit"
 							value="Submit"
 							onClick={this.handleSubmit}

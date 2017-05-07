@@ -339,8 +339,3 @@ class MyOrder extends Component {
 }
 
 export default MyOrder
-
-
-
-
-// TODO: fleh

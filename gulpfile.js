@@ -7,39 +7,42 @@ var input = './public/sass/**/*.scss'
 var output = './public/css'
 
 var sassOptions = {
-  errLogToConsole: true,
-  outputStyle: 'expanded'
+	errLogToConsole: true,
+	outputStyle: 'expanded',
 }
 
 gulp.task('default', ['sass', 'watch', 'minify-css'])
 
-gulp.task('sass', function () {
-  return gulp
-    .src(input)
-    .pipe(sass(sassOptions).on('error', sass.logError))
-    .pipe(gulp.dest(output))
+gulp.task('sass', function() {
+	return gulp
+		.src(input)
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(gulp.dest(output))
 })
 
-gulp.task('watch', function () {
-  return gulp
-    // Watch the input folder for change,
-    // and run `sass` task when something happens
-    .watch(input, ['sass'])
-    // When there is a change,
-    // log a message in the console
-    .on('change', function (event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
-    })
+gulp.task('watch', function() {
+	return (gulp
+			.watch(input, ['sass'])
+			.on('change', function(event) {
+				console.log(
+					'File ' + event.path + ' was ' + event.type + ', running tasks...'
+				)
+			}) )
 })
 
 gulp.task('minify-css', function() {
-    return gulp.src('public/css/*.css')
-        .pipe(cleanCSS({debug: true}, function(details) {
-            console.log(details.name + ': ' + details.stats.originalSize);
-            console.log(details.name + ': ' + details.stats.minifiedSize);
-        }))
-        .pipe(rename({
-          suffix: '.min'
-        }))
-        .pipe(gulp.dest(output));
-});
+	return gulp
+		.src('public/css/*.css')
+		.pipe(
+			cleanCSS({ debug: true }, function(details) {
+				console.log(details.name + ': ' + details.stats.originalSize)
+				console.log(details.name + ': ' + details.stats.minifiedSize)
+			})
+		)
+		.pipe(
+			rename({
+				suffix: '.min',
+			})
+		)
+		.pipe(gulp.dest(output))
+})
