@@ -35,9 +35,16 @@ class SignUpForm extends Component {
 		SignUpForm.phone = event.target.value
 		console.log(this.state.phone)
 
-		this.state.phone.length >= 7
+		this.state.phone.length > 6
 			? this.setState({ isRegistering: false })
 			: this.setState({ isRegistering: true })
+
+			// if (this.state.phone.substring(0,3) === '354') {
+			// 	console.log('blah');
+			// 	// this.state.phone.slice(3)
+			// 	// console.log(this.state.phone.slice(3))
+			// 	this.setState({ phone: this.state.phone.slice(3) })
+			// }
 	}
 
 	handleSubmit(event) {
@@ -73,6 +80,7 @@ class SignUpForm extends Component {
 	}
 
 	render() {
+		console.log(this.state.phone.length)
 		if (this.state.loading) {
 			return <Spinner />
 		}

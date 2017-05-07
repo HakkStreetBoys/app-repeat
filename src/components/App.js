@@ -1,7 +1,6 @@
-/* Global React ReactDOM */
-
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import axios from 'axios'
 import Spinner from './Spinner';
 import firebase from './firebase';
 import FoodIndex from './food_index';
@@ -16,6 +15,9 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Navigation from './Navigation';
 import {Navbar, Nav, NavItem, NavbarToggler} from 'reactstrap';
+
+const ROOT_AUTH_URL =
+	'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +52,9 @@ class App extends Component {
       .signOut()
       .then(() => {
         this.setState({isOpen: false});
+        axios.post(`${ROOT_AUTH_URL}/deleteUser`, {
+					phone: this.state.user.uid,
+				})
       })
       .catch(error => {
         console.log(error);
@@ -138,7 +143,7 @@ class App extends Component {
   };
 
   render() {
-    // console.log(this.state);
+    console.log(this.state.user);
     return (
       <div>
         {this.presentation()}
