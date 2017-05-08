@@ -31,11 +31,9 @@ class PaymentSubmit extends Component {
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {
 			const obj = snapshot.val()
-			console.log(obj.totalPrice)
 			this.setState({ totalPrice: obj.totalPrice })
 		})
 		this.userRef.child('confirmed_order').on('value', snapshot => {
-			console.log(snapshot.val())
 			this.setState({ orders: snapshot.val() })
 		})
 	}
@@ -58,14 +56,12 @@ class PaymentSubmit extends Component {
 				totalPrice: this.state.totalPrice,
 			})
 			.then(res => {
-				console.log(res)
 				this.setState({ status: res.data, loading: false })
 
 				if (this.state.status === 'Greiðsla staðfest') {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
 						let orderkey2 = _.map(order, (ordr, i2) => {
-							console.log(order)
 							let key2 = i2
 							firebase
 								.database()
@@ -86,7 +82,6 @@ class PaymentSubmit extends Component {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
 						let orderkey2 = _.map(order, (ordr, i2) => {
-							console.log(ordr)
 							let key2 = i2
 							if (ordr.status_pay !== 1) {
 								firebase
@@ -107,11 +102,9 @@ class PaymentSubmit extends Component {
 					})
 				}
 			})
-		console.log('state is ' + this.state.phone)
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<div className="payment payment_submit">
 				{this.state.status === null &&

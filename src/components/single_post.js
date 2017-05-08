@@ -21,7 +21,6 @@ class SinglePost extends Component {
 			this.setState({ tableNumber: snapshot.val().tableNumber })
 		})
 		this.props.fetchPost(this.props.match.params.id)
-		console.log(this.props)
 		this.setState({ loading: false })
 	}
 
@@ -36,7 +35,6 @@ class SinglePost extends Component {
 		}
 
 		const { post, isLoading, related } = this.props
-		console.log('in render', related)
 		if (isLoading) {
 			return <div>isLoading</div>
 		}
@@ -98,13 +96,11 @@ class SinglePost extends Component {
 									let doesExist = false
 									this.userRef.child('orders/').once('value', snapshot => {
 										const obj = snapshot.val()
-										console.log(obj)
 										for (var variable in obj) {
 											if (
 												obj &&
 												obj[variable].productID === this.props.post.id
 											) {
-												console.log('exists')
 												doesExist = true
 												this.userRef.child('orders/' + variable).update({
 													price: parseInt(obj[variable].price) +
@@ -112,10 +108,8 @@ class SinglePost extends Component {
 													quantity: parseInt(obj[variable].quantity) + 1,
 												})
 											} else {
-												console.log('not exist')
 											}
 										}
-										console.log(this.userRef.child('orders/'))
 										if (!doesExist) {
 											this.userRef.child('orders').push({
 												title: menu_title,

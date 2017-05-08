@@ -42,7 +42,6 @@ class MyOrder extends Component {
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.child('orders/').on('value', snapshot => {
 			var obj = snapshot.val()
-			// console.log(obj);
 			this.setState({ orderData: obj, loading: false })
 		})
 	}
@@ -50,7 +49,6 @@ class MyOrder extends Component {
 	componentDidMount() {
 		this.userRef.child('confirmed_order/').on('value', snapshot => {
 			var conf_obj = snapshot.val()
-			// console.log(obj);
 			this.setState({ confirmedOrders: conf_obj, loading: false })
 		})
 	}
@@ -223,7 +221,6 @@ class MyOrder extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 		this.totalPrice = 0
 		this.confirmedPrice = 0
 		return (

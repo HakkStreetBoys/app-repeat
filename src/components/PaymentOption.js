@@ -16,7 +16,6 @@ class PaymentOption extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<div className="payment">
 				<Container>

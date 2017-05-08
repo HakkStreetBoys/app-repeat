@@ -33,7 +33,6 @@ class SignUpForm extends Component {
 	handleChange(event) {
 		this.setState({ phone: event.target.value })
 		SignUpForm.phone = event.target.value
-		console.log(this.state.phone)
 
 		this.state.phone.length > 5
 			? this.setState({ isRegistering: false })
@@ -44,7 +43,6 @@ class SignUpForm extends Component {
 		this.setState({ loading: true })
 
 		event.preventDefault()
-		console.log(this.state.phone)
 		// arrow function til að sleppa við .bind(this)
 		axios
 			.post(`${ROOT_AUTH_URL}/createUser`, {
@@ -73,12 +71,10 @@ class SignUpForm extends Component {
 	}
 
 	render() {
-		console.log(this.state.phone.length)
 		if (this.state.loading) {
 			return <Spinner />
 		}
 
-		console.log(this.state)
 		const { fireRedirect } = this.state
 
 		return (

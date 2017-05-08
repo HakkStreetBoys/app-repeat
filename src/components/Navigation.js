@@ -14,15 +14,12 @@ class Navigation extends Component {
 	}
 
 	componentWillMount() {
-		console.log('will receive props')
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.child('orders').off()
 		this.userRef.child('orders/').on('value', snapshot => {
 			const obj = snapshot.val()
-			// console.log(obj.le)
 			this.setState({ notify: true })
 			this.setState({ items: _.keys(obj).length })
-			console.log(obj)
 
 			setTimeout(() => {
 				this.setState({ notify: false })
@@ -35,7 +32,6 @@ class Navigation extends Component {
 	}
 
 	render() {
-		console.log(this.state.items)
 		return (
 			<div className="navigation">
 				<nav>

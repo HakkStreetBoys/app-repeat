@@ -32,7 +32,6 @@ class Product extends Component {
 				<Link to={`matur/${this.props.post.id}`}>
 					<div className="product_img">
 						<div className="product_gradient" />
-						{/* {console.log(notify)} */}
 						<div className={this.state.status}>
 							<img
 								src={process.env.PUBLIC_URL + '/img/notify_order.svg'}
@@ -60,20 +59,16 @@ class Product extends Component {
 						color="success"
 						size="md"
 						onClick={() => {
-							// console.log(post);
 							this.handleClick()
 							setTimeout(() => {
 								this.notify = false
 							}, 1500)
 							this.setState({ reRender: ++this.state.reRender })
 							let doesExist = false
-							console.log('before event')
 							this.props.userRef.child('orders/').once('value', snapshot => {
 								const obj = snapshot.val()
-								console.log(obj)
 								for (var variable in obj) {
 									if (obj && obj[variable].productID === this.props.post.id) {
-										console.log('exists')
 										doesExist = true
 										this.props.userRef.child('orders/' + variable).update({
 											price: parseInt(obj[variable].price) +
@@ -81,10 +76,8 @@ class Product extends Component {
 											quantity: parseInt(obj[variable].quantity) + 1,
 										})
 									} else {
-										console.log('not exist')
 									}
 								}
-								console.log(this.props.userRef.child('orders/'))
 								if (!doesExist) {
 									this.props.userRef.child('orders').push({
 										title: menu_title,
