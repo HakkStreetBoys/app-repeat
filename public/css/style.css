@@ -411,8 +411,8 @@ template {
 }
 
 @font-face {
-  font-family: 'RoundLight';
-  src: url("../fonts/din-round/din-round-light.eot") format("embedded-opentype"), url("../fonts/din-round/din-round-light.woff") format("woff"), url("../fonts/din-round/din-round-light.ttf") format("truetype");
+  font-family: 'Krit-Medium';
+  src: url("../fonts/Krit-2/Krit-Medium.eot") format("embedded-opentype"), url("../fonts/Krit-2/Krit-Medium.woff") format("woff"), url("../fonts/Krit-2/Krit-Medium.woff2") format("woff2");
   font-weight: 300;
 }
 
@@ -602,8 +602,8 @@ p {
 }
 
 @font-face {
-  font-family: 'RoundLight';
-  src: url("../fonts/din-round/din-round-light.eot") format("embedded-opentype"), url("../fonts/din-round/din-round-light.woff") format("woff"), url("../fonts/din-round/din-round-light.ttf") format("truetype");
+  font-family: 'Krit-Medium';
+  src: url("../fonts/Krit-2/Krit-Medium.eot") format("embedded-opentype"), url("../fonts/Krit-2/Krit-Medium.woff") format("woff"), url("../fonts/Krit-2/Krit-Medium.woff2") format("woff2");
   font-weight: 300;
 }
 
