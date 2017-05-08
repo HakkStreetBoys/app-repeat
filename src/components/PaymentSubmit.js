@@ -65,6 +65,7 @@ class PaymentSubmit extends Component {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
 						let orderkey2 = _.map(order, (ordr, i2) => {
+							console.log(order)
 							let key2 = i2
 							firebase
 								.database()
@@ -85,20 +86,23 @@ class PaymentSubmit extends Component {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
 						let orderkey2 = _.map(order, (ordr, i2) => {
+							console.log(ordr)
 							let key2 = i2
-							firebase
-								.database()
-								.ref(
-									'users/' +
-										this.props.user.uid +
-										'/confirmed_order/' +
-										i +
-										'/' +
-										i2
-								)
-								.update({
-									status_pay: 2,
-								})
+							if (ordr.status_pay !== 1) {
+								firebase
+									.database()
+									.ref(
+										'users/' +
+											this.props.user.uid +
+											'/confirmed_order/' +
+											i +
+											'/' +
+											i2
+									)
+									.update({
+										status_pay: 2,
+									})
+							}
 						})
 					})
 				}
