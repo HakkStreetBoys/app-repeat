@@ -73,7 +73,7 @@
     top: 0%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    transition: .1s cubic-bezier(0.54, -0.59, 0.26, 1.59);
+    transition: .5s cubic-bezier(0.54, -0.59, 0.26, 1.59);
     // transition-delay: .8s;
 
     img {
@@ -90,7 +90,8 @@
   }
 
   .notify {
-    background: $main_color;
+    background: rgba($main_color, .85);
+    // background: rgba($main_blue, .75);
     transform: translate(-50%, -50%) scale(1.1);
     // animation: border 3s ease 1 forwards;
     // cursor: none;

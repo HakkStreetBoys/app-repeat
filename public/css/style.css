@@ -1549,7 +1549,7 @@ p {
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  transition: 0.1s cubic-bezier(0.54, -0.59, 0.26, 1.59);
+  transition: 0.5s cubic-bezier(0.54, -0.59, 0.26, 1.59);
 }
 
 .navigation .order_btn img {
@@ -1565,7 +1565,7 @@ p {
 }
 
 .navigation .notify {
-  background: #00AB6B;
+  background: rgba(0, 171, 107, 0.85);
   transform: translate(-50%, -50%) scale(1.1);
 }
 
