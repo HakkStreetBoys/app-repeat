@@ -50,9 +50,6 @@ class Product extends Component {
 						<h2>{menu_title}</h2>
 						<p>{menu_price} kr.</p>
 					</Link>
-					{/* <Link to={`matur/${props.post.id}`}>
-            <img className="arrow" src={process.env.PUBLIC_URL + '/img/arrow.svg'} alt="Nánar" />
-          </Link> */}
 				</div>
 				<div className="product_order">
 					<Button
@@ -99,7 +96,10 @@ class Product extends Component {
 					>
 						<span>Panta</span>
 						<span>
-							<img src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'} />
+							<img
+								src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'}
+								alt=""
+							/>
 						</span>
 					</Button>
 				</div>

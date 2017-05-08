@@ -5,9 +5,6 @@ import userRefFor from './userRef'
 import firebase from './firebase'
 import { Container, FormGroup, Input, Button } from 'reactstrap'
 
-const ROOT_AUTH_URL =
-	'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
-
 class PaymentSubmit extends Component {
 	constructor(props) {
 		super(props)
