@@ -35,7 +35,7 @@ class SignUpForm extends Component {
 		SignUpForm.phone = event.target.value
 		console.log(this.state.phone)
 
-		this.state.phone.length > 6
+		this.state.phone.length > 5
 			? this.setState({ isRegistering: false })
 			: this.setState({ isRegistering: true })
 	}
