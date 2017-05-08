@@ -55,6 +55,14 @@
     justify-content: center;
     align-items: center;
     color: #fff;
+
+    .nav-item {
+      text-align: center;
+
+      p {
+        color: $error_color;
+      }
+    }
   }
 }
 

@@ -1623,6 +1623,14 @@ p {
   color: #fff;
 }
 
+.navbar .nav .nav-item {
+  text-align: center;
+}
+
+.navbar .nav .nav-item p {
+  color: #FFAF00;
+}
+
 .navbar-light .navbar-toggler {
   border: none;
   outline: none;

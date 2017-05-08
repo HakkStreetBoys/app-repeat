@@ -21,6 +21,9 @@ class PaymentSubmit extends Component {
 	}
 
 	componentWillMount() {
+		if (this.state.phone.substring(0,3) === '354') {
+			this.setState({ phone: this.state.phone.slice(3) })
+		}
 		document.getElementById('body').className = 'pay'
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {

@@ -32,6 +32,7 @@ class App extends Component {
 		this.state = {
 			user: undefined,
 			isOpen: false,
+			errorMsg: null,
 		}
 	}
 
@@ -48,21 +49,32 @@ class App extends Component {
 	}
 
 	toggle() {
-		this.setState({ isOpen: !this.state.isOpen })
+		this.setState({ isOpen: !this.state.isOpen, errorMsg: null })
 	}
 
 	logOut() {
 		firebase
-			.auth()
-			.signOut()
-			.then(() => {
-				this.setState({ isOpen: false })
-				axios.post(`${ROOT_AUTH_URL}/deleteUser`, {
-					phone: this.state.user.uid,
-				})
-			})
-			.catch(error => {
-				console.log(error)
+			.database()
+			.ref('users')
+			.child(this.state.user.uid)
+			.child('confirmed_order')
+			.once('value', snapshot => {
+				snapshot.val() != null
+					? this.setState({
+							errorMsg: 'Þú verður að greiða reikninginn áður en þú aftengir símanúmerið.',
+						})
+					: firebase
+							.auth()
+							.signOut()
+							.then(() => {
+								this.setState({ isOpen: false })
+								axios.post(`${ROOT_AUTH_URL}/deleteUser`, {
+									phone: this.state.user.uid,
+								})
+							})
+							.catch(error => {
+								console.log(error)
+							})
 			})
 	}
 
@@ -79,6 +91,7 @@ class App extends Component {
 									? <div className="popup">
 											<Nav>
 												<NavItem onClick={this.logOut.bind(this)}>
+													{this.state.errorMsg && <p>{this.state.errorMsg}</p>}
 													Logout
 												</NavItem>
 											</Nav>
