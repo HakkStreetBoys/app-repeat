@@ -4,6 +4,8 @@ import _ from 'lodash'
 import userRefFor from './userRef'
 import firebase from './firebase'
 import { Container, FormGroup, Input, Button, Progress } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { Container, FormGroup, Input, Button } from 'reactstrap'
 
 class PaymentSubmit extends Component {
 	constructor(props) {
@@ -112,6 +114,13 @@ class PaymentSubmit extends Component {
 				{this.state.status === null &&
 					!this.state.loading &&
 					<Container>
+						<Link to="/payment">
+							<img
+								src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
+								alt=""
+								className="back_arrow"
+							/>
+						</Link>
 						<FormGroup>
 							<Input
 								type="number"

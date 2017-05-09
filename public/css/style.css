@@ -917,6 +917,11 @@ p {
   top: 20px;
   right: 20px;
   z-index: 999;
+  margin: 7px 0px 0px 0px;
+}
+
+.my_order .myorder_exit img {
+  height: 20px;
 }
 
 .my_order .nav-tabs {
@@ -1168,6 +1173,11 @@ p {
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  margin: 100px 0px 0px 0px;
+}
+
+#my_order .order_empty .afturmatsedill {
+  margin: 72px 0px 0px 0px;
 }
 
 #my_order .order_empty img {
@@ -1205,6 +1215,13 @@ p {
 #my_order .order_confirmed img {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+#my_order .order_confirmed .afturmatsedill {
+  margin: 75px 0px 0px 0px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 8px 10px;
 }
 
 /* start enter state */
@@ -1262,6 +1279,7 @@ p {
   height: 100%;
   z-index: 999;
   overflow: hidden;
+  background-color: #fff;
 }
 
 .payment .container {
@@ -1375,6 +1393,11 @@ p {
 
 .payment_submit .container {
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.payment_submit .container .form-group {
   max-width: 80%;
   margin: 0 auto;
 }
