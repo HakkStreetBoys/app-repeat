@@ -1476,6 +1476,21 @@ p {
   font-weight: 600;
 }
 
+.payment_submit .payment_status .payment_status_error img {
+  margin: 20px 0;
+}
+
+.payment_submit .payment_status .payment_status_error .btn {
+  background: #fff;
+  color: #22242d;
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
+}
+
 .payment_submit .payment_status p {
   color: #fff;
   width: 100%;

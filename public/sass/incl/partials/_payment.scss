@@ -195,6 +195,20 @@
           @include font-semibold;
         }
       }
+
+      img {
+        margin: 20px 0;
+      }
+
+      .btn {
+        background: #fff;
+        color: rgb(34, 36, 45);
+        margin: 0 auto;
+        display: block;
+        margin-top: 20px;
+        font-size: 14px;
+        @include font-regular;
+      }
     }
 
     p {

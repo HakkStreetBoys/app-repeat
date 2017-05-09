@@ -86,8 +86,6 @@ class PaymentSubmit extends Component {
 
 					this.userRef.update({ totalPrice: 0 })
 
-					// firebase.database().ref('users').child(this.props.user.uid + '-paid').child('confirmed_order/').push(this.state.orders)
-
 				} else {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
@@ -173,14 +171,29 @@ class PaymentSubmit extends Component {
 										alt=""
 									/>
 									<div>
-										<Button color="success" size="md">Aftur í matseðil</Button>
+										<Link to="/matur">
+											<Button color="success" size="md">
+												Aftur í matseðil
+											</Button>
+										</Link>
 									</div>
 								</div>
 							: <div className="payment_status_error">
 									<div className="payment_status_error_bg">
 										<p>{this.state.status}</p>
 									</div>
-									<p>Greiðslu hafnað. Villuskilaboð koma hér</p>
+									<p>
+										Greiðslu hafnað. Því miður mistókst greiðslan. Endilega prófaðu aftur
+									</p>
+									<img
+										src={process.env.PUBLIC_URL + '/img/smiley_error.svg'}
+										alt=""
+									/>
+									<div>
+										<Link to="/payment">
+											<Button color="success" size="md">Reyna aftur</Button>
+										</Link>
+									</div>
 								</div>}
 
 					</div>}
