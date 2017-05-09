@@ -64,7 +64,10 @@ class FoodIndex extends Component {
 						<div className="promo_content">
 							<h2>{promo_food_title}</h2>
 							<p>{promo_food_description}</p>
-							<Button color="success" size="md">{promo_food_button}</Button>
+							<Button color="success" size="md">{promo_food_button}
+								<span>
+									<img className="promo_svg" src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'} />
+								</span></Button>
 						</div>
 					</div>
 				)
