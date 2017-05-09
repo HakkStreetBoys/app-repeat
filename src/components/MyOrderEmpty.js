@@ -12,7 +12,7 @@ const MyOrderEmpty = () => {
 					<p>Hvernig væri að panta sér einn ískaldan?</p>
 				</div>
 				<Link to="/matur">
-					<Button color="primary">Aftur í matseðil</Button>
+					<Button className="afturmatsedill" color="primary">Aftur í matseðil</Button>
 				</Link>
 			</div>
 		</Col>

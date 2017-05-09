@@ -3,6 +3,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import userRefFor from './userRef'
 import firebase from './firebase'
+import { Link } from 'react-router-dom'
 import { Container, FormGroup, Input, Button } from 'reactstrap'
 
 class PaymentSubmit extends Component {
@@ -106,6 +107,13 @@ class PaymentSubmit extends Component {
 			<div className="payment payment_submit">
 				{this.state.status === null &&
 					<Container>
+						<Link to="/payment">
+							<img
+								src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
+								alt=""
+								className="back_arrow"
+							/>
+						</Link>
 						<FormGroup>
 							<Input
 								type="number"

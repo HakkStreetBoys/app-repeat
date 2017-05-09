@@ -19,6 +19,13 @@ class PaymentOption extends Component {
 		return (
 			<div className="payment">
 				<Container>
+					<Link to="/myorder">
+						<img
+							src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
+							alt=""
+							className="back_arrow"
+						/>
+					</Link>
 					<h2>Veldu greiðsluleið</h2>
 					<div className="payment_option">
 						<div
