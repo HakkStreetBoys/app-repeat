@@ -32,9 +32,10 @@ class SignUpForm extends Component {
 
 	handleChange(event) {
 		this.setState({ phone: event.target.value })
+		console.log(this.state.phone.length)
 		SignUpForm.phone = event.target.value
 
-		this.state.phone.length > 5
+		event.target.value.length >= 7
 			? this.setState({ isRegistering: false })
 			: this.setState({ isRegistering: true })
 	}
