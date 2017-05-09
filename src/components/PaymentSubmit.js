@@ -53,7 +53,7 @@ class PaymentSubmit extends Component {
 			this.setState({ count: true })
 		}, 1000)
 		axios
-			.post(`http://localhost:3001/`, {
+			.post(`http://46.101.32.102:3001/`, {
 				phone: this.state.phone,
 				totalPrice: this.state.totalPrice,
 			})
