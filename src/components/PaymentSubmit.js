@@ -3,7 +3,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import userRefFor from './userRef'
 import firebase from './firebase'
-import { Container, FormGroup, Input, Button } from 'reactstrap'
+import { Container, FormGroup, Input, Button, Progress } from 'reactstrap'
 
 class PaymentSubmit extends Component {
 	constructor(props) {
@@ -14,6 +14,7 @@ class PaymentSubmit extends Component {
 			status: null,
 			loading: false,
 			orders: [],
+			count: false,
 		}
 
 		this.handleChange = this.handleChange.bind(this)
@@ -47,8 +48,11 @@ class PaymentSubmit extends Component {
 	handleSubmit(e) {
 		e.preventDefault()
 		this.setState({ loading: true })
+		setTimeout(() => {
+			this.setState({ count: true })
+		}, 1000)
 		axios
-			.post(`http://localhost:3001`, {
+			.post(`http://localhost:3001/`, {
 				phone: this.state.phone,
 				totalPrice: this.state.totalPrice,
 			})
@@ -102,9 +106,11 @@ class PaymentSubmit extends Component {
 	}
 
 	render() {
+		console.log(this.state)
 		return (
 			<div className="payment payment_submit">
 				{this.state.status === null &&
+					!this.state.loading &&
 					<Container>
 						<FormGroup>
 							<Input
@@ -119,6 +125,15 @@ class PaymentSubmit extends Component {
 
 				{this.state.loading &&
 					<div className="payment_loading">
+						<div className="payment_loading_bg">
+							<p>Bíðum eftir svari frá Kass</p>
+						</div>
+						<div
+							className={
+								this.state.count ? 'counter counter_active' : 'counter'
+							}
+						/>
+						{/* <Progress animated color="info" value={this.state.count} /> */}
 						<p>
 							Reikningurinn var sendur á númerið. Kíktu í Kass-appið til að borga.
 						</p>
@@ -128,16 +143,16 @@ class PaymentSubmit extends Component {
 					<div className="payment_status">
 						{this.state.status === 'Greiðsla staðfest'
 							? <div className="payment_status_success">
-									<div>
-										{this.state.status}
+									<div className="payment_status_success_bg">
+										<p>{this.state.status}</p>
 									</div>
 									<p>
 										Greiðsla staðfest! Takk fyrir að koma. Hlökkum til að fá þig aftur.
 									</p>
 								</div>
 							: <div className="payment_status_error">
-									<div>
-										{this.state.status}
+									<div className="payment_status_error_bg">
+										<p>{this.state.status}</p>
 									</div>
 									<p>Greiðslu hafnað. Villuskilaboð koma hér</p>
 								</div>}
