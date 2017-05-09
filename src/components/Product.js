@@ -68,9 +68,9 @@ class Product extends Component {
 									if (obj && obj[variable].productID === this.props.post.id) {
 										doesExist = true
 										this.props.userRef.child('orders/' + variable).update({
-											price: parseInt(obj[variable].price) +
-												parseInt(menu_price),
-											quantity: parseInt(obj[variable].quantity) + 1,
+											price: parseInt(obj[variable].price, 10) +
+												parseInt(menu_price, 10),
+											quantity: parseInt(obj[variable].quantity, 10) + 1,
 										})
 									} else {
 									}

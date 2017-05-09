@@ -121,7 +121,7 @@ class MyOrder extends Component {
 		}
 
 		return _.map(this.state.orderData, (order, key) => {
-			this.totalPrice += parseInt(order.price)
+			this.totalPrice += parseInt(order.price, 10)
 
 			return (
 				<Row key={key}>
@@ -145,9 +145,9 @@ class MyOrder extends Component {
 												const obj = snapshot.val()
 												if (obj.quantity !== 1) {
 													this.userRef.child('orders/' + key).update({
-														price: parseInt(order.price) -
-															parseInt(obj.original_price),
-														quantity: parseInt(obj.quantity) - 1,
+														price: parseInt(order.price, 10) -
+															parseInt(obj.original_price, 10),
+														quantity: parseInt(obj.quantity, 10) - 1,
 													})
 												} else {
 													this.userRef
@@ -169,9 +169,9 @@ class MyOrder extends Component {
 											.once('value', snapshot => {
 												const obj = snapshot.val()
 												this.userRef.child('orders/' + key).update({
-													price: parseInt(order.price) +
-														parseInt(obj.original_price),
-													quantity: parseInt(obj.quantity) + 1,
+													price: parseInt(order.price, 10) +
+														parseInt(obj.original_price, 10),
+													quantity: parseInt(obj.quantity, 10) + 1,
 												})
 											})
 									}}
@@ -189,7 +189,7 @@ class MyOrder extends Component {
 	renderConfirmedOrders() {
 		return _.map(this.state.confirmedOrders, (confirmed_order, key) => {
 			return _.map(confirmed_order, (conf_order, key) => {
-				this.confirmedPrice += parseInt(conf_order.price)
+				this.confirmedPrice += parseInt(conf_order.price, 10)
 				return (
 					<Row key={key}>
 						<Col className="pending_order" xs="12">

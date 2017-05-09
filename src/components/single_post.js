@@ -68,7 +68,10 @@ class SinglePost extends Component {
 		}
 
 		return (
-			<ReactCSSTransitionGroup>
+			<ReactCSSTransitionGroup
+				transitionName="single_trans"
+
+				>
 				<div className="single_item">
 					<Link to="/">
 						<img
@@ -103,9 +106,9 @@ class SinglePost extends Component {
 											) {
 												doesExist = true
 												this.userRef.child('orders/' + variable).update({
-													price: parseInt(obj[variable].price) +
-														parseInt(menu_price),
-													quantity: parseInt(obj[variable].quantity) + 1,
+													price: parseInt(obj[variable].price, 10) +
+														parseInt(menu_price, 10),
+													quantity: parseInt(obj[variable].quantity, 10) + 1,
 												})
 											} else {
 											}
