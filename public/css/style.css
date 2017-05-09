@@ -1368,6 +1368,32 @@ p {
   transform: translateX(-50%);
 }
 
+.payment_submit .payment_loading {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+}
+
+.payment_submit .payment_loading p {
+  color: #fff;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.payment_submit .payment_loading .payment_loading_bg {
+  background: #FFAF00;
+}
+
+.payment_submit .payment_loading .payment_loading_bg p {
+  padding: 80px 20px 20px 20px;
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+  margin-top: 0;
+}
+
 .payment_submit .container {
   width: 100%;
   max-width: 100%;
@@ -1410,33 +1436,47 @@ p {
   text-align: center;
 }
 
-.payment_submit .payment_status .payment_status_success, .payment_submit .payment_status .payment_status_error {
-  padding: 60px 0;
-}
-
-.payment_submit .payment_status .payment_status_success div, .payment_submit .payment_status .payment_status_error div {
-  font-size: 24px;
-  font-family: 'canada-type-gibson';
-  font-weight: 600;
-  margin-bottom: 40px;
-}
-
-.payment_submit .payment_status .payment_status_success p, .payment_submit .payment_status .payment_status_error p {
-  font-size: 24px;
-  font-family: 'canada-type-gibson';
-  font-weight: 400;
-}
-
-.payment_submit .payment_status .payment_status_success div {
+.payment_submit .payment_status .payment_status_success .payment_status_success_bg {
   background: #00AB6B;
 }
 
-.payment_submit .payment_status .payment_status_error div {
+.payment_submit .payment_status .payment_status_success .payment_status_success_bg p {
+  color: #fff;
+  padding: 60px 20px 20px 20px;
+  margin-top: 0;
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+}
+
+.payment_submit .payment_status .payment_status_error .payment_status_error_bg {
   background: #FF5A5F;
+}
+
+.payment_submit .payment_status .payment_status_error .payment_status_error_bg p {
+  color: #fff;
+  padding: 60px 20px 20px 20px;
+  margin-top: 0;
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
 }
 
 .payment_submit .payment_status p {
   color: #fff;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.counter {
+  width: 0;
+  transition: 92s ease-in-out;
+  height: 2px;
+  background: #FFECB9;
+}
+
+.counter_active {
+  width: 100%;
 }
 
 .signup_page div {
