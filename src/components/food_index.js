@@ -52,6 +52,8 @@ class FoodIndex extends Component {
 				promo_food_description,
 				promo_food_image,
 				promo_food_title,
+				promo_food_price,
+				promo_food_category,
 				show_promo_food,
 			} = offer[0]
 			if (!this.state.loading && show_promo_food !== false) {
@@ -64,10 +66,54 @@ class FoodIndex extends Component {
 						<div className="promo_content">
 							<h2>{promo_food_title}</h2>
 							<p>{promo_food_description}</p>
-							<Button color="success" size="md">{promo_food_button}
+							{/* <Button color="success" size="md">{promo_food_button}
 								<span>
 									<img className="promo_svg" src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'} alt="" />
-								</span></Button>
+								</span></Button> */}
+								<Button
+									color="success"
+									size="md"
+									onClick={() => {
+										let doesExist = false
+										this.userRef.child('orders/').once('value', snapshot => {
+											const obj = snapshot.val()
+											for (var variable in obj) {
+												if (
+													obj &&
+													obj[variable].title === promo_food_title
+												) {
+													doesExist = true
+													this.userRef.child('orders/' + variable).update({
+														price: parseInt(obj[variable].price) +
+															parseInt(promo_food_price),
+														quantity: parseInt(obj[variable].quantity) + 1,
+													})
+												} else {
+												}
+											}
+											if (!doesExist) {
+												this.userRef.child('orders').push({
+													title: promo_food_title,
+													price: promo_food_price,
+													category: promo_food_category,
+													status_item: 0,
+													status_pay: 0,
+													date: Date(),
+													createdAt: Date.now(),
+													userID: this.props.user.uid,
+													quantity: 1,
+													original_price: promo_food_price,
+													table_number: this.state.tableNumber,
+												})
+											}
+										})
+									}}
+								>
+									{promo_food_button}
+									<span>
+										<img className="promo_svg" src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'} alt="" />
+									</span>
+								</Button>
 						</div>
 					</div>
 				)
@@ -113,6 +159,8 @@ class FoodIndex extends Component {
 	}
 
 	render() {
+
+		console.log(this.props);
 
 		if (this.state.loading) {
 			return <Spinner />

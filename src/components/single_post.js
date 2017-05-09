@@ -68,8 +68,14 @@ class SinglePost extends Component {
 		}
 
 		return (
+			<div className="single_items">
+			<ReactCSSTransitionGroup
+				component="single_item"
+				transitionName="background"
+        transitionAppear={true}
+        transitionLeave={true}
+			>
 
-				<div className="single_item">
 					<Link to="/">
 						<img
 							src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
@@ -160,6 +166,7 @@ class SinglePost extends Component {
 								{relatedItems}
 							</div>}
 					</div>
+				</ReactCSSTransitionGroup>
 				</div>
 		)
 	}
