@@ -55,6 +55,7 @@ class Product extends Component {
 					<Button
 						color="success"
 						size="md"
+						className="main-order-btn"
 						onClick={() => {
 							this.handleClick()
 							setTimeout(() => {
