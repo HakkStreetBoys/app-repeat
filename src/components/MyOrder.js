@@ -189,25 +189,29 @@ class MyOrder extends Component {
 	renderConfirmedOrders() {
 		return _.map(this.state.confirmedOrders, (confirmed_order, key) => {
 			return _.map(confirmed_order, (conf_order, key) => {
-				this.confirmedPrice += parseInt(conf_order.price, 10)
-				return (
-					<Row key={key}>
-						<Col className="pending_order" xs="12">
-							<Row>
-								<Col xs="3">
-									<div className="quantity">
-										{/* <div></div> */}
-										<span>{conf_order.quantity}x</span>
-									</div>
-								</Col>
-								<Col xs="9">
-									<h2>{conf_order.title}</h2>
-									<p>{conf_order.price} kr.</p>
-								</Col>
-							</Row>
-						</Col>
-					</Row>
-				)
+
+				if (conf_order.status_pay != 1) {
+					console.log('ege')
+					this.confirmedPrice += parseInt(conf_order.price, 10)
+					return (
+						<Row key={key}>
+							<Col className="pending_order" xs="12">
+								<Row>
+									<Col xs="3">
+										<div className="quantity">
+											{/* <div></div> */}
+											<span>{conf_order.quantity}x</span>
+										</div>
+									</Col>
+									<Col xs="9">
+										<h2>{conf_order.title}</h2>
+										<p>{conf_order.price} kr.</p>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+					)
+				}
 			})
 		})
 	}

@@ -84,6 +84,8 @@ class PaymentSubmit extends Component {
 						})
 					})
 
+					this.userRef.update({ totalPrice: 0 })
+
 					// firebase.database().ref('users').child(this.props.user.uid + '-paid').child('confirmed_order/').push(this.state.orders)
 
 				} else {
