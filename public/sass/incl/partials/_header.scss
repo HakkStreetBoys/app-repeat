@@ -27,7 +27,8 @@
 .navbar {
   position: static;
   color: #fff;
-  height: 52px;
+  padding: 0;
+  // height: 52px;
 
   div {
     opacity: 0;
@@ -69,6 +70,7 @@
 .navbar-light .navbar-toggler {
   border: none;
   outline: none;
+  margin: 10px -10px 0px 0px;
 }
 
 .navbar-toggler {

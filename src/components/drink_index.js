@@ -52,7 +52,11 @@ class DrinkIndex extends Component {
 						<div className="promo_content">
 							<h2>{promo_drink_title}</h2>
 							<p>{promo_drink_description}</p>
-							<Button color="success" size="md">{promo_drink_button}</Button>
+							<Button color="success" size="md">{promo_drink_button}
+								<span>
+									<img className="promo_svg" src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'} />
+								</span>
+							</Button>
 						</div>
 					</div>
 				)
