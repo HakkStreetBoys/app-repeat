@@ -112,9 +112,9 @@ class MyOrder extends Component {
 							this.setState({ orderConfirmed: false })
 						}}
 					>
-						<Button color="success" size="md">
-							Loka
-						</Button>
+            <Link to="/matur">
+    					<Button className="afturmatsedill" color="primary">Aftur í matseðil</Button>
+    				</Link>
 					</div>
 				</ReactCSSTransitionGroup>
 			)
