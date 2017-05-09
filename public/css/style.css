@@ -1175,7 +1175,7 @@ p {
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  margin: 50px 0px 0px 0px;
+  margin: 96px 0px 0px 0px;
 }
 
 #my_order .order_empty .afturmatsedill {
@@ -1198,14 +1198,14 @@ p {
 #my_order .order_confirmed {
   color: #fff;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 #my_order .order_confirmed p {
   color: #fff;
   margin: 0;
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
@@ -1221,7 +1221,7 @@ p {
 }
 
 #my_order .order_confirmed .afturmatsedill {
-  margin: 69px 0px 0px 0px;
+  margin: 40px 0px 0px 0px;
   font-weight: 400;
   font-size: 14px;
   padding: 8px 10px;
@@ -1403,6 +1403,7 @@ p {
 .payment_submit .container .form-group {
   max-width: 80%;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 .payment_submit .container input {
@@ -1446,6 +1447,21 @@ p {
   margin-top: 0;
   font-family: 'canada-type-gibson';
   font-weight: 600;
+}
+
+.payment_submit .payment_status .payment_status_success img {
+  margin: 20px 0;
+}
+
+.payment_submit .payment_status .payment_status_success .btn {
+  background: #fff;
+  color: #22242d;
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  font-family: 'canada-type-gibson';
+  font-weight: 400;
 }
 
 .payment_submit .payment_status .payment_status_error .payment_status_error_bg {

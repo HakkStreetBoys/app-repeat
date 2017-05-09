@@ -6,6 +6,9 @@ import firebase from './firebase'
 import { Link } from 'react-router-dom'
 import { Container, FormGroup, Input, Button } from 'reactstrap'
 
+const ROOT_AUTH_URL =
+	'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
+
 class PaymentSubmit extends Component {
 	constructor(props) {
 		super(props)
@@ -80,6 +83,9 @@ class PaymentSubmit extends Component {
 								})
 						})
 					})
+
+					// firebase.database().ref('users').child(this.props.user.uid + '-paid').child('confirmed_order/').push(this.state.orders)
+
 				} else {
 					let orderkey = _.map(this.state.orders, (order, i) => {
 						let key = i
@@ -120,6 +126,10 @@ class PaymentSubmit extends Component {
 								className="back_arrow"
 							/>
 						</Link>
+						<img
+							src={process.env.PUBLIC_URL + '/img/kass_payment.svg'}
+							alt=""
+						/>
 						<FormGroup>
 							<Input
 								type="number"
@@ -141,7 +151,6 @@ class PaymentSubmit extends Component {
 								this.state.count ? 'counter counter_active' : 'counter'
 							}
 						/>
-						{/* <Progress animated color="info" value={this.state.count} /> */}
 						<p>
 							Reikningurinn var sendur á númerið. Kíktu í Kass-appið til að borga.
 						</p>
@@ -157,6 +166,13 @@ class PaymentSubmit extends Component {
 									<p>
 										Greiðsla staðfest! Takk fyrir að koma. Hlökkum til að fá þig aftur.
 									</p>
+									<img
+										src={process.env.PUBLIC_URL + '/img/smiley_success.svg'}
+										alt=""
+									/>
+									<div>
+										<Button color="success" size="md">Aftur í matseðil</Button>
+									</div>
 								</div>
 							: <div className="payment_status_error">
 									<div className="payment_status_error_bg">
@@ -169,16 +185,17 @@ class PaymentSubmit extends Component {
 
 				<div className="payment_shape">
 					<div className="payment_shape_inner">
-						<Button
-							onClick={this.handleSubmit}
-							type="submit"
-							className="main-btn"
-							// disabled={!this.state.selectedPayment}
-							color="success"
-							size="md"
-						>
-							Senda <span>rukkun</span>
-						</Button>
+						{!this.state.status &&
+							<Button
+								onClick={this.handleSubmit}
+								type="submit"
+								className="main-btn"
+								// disabled={!this.state.selectedPayment}
+								color="success"
+								size="md"
+							>
+								Senda <span>rukkun</span>
+							</Button>}
 					</div>
 				</div>
 			</div>
