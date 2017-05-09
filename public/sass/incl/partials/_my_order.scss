@@ -271,7 +271,7 @@
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    margin: 50px 0px 0px 0px;
+    margin: 96px 0px 0px 0px;
 
     .afturmatsedill {
       margin: 40px 0px 0px 0px;
@@ -289,8 +289,6 @@
       margin: 0 auto;
       margin-bottom: 40px;
     }
-
-
   }
 
   .order_confirmed {
@@ -307,6 +305,7 @@
 
       &:first-of-type {
         @include font-semibold;
+        font-size: 24px;
       }
     }
 
@@ -316,7 +315,7 @@
     }
 
     .afturmatsedill {
-      margin: 75px 0px 0px 0px;
+      margin: 69px 0px 0px 0px;
       font-weight: 400;
       font-size: 14px;
       padding: 8px 10px;
@@ -378,6 +377,7 @@
   left: 50%;
   transform: translate(-50%);
 }
+
 
 
 // TODO: col-12 delay-appear delay-appear-active

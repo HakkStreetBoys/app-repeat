@@ -1,0 +1,19 @@
+@media only screen and (min-width: 320px) and (max-width: 568px)
+and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) {
+  #my_order {
+    .order_empty {
+      text-align: center;
+      background: none;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      margin: 36px 0px 0px 0px;
+    }
+    .order_confirmed {
+      margin-top: 20px;
+      p:first-of-type {
+        font-size: 20px;
+      }
+    }
+  }
+}

@@ -211,8 +211,6 @@ p {
   transition: .4s cubic-bezier(0.52, -0.37, 0.13, 1.22)
 }
 
-
-
 .background-enter {
   transform: translate(100%);
 }
@@ -246,3 +244,5 @@ p {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+@import 'incl/partials/mediaqueries';
