@@ -68,7 +68,7 @@ class SinglePost extends Component {
 		}
 
 		return (
-			<ReactCSSTransitionGroup>
+
 				<div className="single_item">
 					<Link to="/">
 						<img
@@ -78,7 +78,66 @@ class SinglePost extends Component {
 						/>
 					</Link>
 					<div className="single_hero">
+						<div className="product_gradient" />
 						<img src={medium_large} alt="" />
+						<div className="single_hero_content">
+							<div className="single_hero_info">
+								<h2>{menu_title}</h2>
+								<p className="single_price">{menu_price} kr.</p>
+							</div>
+							<div className="single_hero_order">
+								<Button
+									color="success"
+									size="md"
+									className="main-order-btn"
+									onClick={() => {
+										let doesExist = false
+										this.userRef.child('orders/').once('value', snapshot => {
+											const obj = snapshot.val()
+											for (var variable in obj) {
+												if (
+													obj &&
+													obj[variable].productID === this.props.post.id
+												) {
+													doesExist = true
+													this.userRef.child('orders/' + variable).update({
+														price: parseInt(obj[variable].price) +
+															parseInt(menu_price),
+														quantity: parseInt(obj[variable].quantity) + 1,
+													})
+												} else {
+												}
+											}
+											if (!doesExist) {
+												this.userRef.child('orders').push({
+													title: menu_title,
+													price: menu_price,
+													category: this.menu_cat,
+													productID: this.props.post.id,
+													status_item: 0,
+													status_pay: 0,
+													date: Date(),
+													createdAt: Date.now(),
+													userID: this.props.user.uid,
+													quantity: 1,
+													original_price: menu_price,
+													table_number: this.state.tableNumber,
+												})
+											}
+										})
+									}}
+								>
+									<span>Panta</span>
+									<span>
+										<img
+											src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'}
+											alt=""
+										/>
+									</span>
+								</Button>
+							</div>
+
+						</div>
 					</div>
 					<div className="single_info">
 						<div
@@ -88,51 +147,7 @@ class SinglePost extends Component {
 								alignItems: 'center',
 							}}
 						>
-							<h2>{menu_title}</h2>
-							<Button
-								color="success"
-								size="md"
-								onClick={() => {
-									let doesExist = false
-									this.userRef.child('orders/').once('value', snapshot => {
-										const obj = snapshot.val()
-										for (var variable in obj) {
-											if (
-												obj &&
-												obj[variable].productID === this.props.post.id
-											) {
-												doesExist = true
-												this.userRef.child('orders/' + variable).update({
-													price: parseInt(obj[variable].price) +
-														parseInt(menu_price),
-													quantity: parseInt(obj[variable].quantity) + 1,
-												})
-											} else {
-											}
-										}
-										if (!doesExist) {
-											this.userRef.child('orders').push({
-												title: menu_title,
-												price: menu_price,
-												category: this.menu_cat,
-												productID: this.props.post.id,
-												status_item: 0,
-												status_pay: 0,
-												date: Date(),
-												createdAt: Date.now(),
-												userID: this.props.user.uid,
-												quantity: 1,
-												original_price: menu_price,
-												table_number: this.state.tableNumber,
-											})
-										}
-									})
-								}}
-							>
-								Panta
-							</Button>
 						</div>
-						<p className="single_price">{menu_price} kr.</p>
 						<p>{menu_description}</p>
 						<div className="single_tags">
 							{tags}
@@ -146,7 +161,6 @@ class SinglePost extends Component {
 							</div>}
 					</div>
 				</div>
-			</ReactCSSTransitionGroup>
 		)
 	}
 }
