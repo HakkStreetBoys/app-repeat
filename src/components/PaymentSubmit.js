@@ -3,7 +3,6 @@ import axios from 'axios'
 import _ from 'lodash'
 import userRefFor from './userRef'
 import firebase from './firebase'
-import { Container, FormGroup, Input, Button, Progress } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { Container, FormGroup, Input, Button } from 'reactstrap'
 
