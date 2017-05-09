@@ -32,7 +32,6 @@ class Product extends Component {
 				<Link to={`matur/${this.props.post.id}`}>
 					<div className="product_img">
 						<div className="product_gradient" />
-						{/* {console.log(notify)} */}
 						<div className={this.state.status}>
 							<img
 								src={process.env.PUBLIC_URL + '/img/notify_order.svg'}
@@ -51,29 +50,22 @@ class Product extends Component {
 						<h2>{menu_title}</h2>
 						<p>{menu_price} kr.</p>
 					</Link>
-					{/* <Link to={`matur/${props.post.id}`}>
-            <img className="arrow" src={process.env.PUBLIC_URL + '/img/arrow.svg'} alt="Nánar" />
-          </Link> */}
 				</div>
 				<div className="product_order">
 					<Button
 						color="success"
 						size="md"
 						onClick={() => {
-							// console.log(post);
 							this.handleClick()
 							setTimeout(() => {
 								this.notify = false
 							}, 1500)
 							this.setState({ reRender: ++this.state.reRender })
 							let doesExist = false
-							console.log('before event')
 							this.props.userRef.child('orders/').once('value', snapshot => {
 								const obj = snapshot.val()
-								console.log(obj)
 								for (var variable in obj) {
 									if (obj && obj[variable].productID === this.props.post.id) {
-										console.log('exists')
 										doesExist = true
 										this.props.userRef.child('orders/' + variable).update({
 											price: parseInt(obj[variable].price) +
@@ -81,10 +73,8 @@ class Product extends Component {
 											quantity: parseInt(obj[variable].quantity) + 1,
 										})
 									} else {
-										console.log('not exist')
 									}
 								}
-								console.log(this.props.userRef.child('orders/'))
 								if (!doesExist) {
 									this.props.userRef.child('orders').push({
 										title: menu_title,
@@ -106,7 +96,10 @@ class Product extends Component {
 					>
 						<span>Panta</span>
 						<span>
-							<img src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'} />
+							<img
+								src={process.env.PUBLIC_URL + '/img/order_btn_inner.svg'}
+								alt=""
+							/>
 						</span>
 					</Button>
 				</div>

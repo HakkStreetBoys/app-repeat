@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import _ from 'lodash'
 import userRefFor from './userRef'
+import firebase from './firebase'
 import { Container, FormGroup, Input, Button } from 'reactstrap'
-
-const ROOT_AUTH_URL =
-	'https://us-central1-one-time-password-c0c13.cloudfunctions.net'
 
 class PaymentSubmit extends Component {
 	constructor(props) {
@@ -14,6 +13,7 @@ class PaymentSubmit extends Component {
 			totalPrice: 0,
 			status: null,
 			loading: false,
+			orders: [],
 		}
 
 		this.handleChange = this.handleChange.bind(this)
@@ -21,15 +21,17 @@ class PaymentSubmit extends Component {
 	}
 
 	componentWillMount() {
-		if (this.state.phone.substring(0,3) === '354') {
+		if (this.state.phone.substring(0, 3) === '354') {
 			this.setState({ phone: this.state.phone.slice(3) })
 		}
 		document.getElementById('body').className = 'pay'
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {
 			const obj = snapshot.val()
-			console.log(obj.totalPrice)
 			this.setState({ totalPrice: obj.totalPrice })
+		})
+		this.userRef.child('confirmed_order').on('value', snapshot => {
+			this.setState({ orders: snapshot.val() })
 		})
 	}
 
@@ -43,22 +45,63 @@ class PaymentSubmit extends Component {
 	}
 
 	handleSubmit(e) {
-		this.setState({ loading: true })
 		e.preventDefault()
+		this.setState({ loading: true })
 		axios
 			.post(`http://localhost:3001`, {
 				phone: this.state.phone,
 				totalPrice: this.state.totalPrice,
 			})
 			.then(res => {
-				console.log(res)
 				this.setState({ status: res.data, loading: false })
+
+				if (this.state.status === 'Greiðsla staðfest') {
+					let orderkey = _.map(this.state.orders, (order, i) => {
+						let key = i
+						let orderkey2 = _.map(order, (ordr, i2) => {
+							let key2 = i2
+							firebase
+								.database()
+								.ref(
+									'users/' +
+										this.props.user.uid +
+										'/confirmed_order/' +
+										i +
+										'/' +
+										i2
+								)
+								.update({
+									status_pay: 1,
+								})
+						})
+					})
+				} else {
+					let orderkey = _.map(this.state.orders, (order, i) => {
+						let key = i
+						let orderkey2 = _.map(order, (ordr, i2) => {
+							let key2 = i2
+							if (ordr.status_pay !== 1) {
+								firebase
+									.database()
+									.ref(
+										'users/' +
+											this.props.user.uid +
+											'/confirmed_order/' +
+											i +
+											'/' +
+											i2
+									)
+									.update({
+										status_pay: 2,
+									})
+							}
+						})
+					})
+				}
 			})
-		console.log('state is ' + this.state.phone)
 	}
 
 	render() {
-		console.log(this.state)
 		return (
 			<div className="payment payment_submit">
 				{this.state.status === null &&

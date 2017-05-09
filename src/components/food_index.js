@@ -29,7 +29,6 @@ class FoodIndex extends Component {
 		})
 		this.userRef.on('value', snapshot => {
 			const obj = snapshot.val()
-			console.log(obj)
 
 			if (!obj.tableNumber) {
 				this.setState({ modal: !this.state.modal })
@@ -114,13 +113,11 @@ class FoodIndex extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 
 		if (this.state.loading) {
 			return <Spinner />
 		}
 
-		console.log(this.props)
 		return (
 			<div>
 				<Logo />
