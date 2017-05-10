@@ -30,6 +30,7 @@ class SinglePost extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 		if (this.state.loading) {
 			return <span>isloading</span>
 		}
@@ -52,12 +53,19 @@ class SinglePost extends Component {
 		let relatedItems
 		if (related != null) {
 			relatedItems = related.map(relate => (
-				<div className="related_container" key={relate.data.id}>
-					<div className="related_img">
-						<div className="related_gradient" />
-						<img src={relate.data.acf.menu_image.sizes.medium} alt="" />
+				<Link to={`/matur/${relate.data.id}`} key={relate.data.id}>
+					<div className="related_container">
+						<div className="related_img">
+							{/* <div className="related_gradient" /> */}
+							<div className="product_gradient"></div>
+							<div className="related_inner">
+								<h2>{relate.data.acf.menu_title}</h2>
+								<p>{relate.data.acf.menu_price} kr.</p>
+							</div>
+							<img src={relate.data.acf.menu_image.sizes.medium} alt="" />
+						</div>
 					</div>
-				</div>
+				</Link>
 			))
 		}
 

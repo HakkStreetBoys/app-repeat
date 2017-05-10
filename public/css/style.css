@@ -814,6 +814,10 @@ p {
   transition: opacity 250ms ease-in;
 }
 
+.single_page {
+  background-color: #fff;
+}
+
 .single_page .navbar {
   display: none;
 }
@@ -838,6 +842,8 @@ p {
 
 .single_hero img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .single_hero .single_hero_content {
@@ -900,36 +906,46 @@ p {
 
 .related_items {
   padding-top: 40px;
-}
-
-.related_items .related_container {
-  width: 80%;
+  width: 100%;
+  max-width: 90%;
   margin: 0 auto;
-  position: relative;
 }
 
 .related_items .related_container .related_img {
   margin: 20px 0px 0px 0px;
+  position: relative;
+  overflow: hidden;
+  height: 180px;
 }
 
-.related_items .related_container .related_img .related_gradient {
+.related_items .related_container .related_img .product_gradient {
+  height: 180px;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.62), transparent);
+}
+
+.related_items .related_container .related_img .related_inner {
   position: absolute;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.82), transparent);
-  z-index: 1;
-  padding: 20px 0px 0px 0px;
+  bottom: 10px;
+  left: 20px;
+}
+
+.related_items .related_container .related_img .related_inner h2, .related_items .related_container .related_img .related_inner p {
+  color: #fff;
+  margin: 0;
+  font-size: 20px;
 }
 
 .related_items h3 {
   font-size: 18px;
   text-transform: uppercase;
-  margin-left: 36px;
 }
 
 .related_items img {
   display: block;
   margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .my_order .myorder_exit {
