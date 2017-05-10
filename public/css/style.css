@@ -835,6 +835,8 @@ p {
   left: 20px;
   bottom: 10px;
   position: absolute;
+  width: 100%;
+  max-width: 60%;
 }
 
 .single_hero .single_hero_content .single_hero_info h2 {
