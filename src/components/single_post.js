@@ -25,6 +25,21 @@ class SinglePost extends Component {
 		this.setState({ loading: false })
 	}
 
+	componentWillReceiveProps(nextProps) {
+		// console.log('a is ',a);
+		// console.log('b is ',b);
+		// this.props.fetchPost(this.props.match.params.id)
+		console.log('props is ', this.props)
+		console.log('nextProps is ', nextProps)
+
+		if (this.props.match && this.props.match.params.id !== nextProps.match.params.id) {
+			console.log('not same');
+			this.props.fetchPost(nextProps.match.params.id)
+			window.scrollTo(0,0);
+		}
+
+	}
+
 	componentWillUnmount() {
 		document.getElementById('body').className = ''
 		this.setState({ isLoading: true })
