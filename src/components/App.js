@@ -92,7 +92,7 @@ class App extends Component {
 											<Nav>
 												<NavItem onClick={this.logOut.bind(this)}>
 													{this.state.errorMsg && <p>{this.state.errorMsg}</p>}
-													Logout
+													Útskráning
 												</NavItem>
 											</Nav>
 										</div>
