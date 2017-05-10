@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Button } from 'reactstrap'
+import userRefFor from './userRef'
 
 class PaymentOption extends Component {
 	state = {
@@ -9,13 +10,20 @@ class PaymentOption extends Component {
 
 	componentWillMount() {
 		document.getElementById('body').className = 'pay'
+		this.userRef = userRefFor(this.props.user)
+
+		this.userRef.once('value', snapshot => {
+			this.setState({ totalPrice: snapshot.val().totalPrice })
+		})
 	}
 
 	componentWillUnmount() {
 		document.getElementById('body').className = ''
+		this.userRef.off()
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 			<div className="payment">
 				<Container>
@@ -47,6 +55,15 @@ class PaymentOption extends Component {
 				</Container>
 				<div className="payment_shape">
 					<div className="payment_shape_inner">
+						{this.state.totalPrice !== 0 &&
+							<p>
+								Samtals
+								{' '}
+
+								<span className="total_price">
+									{this.state.totalPrice} kr.
+								</span>
+							</p>}
 						<Link to="payment/submit">
 							<Button
 								className="main-btn"

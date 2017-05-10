@@ -74,6 +74,16 @@
   .payment_shape_inner {
     @include shape-radius-inner;
     transform: translateX(-50%);
+
+    p {
+      @include font-light;
+      margin-bottom: 10px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .total_price {
+      @include font-semibold;
+    }
   }
 }
 

@@ -1406,6 +1406,19 @@ p {
   transform: translateX(-50%);
 }
 
+.payment .payment_shape_inner p {
+  font-family: 'canada-type-gibson';
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.payment .payment_shape_inner .total_price {
+  font-family: 'canada-type-gibson';
+  font-weight: 600;
+}
+
 .payment_submit .payment_loading {
   position: relative;
   z-index: 1;
