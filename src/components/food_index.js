@@ -42,7 +42,7 @@ class FoodIndex extends Component {
 	}
 
 	componentWillUnmount() {
-		this.userRef.child('orders/').off();
+		// this.userRef.child('orders/').off();
 	}
 
 	renderOffer() {

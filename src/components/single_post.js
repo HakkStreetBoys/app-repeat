@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchPost } from '../actions/index'
-// import axios from 'axios';
 import { Button } from 'reactstrap'
-// import Slider from 'react-slick';
 import userRefFor from './userRef'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -15,7 +13,7 @@ class SinglePost extends Component {
 	}
 
 	componentDidMount() {
-		window.scrollTo(0,0);
+		window.scrollTo(0, 0)
 		document.getElementById('body').className = 'single_page'
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {
@@ -26,18 +24,13 @@ class SinglePost extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		// console.log('a is ',a);
-		// console.log('b is ',b);
-		// this.props.fetchPost(this.props.match.params.id)
-		console.log('props is ', this.props)
-		console.log('nextProps is ', nextProps)
-
-		if (this.props.match && this.props.match.params.id !== nextProps.match.params.id) {
-			console.log('not same');
+		if (
+			this.props.match &&
+			this.props.match.params.id !== nextProps.match.params.id
+		) {
 			this.props.fetchPost(nextProps.match.params.id)
-			window.scrollTo(0,0);
+			window.scrollTo(0, 0)
 		}
-
 	}
 
 	componentWillUnmount() {
@@ -46,7 +39,7 @@ class SinglePost extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		console.log(this.props)
 		if (this.state.loading) {
 			return <span>isloading</span>
 		}
@@ -73,7 +66,7 @@ class SinglePost extends Component {
 					<div className="related_container">
 						<div className="related_img">
 							{/* <div className="related_gradient" /> */}
-							<div className="product_gradient"></div>
+							<div className="product_gradient" />
 							<div className="related_inner">
 								<h2>{relate.data.acf.menu_title}</h2>
 								<p>{relate.data.acf.menu_price} kr.</p>
