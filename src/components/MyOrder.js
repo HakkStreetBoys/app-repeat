@@ -321,7 +321,7 @@ class MyOrder extends Component {
 													})
 												}}
 												color="success"
-												className="main-btn"
+												className="main-btn submit-payment-btn"
 												size="md"
 											>
 												Borga

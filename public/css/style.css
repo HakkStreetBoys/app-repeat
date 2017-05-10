@@ -1151,7 +1151,7 @@ p {
 #my_order .pending_total_order .pending_total_order_inner p {
   font-family: 'canada-type-gibson';
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #fff;
   text-transform: uppercase;
 }
@@ -1159,6 +1159,10 @@ p {
 #my_order .pending_total_order .pending_total_order_inner .total_price {
   font-family: 'canada-type-gibson';
   font-weight: 600;
+}
+
+#my_order .pending_total_order .pending_total_order_inner .submit-payment-btn {
+  padding-bottom: 32px;
 }
 
 #my_order .pending_total_order .btn {
@@ -1209,11 +1213,11 @@ p {
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  margin: 96px 0px 0px 0px;
+  margin: 40px 0;
 }
 
 #my_order .order_empty .afturmatsedill {
-  margin: 40px 0px 0px 0px;
+  margin: 10px 0;
 }
 
 #my_order .order_empty img {
