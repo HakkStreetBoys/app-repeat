@@ -28,6 +28,7 @@ class Navigation extends Component {
 	}
 
 	componentWillUnmount() {
+		// TODO: SKOÐA
 		// this.userRef.child('orders').off()
 	}
 

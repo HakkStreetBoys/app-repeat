@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Radix } from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { fetchFood, fetchFoodPromo } from '../actions/index'
@@ -84,9 +84,9 @@ class FoodIndex extends Component {
 												) {
 													doesExist = true
 													this.userRef.child('orders/' + variable).update({
-														price: parseInt(obj[variable].price) +
-															parseInt(promo_food_price),
-														quantity: parseInt(obj[variable].quantity) + 1,
+														price: parseInt(obj[variable].price, Radix) +
+															parseInt(promo_food_price, Radix),
+														quantity: parseInt(obj[variable].quantity, Radix) + 1,
 													})
 												} else {
 												}
@@ -160,7 +160,6 @@ class FoodIndex extends Component {
 
 	render() {
 
-		console.log(this.props);
 
 		if (this.state.loading) {
 			return <Spinner />

@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Radix } from 'react'
 import _ from 'lodash'
 import userRefFor from './userRef'
-// import Spinner from './Spinner';
 import MyOrderEmpty from './MyOrderEmpty'
 import { Link } from 'react-router-dom'
 import {
@@ -60,17 +59,13 @@ class MyOrder extends Component {
 
 	componentWillUnmount() {
 		document.getElementById('body').className = ''
+		// TODO: SKOÐA BETUR
 		// this.userRef.child('orders/').off();
 	}
 
 	confirmOrder() {
 		this.userRef.child('confirmed_order/').push(this.state.orderData)
 		this.userRef.child('orders/').remove()
-
-		// console.log(this.totalPrice)
-
-		// this.userRef.update({ totalPrice:  })
-
 		this.setState({ orderConfirmed: true })
 	}
 
@@ -121,9 +116,11 @@ class MyOrder extends Component {
 							this.setState({ orderConfirmed: false })
 						}}
 					>
-            <Link to="/matur">
-    					<Button className="afturmatsedill" color="primary">Aftur í matseðil</Button>
-    				</Link>
+						<Link to="/matur">
+							<Button className="afturmatsedill" color="primary">
+								Aftur í matseðil
+							</Button>
+						</Link>
 					</div>
 				</ReactCSSTransitionGroup>
 			)
@@ -144,7 +141,16 @@ class MyOrder extends Component {
 							</Col>
 							<Col xs="9">
 								<h2>{order.title}</h2>
-								<p><NumberFormat className="total_price" value={order.price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
+								<p>
+									<NumberFormat
+										className="total_price"
+										value={order.price}
+										displayType={'text'}
+										thousandSeparator={'.'}
+									/>
+									{' '}
+									kr.
+								</p>
 								<Button
 									color="danger"
 									onClick={() => {
@@ -198,9 +204,7 @@ class MyOrder extends Component {
 	renderConfirmedOrders() {
 		return _.map(this.state.confirmedOrders, (confirmed_order, key) => {
 			return _.map(confirmed_order, (conf_order, key) => {
-
 				if (conf_order.status_pay !== 1) {
-					console.log('ege')
 					this.confirmedPrice += parseInt(conf_order.price, 10)
 					return (
 						<Row key={key}>
@@ -214,7 +218,16 @@ class MyOrder extends Component {
 									</Col>
 									<Col xs="9">
 										<h2>{conf_order.title}</h2>
-										<p><NumberFormat className="total_price" value={conf_order.price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
+										<p>
+											<NumberFormat
+												className="total_price"
+												value={conf_order.price}
+												displayType={'text'}
+												thousandSeparator={'.'}
+											/>
+											{' '}
+											kr.
+										</p>
 									</Col>
 								</Row>
 							</Col>
@@ -234,7 +247,6 @@ class MyOrder extends Component {
 	}
 
 	render() {
-		console.log(this.state)
 		this.totalPrice = 0
 		this.confirmedPrice = 0
 		return (
@@ -251,7 +263,15 @@ class MyOrder extends Component {
 					</Link>
 					<Nav tabs>
 						<div className="splitter">
-							{this.state.confirmedOrders !== null && this.state.totalPrice !== 0 && <div className={this.state.activeTab === '1' ? 'splitter_inner' : 'splitter_inner active'}></div>}
+							{this.state.confirmedOrders !== null &&
+								this.state.totalPrice !== 0 &&
+								<div
+									className={
+										this.state.activeTab === '1'
+											? 'splitter_inner'
+											: 'splitter_inner active'
+									}
+								/>}
 						</div>
 						<NavItem>
 							<NavLink
@@ -263,7 +283,8 @@ class MyOrder extends Component {
 								Pöntun
 							</NavLink>
 						</NavItem>
-						{this.state.confirmedOrders !== null && this.state.totalPrice !== 0 &&
+						{this.state.confirmedOrders !== null &&
+							this.state.totalPrice !== 0 &&
 							<NavItem>
 								<NavLink
 									className={classnames({
@@ -298,19 +319,26 @@ class MyOrder extends Component {
 										<p>
 											Samtals
 											{' '}
-											<NumberFormat className="total_price" value={this.totalPrice} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.
+											<NumberFormat
+												className="total_price"
+												value={this.totalPrice}
+												displayType={'text'}
+												thousandSeparator={'.'}
+											/>
+											{' '}
+											kr.
 										</p>
 										<Button
 											className="main-btn"
-											onClick={(() => {
-												// console.log(this.totalPrice)
-												// console.log(this.confirmedPrice)
+											onClick={() => {
 												this.userRef.update({
-													totalPrice: this.confirmedPrice += parseInt(this.totalPrice)
+													totalPrice: (this.confirmedPrice += parseInt(
+														this.totalPrice,
+														Radix
+													)),
 												})
 												this.confirmOrder()
-
-											})}
+											}}
 											color="success"
 											size="md"
 										>
@@ -330,11 +358,19 @@ class MyOrder extends Component {
 										<p>
 											Samtals
 											{' '}
-											<NumberFormat className="total_price" value={this.confirmedPrice} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.
+											<NumberFormat
+												className="total_price"
+												value={this.confirmedPrice}
+												displayType={'text'}
+												thousandSeparator={'.'}
+											/>
+											{' '}
+											kr.
 										</p>
 										<Link to="/payment">
 											<Button
 												onClick={() => {
+													// TODO: SKOÐA
 													// this.userRef.update({
 													// 	totalPrice: this.confirmedPrice,
 													// })

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Radix } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchPost } from '../actions/index'
@@ -40,14 +40,11 @@ class SinglePost extends Component {
 	}
 
 	renderSingleProduct = () => {
-		console.log(this.props)
-		if (this.state.loading) {
-			return <span>isloading</span>
-		}
 
 		const { post, isLoading, related } = this.props
 		if (isLoading) {
-			return <div>isLoading</div>
+			return <div></div>
+			// return <div>isLoading</div>
 		}
 
 		const { menu_title, menu_price, menu_tags, menu_description } = post.acf
@@ -121,9 +118,9 @@ class SinglePost extends Component {
 											) {
 												doesExist = true
 												this.userRef.child('orders/' + variable).update({
-													price: parseInt(obj[variable].price) +
-														parseInt(menu_price),
-													quantity: parseInt(obj[variable].quantity) + 1,
+													price: parseInt(obj[variable].price, Radix) +
+														parseInt(menu_price, Radix),
+													quantity: parseInt(obj[variable].quantity, Radix) + 1,
 												})
 											} else {
 											}

@@ -173,7 +173,7 @@ class PaymentSubmit extends Component {
 									<div>
 										<Link to="/matur">
 											<Button color="success" size="md">
-												Aftur í matseðil
+												Til baka
 											</Button>
 										</Link>
 									</div>
@@ -191,7 +191,7 @@ class PaymentSubmit extends Component {
 									/>
 									<div>
 										<Link to="/payment">
-											<Button color="success" size="md">Reyna aftur</Button>
+											<Button color="success" size="md">Til baka</Button>
 										</Link>
 									</div>
 								</div>}

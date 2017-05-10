@@ -23,20 +23,6 @@ $screen-lg: 1200px;
  font-weight: 300;
 }
 
-@font-face {
- font-family: 'RoundBold';
- src: url('../fonts/din-round/din-round-bold.eot') format('embedded-opentype'),
- url('../fonts/din-round/din-round-bold.woff') format('woff'),
- url('../fonts/din-round/din-round-bold.ttf')  format('truetype');
- font-weight: 800;
-}
-
-@font-face {
- font-family: 'RoundRegular';
- src: url('../fonts/din-round/din-round-regular.woff') format('woff');
- font-weight: 500;
-}
-
 $font_light: "canada-type-gibson";
 $font_regular: 	"canada-type-gibson";
 $font_bold: "canada-type-gibson";

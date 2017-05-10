@@ -34,12 +34,10 @@ class SignInForm extends Component {
 
 	handleCodeChange(event) {
 		this.setState({ code: event.target.value })
-		console.log(this.state.code)
 	}
 
 	handlePhoneChange(event) {
 		this.setState({ phone: event.target.value })
-		console.log(this.state.phone)
 	}
 
 	handleSubmit(event) {
@@ -51,9 +49,8 @@ class SignInForm extends Component {
 				code: this.state.code,
 			})
 			.then(response => {
-				console.log(SignUpForm.phone)
 				firebase.auth().signInWithCustomToken(response.data.token)
-				console.log(response.data.token)
+				// console.log(response.data.token)
 			})
 			.catch(error => {
 				this.setState({
@@ -63,13 +60,11 @@ class SignInForm extends Component {
 				console.log(error)
 			})
 
-		console.log(response)
+		// console.log(response)
 		// console.log(response.data);
 	}
 
 	render() {
-		console.log(SignUpForm.phone)
-		console.log(this.state)
 
 		if (this.state.loading) {
 			return <Spinner />

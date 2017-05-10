@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Radix } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import { fetchDrinks, fetchDrinkPromo } from '../actions/index'
@@ -29,6 +29,7 @@ class DrinkIndex extends Component {
 	}
 
 	componentWillUnmount() {
+		// TODO: SKOÐA BETUR
 		// this.userRef.child('orders/').off();
 		// this.userRef.off();
 	}
@@ -62,15 +63,12 @@ class DrinkIndex extends Component {
 									this.userRef.child('orders/').once('value', snapshot => {
 										const obj = snapshot.val()
 										for (var variable in obj) {
-											if (
-												obj &&
-												obj[variable].title === promo_drink_title
-											) {
+											if (obj && obj[variable].title === promo_drink_title) {
 												doesExist = true
 												this.userRef.child('orders/' + variable).update({
-													price: parseInt(obj[variable].price) +
-														parseInt(promo_drink_price),
-													quantity: parseInt(obj[variable].quantity) + 1,
+													price: parseInt(obj[variable].price, Radix) +
+														parseInt(promo_drink_price, Radix),
+													quantity: parseInt(obj[variable].quantity, Radix) + 1,
 												})
 											} else {
 											}
@@ -95,7 +93,11 @@ class DrinkIndex extends Component {
 							>
 								{promo_drink_button}
 								<span>
-									<img className="promo_svg" src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'} alt="" />
+									<img
+										className="promo_svg"
+										src={process.env.PUBLIC_URL + '/img/order_btn_inner2.svg'}
+										alt=""
+									/>
 								</span>
 							</Button>
 						</div>

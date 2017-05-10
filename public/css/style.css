@@ -416,18 +416,6 @@ template {
   font-weight: 300;
 }
 
-@font-face {
-  font-family: 'RoundBold';
-  src: url("../fonts/din-round/din-round-bold.eot") format("embedded-opentype"), url("../fonts/din-round/din-round-bold.woff") format("woff"), url("../fonts/din-round/din-round-bold.ttf") format("truetype");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: 'RoundRegular';
-  src: url("../fonts/din-round/din-round-regular.woff") format("woff");
-  font-weight: 500;
-}
-
 .btn {
   cursor: pointer;
   border: none;
@@ -605,18 +593,6 @@ p {
   font-family: 'Krit-Medium';
   src: url("../fonts/Krit-2/Krit-Medium.eot") format("embedded-opentype"), url("../fonts/Krit-2/Krit-Medium.woff") format("woff"), url("../fonts/Krit-2/Krit-Medium.woff2") format("woff2");
   font-weight: 300;
-}
-
-@font-face {
-  font-family: 'RoundBold';
-  src: url("../fonts/din-round/din-round-bold.eot") format("embedded-opentype"), url("../fonts/din-round/din-round-bold.woff") format("woff"), url("../fonts/din-round/din-round-bold.ttf") format("truetype");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: 'RoundRegular';
-  src: url("../fonts/din-round/din-round-regular.woff") format("woff");
-  font-weight: 500;
 }
 
 .promo_offers {
@@ -975,15 +951,16 @@ p {
 }
 
 .my_order .nav-tabs .splitter .splitter_inner {
-  width: 130px;
+  width: 115px;
   height: 2px;
   background: #fff;
   transform: translateX(0);
-  transition: 0.1s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+  transition: 0.1s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 .my_order .nav-tabs .splitter .active {
-  transform: translateX(125px);
+  transform: translateX(113px);
+  width: 140px;
 }
 
 .my_order .nav-tabs .nav-link {
@@ -1906,24 +1883,9 @@ p {
   font-weight: 500;
 }
 
-.single_trans-enter {
-  transform: translate(100%);
-}
-
-.single_trans-enter.single_trans-enter-active {
-  transform: translate(0%);
-  transition: transform 1000ms ease-in-out;
-}
-
-.single_trans-leave {
-  transform: translate(0%);
-}
-
-.single_trans-leave.single_trans-leave-active {
-  transform: translate(-100%);
-  transition: transform 1000ms ease-in-out;
-}
-
+/*******************
+Transitions
+********************/
 /* start enter state */
 .slide-enter {
   transform: translateX(-100%);
@@ -1947,31 +1909,13 @@ p {
   transition: 0.4s cubic-bezier(0.52, -0.37, 0.13, 1.22);
 }
 
-.background-enter {
-  transform: translate(100%);
-}
-
-.background-enter.background-enter-active {
-  transform: translate(0%);
-  transition: transform 1000ms ease-in-out;
-}
-
-.background-leave {
-  transform: translate(0%);
-}
-
-.background-leave.background-leave-active {
-  transform: translate(-100%);
-  transition: transform 1000ms ease-in-out;
-}
-
 .example-enter {
   opacity: 0.01;
 }
 
 .example-enter.example-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 800ms ease-in;
 }
 
 .example-leave {

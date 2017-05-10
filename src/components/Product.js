@@ -49,7 +49,15 @@ class Product extends Component {
 				<div className="product_info">
 					<Link to={`matur/${this.props.post.id}`}>
 						<h2>{menu_title}</h2>
-						<p><NumberFormat value={menu_price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
+						<p>
+							<NumberFormat
+								value={menu_price}
+								displayType={'text'}
+								thousandSeparator={'.'}
+							/>
+							{' '}
+							kr.
+						</p>
 					</Link>
 				</div>
 				<div className="product_order">

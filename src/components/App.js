@@ -174,7 +174,7 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.state)
+		// console.log(this.state)
 		return (
 			<div>
 				{this.presentation()}

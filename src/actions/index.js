@@ -40,7 +40,6 @@ export function fetchPost (id) {
   return async (dispatch, getState) => {
     try {
       const { data } = await axios.get(`${ROOT_URL}/${id}`)
-      // console.log(post);
 
       const related = await Promise.all(data.acf.menu_related.map(({ID}) => {
         return axios.get(`${ROOT_URL}/${ID}`)

@@ -26,16 +26,16 @@
       // padding-left: 20px;
 
       .splitter_inner {
-        width: 130px;
+        width: 115px;
         height: 2px;
         background: #fff;
         transform: translateX(0);
-        transition: .1s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+        transition: 0.1s cubic-bezier(0.65, 0.05, 0.36, 1);
       }
 
       .active {
-        transform: translateX(125px);
-        // width: 150px;
+        transform: translateX(113px);
+        width: 140px;
       }
     }
 

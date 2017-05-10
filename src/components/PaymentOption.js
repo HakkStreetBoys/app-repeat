@@ -24,7 +24,6 @@ class PaymentOption extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className="payment">
 				<Container>
