@@ -57,9 +57,9 @@ class App extends Component {
 			.database()
 			.ref('users')
 			.child(this.state.user.uid)
-			.child('confirmed_order')
+			// .child('confirmed_order')
 			.once('value', snapshot => {
-				snapshot.val() != null
+				snapshot.val().totalPrice !== 0
 					? this.setState({
 							errorMsg: 'Þú verður að greiða reikninginn áður en þú aftengir símanúmerið.',
 						})

@@ -38,7 +38,7 @@ class SinglePost extends Component {
 		this.setState({ isLoading: true })
 	}
 
-	render() {
+	renderSingleProduct = () => {
 		console.log(this.props)
 		if (this.state.loading) {
 			return <span>isloading</span>
@@ -88,7 +88,7 @@ class SinglePost extends Component {
 		}
 
 		return (
-			<div className="single_item">
+			<div className="">
 				<Link to="/">
 					<img
 						src={process.env.PUBLIC_URL + '/img/arrow-back.svg'}
@@ -178,6 +178,24 @@ class SinglePost extends Component {
 							{relatedItems}
 						</div>}
 				</div>
+			</div>
+		)
+	}
+
+	render() {
+		return (
+			<div>
+				<ReactCSSTransitionGroup
+					component="div"
+					className="single_item"
+					transitionName="example"
+		      transitionAppear={true}
+		      transitionAppearTimeout={500}
+		      transitionEnter={false}
+		      transitionLeave={false}
+					>
+					{this.renderSingleProduct()}
+				</ReactCSSTransitionGroup>
 			</div>
 		)
 	}
