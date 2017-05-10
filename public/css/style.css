@@ -681,7 +681,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  margin-bottom: 140px;
+  padding-bottom: 140px;
 }
 
 .product_container .product_item {
@@ -741,7 +741,7 @@ p {
 
 .product_container .product_item .product_info {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
   color: #fff;
   width: 100%;
@@ -830,7 +830,7 @@ p {
 }
 
 .single_item {
-  margin-bottom: 130px;
+  padding-bottom: 130px;
 }
 
 .single_hero {

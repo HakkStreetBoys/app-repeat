@@ -15,6 +15,7 @@ class SinglePost extends Component {
 	}
 
 	componentDidMount() {
+		window.scrollTo(0,0);
 		document.getElementById('body').className = 'single_page'
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {
