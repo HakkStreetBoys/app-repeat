@@ -109,7 +109,7 @@ class MyOrder extends Component {
 				>
 					<p>Pöntun móttekin!</p>
 					<img
-						src={process.env.PUBLIC_URL + '/img/order_confirmed.svg'}
+						src={process.env.PUBLIC_URL + '/img/smiley-confirmed.svg'}
 						alt=""
 					/>
 					<p>
@@ -234,6 +234,7 @@ class MyOrder extends Component {
 	}
 
 	render() {
+		console.log(this.state)
 		this.totalPrice = 0
 		this.confirmedPrice = 0
 		return (
@@ -249,6 +250,9 @@ class MyOrder extends Component {
 						<img src={process.env.PUBLIC_URL + '/img/close-icon.svg'} alt="" />
 					</Link>
 					<Nav tabs>
+						<div className="splitter">
+							{this.state.confirmedOrders !== null && this.state.totalPrice !== 0 && <div className={this.state.activeTab === '1' ? 'splitter_inner' : 'splitter_inner active'}></div>}
+						</div>
 						<NavItem>
 							<NavLink
 								className={classnames({ active: this.state.activeTab === '1' })}

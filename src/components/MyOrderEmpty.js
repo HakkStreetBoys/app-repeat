@@ -8,7 +8,7 @@ const MyOrderEmpty = () => {
 			<div className="pending_order order_empty">
 				<div>
 					<h2>Pöntunarlisti tómur</h2>
-					<img src={process.env.PUBLIC_URL + '/img/order_empty.svg'} alt="" />
+					<img src={process.env.PUBLIC_URL + '/img/smiley-empty.svg'} alt="" />
 					<p>Hvernig væri að panta sér einn ískaldan?</p>
 				</div>
 				<Link to="/matur">

@@ -17,6 +17,28 @@
     z-index: 1;
     border-bottom: 0;
 
+    .splitter {
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.35);
+      position: absolute;
+      bottom: 0;
+      // padding-left: 20px;
+
+      .splitter_inner {
+        width: 130px;
+        height: 2px;
+        background: #fff;
+        transform: translateX(0);
+        transition: .1s cubic-bezier(0.52, -0.37, 0.13, 1.22);
+      }
+
+      .active {
+        transform: translateX(125px);
+        // width: 150px;
+      }
+    }
+
     .nav-link {
       color: #fff;
       opacity: .65;
@@ -26,6 +48,7 @@
       font-size: 24px;
       padding: 0.5em;
       @include font-regular;
+      padding-left: 20px;
     }
 
     .nav-link .active {
