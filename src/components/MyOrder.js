@@ -62,6 +62,10 @@ class MyOrder extends Component {
 		this.userRef.child('confirmed_order/').push(this.state.orderData)
 		this.userRef.child('orders/').remove()
 
+		// console.log(this.totalPrice)
+
+		// this.userRef.update({ totalPrice:  })
+
 		this.setState({ orderConfirmed: true })
 	}
 
@@ -289,7 +293,15 @@ class MyOrder extends Component {
 										</p>
 										<Button
 											className="main-btn"
-											onClick={this.confirmOrder}
+											onClick={(() => {
+												// console.log(this.totalPrice)
+												// console.log(this.confirmedPrice)
+												this.userRef.update({
+													totalPrice: this.confirmedPrice += parseInt(this.totalPrice)
+												})
+												this.confirmOrder()
+
+											})}
 											color="success"
 											size="md"
 										>
@@ -316,9 +328,9 @@ class MyOrder extends Component {
 										<Link to="/payment">
 											<Button
 												onClick={() => {
-													this.userRef.update({
-														totalPrice: this.confirmedPrice,
-													})
+													// this.userRef.update({
+													// 	totalPrice: this.confirmedPrice,
+													// })
 												}}
 												color="success"
 												className="main-btn submit-payment-btn"

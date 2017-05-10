@@ -12,7 +12,7 @@ export const FETCH_DRINK_OFFER_PROMO = 'FETCH_DRINK_OFFER_PROMO'
 
 const ROOT_URL = 'http://pebbleplates.com/repeat-menu/wp-json/wp/v2/menu'
 const FOOD_URL = '?menu_cat=8'
-const DRINK_URL = '?menu_cat=9'
+const DRINK_URL = '?menu_cat=9&per_page=30'
 
 const OFFER_PROMO = 'http://pebbleplates.com/repeat-menu/wp-json/acf/v2/options'
 const FOOD_OFFER_PROMO = 'food_promo'
