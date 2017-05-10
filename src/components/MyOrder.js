@@ -28,6 +28,7 @@ class MyOrder extends Component {
 			confirmedOrders: [],
 			orderConfirmed: false,
 			activeTab: '1',
+			totalPrice: 0,
 		}
 
 		this.totalPrice = 0
@@ -40,6 +41,9 @@ class MyOrder extends Component {
 		document.getElementById('body').className = 'my_order'
 		this.key = undefined
 		this.userRef = userRefFor(this.props.user)
+		this.userRef.on('value', snapshot => {
+			this.setState({ totalPrice: snapshot.val().totalPrice })
+		})
 		this.userRef.child('orders/').on('value', snapshot => {
 			var obj = snapshot.val()
 			this.setState({ orderData: obj, loading: false })
@@ -254,7 +258,7 @@ class MyOrder extends Component {
 								Pöntun
 							</NavLink>
 						</NavItem>
-						{this.state.confirmedOrders !== null &&
+						{this.state.confirmedOrders !== null && this.state.totalPrice !== 0 &&
 							<NavItem>
 								<NavLink
 									className={classnames({
