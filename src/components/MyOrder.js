@@ -190,7 +190,7 @@ class MyOrder extends Component {
 		return _.map(this.state.confirmedOrders, (confirmed_order, key) => {
 			return _.map(confirmed_order, (conf_order, key) => {
 
-				if (conf_order.status_pay != 1) {
+				if (conf_order.status_pay !== 1) {
 					console.log('ege')
 					this.confirmedPrice += parseInt(conf_order.price, 10)
 					return (
