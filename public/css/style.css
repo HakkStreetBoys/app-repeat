@@ -637,6 +637,9 @@ p {
   font-size: 30px;
   margin-bottom: 5px;
   font-weight: 400;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .promo_content p {
