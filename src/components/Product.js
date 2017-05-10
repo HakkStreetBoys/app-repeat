@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
+import NumberFormat from 'react-number-format'
 
 class Product extends Component {
 	state = {
@@ -48,7 +49,7 @@ class Product extends Component {
 				<div className="product_info">
 					<Link to={`matur/${this.props.post.id}`}>
 						<h2>{menu_title}</h2>
-						<p>{menu_price} kr.</p>
+						<p><NumberFormat value={menu_price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
 					</Link>
 				</div>
 				<div className="product_order">

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Button } from 'reactstrap'
 import userRefFor from './userRef'
+import NumberFormat from 'react-number-format'
 
 class PaymentOption extends Component {
 	state = {
@@ -60,9 +61,7 @@ class PaymentOption extends Component {
 								Samtals
 								{' '}
 
-								<span className="total_price">
-									{this.state.totalPrice} kr.
-								</span>
+								<NumberFormat className="total_price" value={this.state.totalPrice} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.
 							</p>}
 						<Link to="payment/submit">
 							<Button

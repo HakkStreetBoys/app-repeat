@@ -5,6 +5,7 @@ import { fetchPost } from '../actions/index'
 import { Button } from 'reactstrap'
 import userRefFor from './userRef'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import NumberFormat from 'react-number-format'
 
 class SinglePost extends Component {
 	state = {
@@ -69,7 +70,7 @@ class SinglePost extends Component {
 							<div className="product_gradient" />
 							<div className="related_inner">
 								<h2>{relate.data.acf.menu_title}</h2>
-								<p>{relate.data.acf.menu_price} kr.</p>
+								<p><NumberFormat value={relate.data.acf.menu_price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
 							</div>
 							<img src={relate.data.acf.menu_image.sizes.medium} alt="" />
 						</div>
@@ -102,7 +103,7 @@ class SinglePost extends Component {
 					<div className="single_hero_content">
 						<div className="single_hero_info">
 							<h2>{menu_title}</h2>
-							<p className="single_price">{menu_price} kr.</p>
+							<p className="single_price"><NumberFormat className="total_price" value={menu_price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
 						</div>
 						<div className="single_hero_order">
 							<Button

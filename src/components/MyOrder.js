@@ -17,6 +17,7 @@ import {
 } from 'reactstrap'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classnames from 'classnames'
+import NumberFormat from 'react-number-format'
 
 class MyOrder extends Component {
 	constructor(props) {
@@ -143,7 +144,7 @@ class MyOrder extends Component {
 							</Col>
 							<Col xs="9">
 								<h2>{order.title}</h2>
-								<p>{order.price} kr.</p>
+								<p><NumberFormat className="total_price" value={order.price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
 								<Button
 									color="danger"
 									onClick={() => {
@@ -213,7 +214,7 @@ class MyOrder extends Component {
 									</Col>
 									<Col xs="9">
 										<h2>{conf_order.title}</h2>
-										<p>{conf_order.price} kr.</p>
+										<p><NumberFormat className="total_price" value={conf_order.price} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.</p>
 									</Col>
 								</Row>
 							</Col>
@@ -293,7 +294,7 @@ class MyOrder extends Component {
 										<p>
 											Samtals
 											{' '}
-											<span className="total_price">{this.totalPrice} kr.</span>
+											<NumberFormat className="total_price" value={this.totalPrice} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.
 										</p>
 										<Button
 											className="main-btn"
@@ -325,9 +326,7 @@ class MyOrder extends Component {
 										<p>
 											Samtals
 											{' '}
-											<span className="total_price">
-												{this.confirmedPrice} kr.
-											</span>
+											<NumberFormat className="total_price" value={this.confirmedPrice} displayType={'text'} thousandSeparator={'.'}></NumberFormat> kr.
 										</p>
 										<Link to="/payment">
 											<Button
