@@ -660,7 +660,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  padding-bottom: 140px;
+  padding-bottom: 70px;
 }
 
 .product_container .product_item {
