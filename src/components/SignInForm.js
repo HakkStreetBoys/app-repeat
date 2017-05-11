@@ -16,6 +16,7 @@ class SignInForm extends Component {
 			code: '',
 			loading: true,
 			errorMessage: '',
+			isRegistering: true
 		}
 
 		this.handleCodeChange = this.handleCodeChange.bind(this)
@@ -34,6 +35,10 @@ class SignInForm extends Component {
 
 	handleCodeChange(event) {
 		this.setState({ code: event.target.value })
+
+		event.target.value.length >= 4
+			? this.setState({ isRegistering: false })
+			: this.setState({ isRegistering: true })
 	}
 
 	handlePhoneChange(event) {
@@ -56,6 +61,7 @@ class SignInForm extends Component {
 				this.setState({
 					loading: false,
 					errorMessage: 'Villa kom upp. Prófaðu aftur',
+					isRegistering: true
 				})
 				console.log(error)
 			})
@@ -95,6 +101,8 @@ class SignInForm extends Component {
 							<Input
 								placeholder="Kóði"
 								type="number"
+								pattern="[0-9]*"
+								inputMode="numeric"
 								value={this.state.code}
 								onChange={this.handleCodeChange}
 							/>
@@ -106,6 +114,7 @@ class SignInForm extends Component {
 							type="submit"
 							value="Submit"
 							onClick={this.handleSubmit}
+							disabled={this.state.isRegistering}
 						>
 							Skrá <span>inn</span>
 						</Button>
