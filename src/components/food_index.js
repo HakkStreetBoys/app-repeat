@@ -25,7 +25,7 @@ class FoodIndex extends Component {
 	componentDidMount() {
 		this.userRef = userRefFor(this.props.user)
 		this.userRef.on('value', snapshot => {
-			this.setState({ tableNumber: snapshot.val().tableNumber })
+			this.setState({ tableNumber: "1" })
 		})
 		this.userRef.on('value', snapshot => {
 			const obj = snapshot.val()
@@ -159,7 +159,7 @@ class FoodIndex extends Component {
 	}
 
 	render() {
-
+		console.log(this.state)
 
 		if (this.state.loading) {
 			return <Spinner />
