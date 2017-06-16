@@ -1,7 +1,7 @@
 import React, { Component, Radix } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import { fetchDrinks, fetchDrinkPromo } from '../actions/index'
+import { fetchDrinks, fetchDrinkPromo } from '../actions/posts'
 // import firebase from 'firebase';
 import userRefFor from './userRef'
 // import { Link } from 'react-router-dom';

@@ -5,6 +5,8 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom'
+import { connect } from 'react-redux'
+import {getUserInfo} from '../actions/user'
 import axios from 'axios'
 import Spinner from './Spinner'
 import firebase from './firebase'
@@ -37,15 +39,14 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		firebase.auth().onAuthStateChanged(user => {
-			setTimeout(() => {
-				this.setState({ user })
-			}, 2000)
-		})
-	}
-
-	componentWillUnmount() {
-		this.unsubscribeAuthStateChanged()
+		console.log("in app did mount")
+		this.props.onGetUserInfo();
+		//firebase.auth().onAuthStateChanged(user => {
+			//why do we have setTimeout here?
+			//setTimeout(() => {
+				//this.setState({ user })
+			//}, 2000)
+		// })
 	}
 
 	toggle() {
@@ -56,7 +57,7 @@ class App extends Component {
 		firebase
 			.database()
 			.ref('users')
-			.child(this.state.user.uid)
+			.child(this.props.user.uid)
 			// .child('confirmed_order')
 			.once('value', snapshot => {
 				snapshot.val().totalPrice !== 0
@@ -69,7 +70,7 @@ class App extends Component {
 							.then(() => {
 								this.setState({ isOpen: false })
 								axios.post(`${ROOT_AUTH_URL}/deleteUser`, {
-									phone: this.state.user.uid,
+									phone: this.props.user.uid,
 								})
 							})
 							.catch(error => {
@@ -79,7 +80,7 @@ class App extends Component {
 	}
 
 	presentation = () => {
-		const { user } = this.state
+		const { user } = this.props
 		return (
 			<Router>
 				<div>
@@ -183,4 +184,16 @@ class App extends Component {
 	}
 }
 
-export default App
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+		onGetUserInfo: () => dispatch(getUserInfo())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
