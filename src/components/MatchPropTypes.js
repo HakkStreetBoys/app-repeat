@@ -8,8 +8,7 @@ export default {
   component: React.PropTypes.func.isRequired,
   user: (props, propName, componentName) => {
     const propValue = props[propName]
-
-    if (propValue !== null && !(propValue instanceof firebase.User)) {
+    if (propValue !== null && !(propValue.uid)) {
       return new Error(
         `Prop '${propName}' on component '${componentName} has invalid value '${propValue}'`
       )

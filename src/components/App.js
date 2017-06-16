@@ -39,7 +39,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		console.log("in app did mount")
 		this.props.onGetUserInfo();
 		//firebase.auth().onAuthStateChanged(user => {
 			//why do we have setTimeout here?
@@ -81,6 +80,7 @@ class App extends Component {
 
 	presentation = () => {
 		const { user } = this.props
+		console.log(user);
 		return (
 			<Router>
 				<div>
@@ -178,7 +178,7 @@ class App extends Component {
 		// console.log(this.state)
 		return (
 			<div>
-				{this.presentation()}
+				{this.props.user.uid? this.presentation() :null}
 			</div>
 		)
 	}
@@ -192,7 +192,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		onGetUserInfo: () => dispatch(getUserInfo())
+		onGetUserInfo: () =>  dispatch(getUserInfo())
   };
 }
 
