@@ -55,18 +55,33 @@ class SignUpForm extends Component {
 			})
 			.then(() => {
 				this.setState({ fireRedirect: true })
-				// const { from } = this.props.location.state || '/';
 				const { fireRedirect } = this.state
 				fireRedirect && <Redirect to={'/code'} />
 				this.setState({ loading: false })
 			})
 			.catch(error => {
+				console.log(this.state.phone)
+				const errorMessage = error.response.data.error.message
+				const errorCode = error.response.data.error.code
 				this.setState({
 					loading: false,
-					isRegistering: true,
-					errorMessage: error.response.data.error.message,
+					errorMessage: errorMessage,
 				})
+				if (errorCode === 'auth/uid-already-exists') {
+					this.setState({
+						errorMessage: 'Þú ert skráður inn í öðru tæki. Sendu kóða aftur til að skrá þig inn á núverandi tæki.',
+					})
+					axios.post(`${ROOT_AUTH_URL}/deleteUser`, {
+						phone: '354' + this.state.phone,
+					})
+				} else {
+					this.setState({
+						loading: false,
+						errorMessage: errorMessage,
+					})
+				}
 				console.log(error)
+				console.log(errorMessage)
 			})
 	}
 
@@ -88,7 +103,9 @@ class SignUpForm extends Component {
 				<Container>
 					<Form onSubmit={this.handleSubmit}>
 						{this.state.errorMessage &&
-							<Alert color="warning">{this.state.errorMessage}</Alert>}
+							<Alert color="warning">
+								{this.state.errorMessage}
+							</Alert>}
 						<FormGroup>
 							<Input
 								type="number"
@@ -112,7 +129,10 @@ class SignUpForm extends Component {
 						</Button>
 						{/* </Link> */}
 						{fireRedirect &&
-							<Redirect to={'/login/code'} phone={this.state.phone} />}
+							<Redirect
+								to={'/login/code'}
+								phone={this.state.phone}
+							/>}
 					</Form>
 				</Container>
 			</div>
